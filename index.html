@@ -423,7 +423,7 @@ function seedState(){
   SEED_CHECKS.forEach(([group,track,items]) => items.forEach(text =>
     checklist.push({ id: uid("ck"), group, track, text, done:false, sample:true })));
   return {
-    version: 1,
+    version: 2,
     theme: "system",
     view: "dashboard",
     companies,
@@ -444,7 +444,9 @@ function seedState(){
     coFilters: { q:"", track:"", status:"", city:"" }
   };
 }
-function defaultStart(){ return new Date().getFullYear() + "-07-01"; }
+/* Abi im Sommer 2027 – das Orientierungsjahr laeuft von 2027 bis 2028. */
+const GAP_YEAR_START = "2027-07-01";
+function defaultStart(){ return GAP_YEAR_START; }
 
 /* ---------------- Speicherung ---------------- */
 let state = load();
@@ -468,6 +470,13 @@ function migrate(d){
   s.compare      = (d.compare && typeof d.compare === "object") ? d.compare : {};
   s.timeline     = (d.timeline && Array.isArray(d.timeline.phases) && d.timeline.phases.length)
                    ? d.timeline : base.timeline;
+  // Alte Staende (v1) starteten im laufenden Jahr – auf den geplanten Start 2027 heben,
+  // solange der Start nicht selbst angepasst wurde.
+  const oldVersion = parseFloat(d.version) || 1;   // num() ist hier noch nicht initialisiert
+  if(oldVersion < 2 && /^20\d\d-07-01$/.test(s.timeline.start || "") && s.timeline.start < GAP_YEAR_START){
+    s.timeline = Object.assign({}, s.timeline, { start: GAP_YEAR_START });
+  }
+  s.version = 2;
   s.filters      = Object.assign(base.filters, d.filters || {});
   s.coFilters    = Object.assign(base.coFilters, d.coFilters || {});
   if(!VIEWS.some(v => v.key === s.view)) s.view = "dashboard";
@@ -1508,6 +1517,7 @@ function render(){
 }
 applyTheme();
 render();
+save();
 if(window.matchMedia){
   const mq = window.matchMedia("(prefers-color-scheme: dark)");
   const onChange = () => { if(state.theme === "system") renderNav(); };

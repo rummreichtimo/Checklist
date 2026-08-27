@@ -1,7 +1,7 @@
 # Orientierungsjahr – Gap-Year-Planer
 
 Eine einzelne, vollständig offline lauffähige Web-App zum Organisieren des Orientierungsjahres
-nach dem Abi: Bewerbungs-Tracker, Unternehmensliste, Checkliste, Praktikums-Bewertungen,
+nach dem Abi (Juli 2027 bis Juli 2028): Bewerbungs-Tracker, Unternehmensliste, Checkliste, Praktikums-Bewertungen,
 Bereichsvergleich und Zeitplan.
 
 ## Dateien
@@ -32,7 +32,8 @@ Bereichsvergleich und Zeitplan.
 - **Daten**: Export/Import per Text sowie Zurücksetzen mit Sicherheitsabfrage
 - Dark/Light/System-Design, Sidebar auf Desktop, Tab-Leiste auf dem Smartphone
 
-Alle Daten liegen im `localStorage` des Browsers (Schlüssel `orientierungsjahr.v1`).
+Der Zeitplan startet standardmäßig am 1. Juli 2027 und lässt sich in der Ansicht „Zeitplan“ frei
+verschieben. Alle Daten liegen im `localStorage` des Browsers (Schlüssel `orientierungsjahr.v1`).
 
 ## Test
 
