@@ -9,7 +9,7 @@ const log=[];
 const t=async(n,f)=>{ try{ await f(); log.push('✔ '+n);}catch(e){ log.push('✘ '+n+' → '+e.message);} };
 
 await t('Dashboard-Stats sichtbar', async()=>{ const n=await p.locator('.stat').count(); if(n<10) throw new Error('nur '+n+' Stats'); });
-await t('Nav 8 Einträge', async()=>{ const n=await p.locator('.nav-item').count(); if(n!==7) throw new Error('nav items '+n); });
+await t('Nav vollständig', async()=>{ const n=await p.locator('.nav-item').count(); if(n!==10) throw new Error('nav items '+n); });
 
 // Unternehmen
 await t('Unternehmen: 13 Seeds', async()=>{ await p.click('[data-view="unternehmen"]'); await p.waitForTimeout(200);
@@ -85,6 +85,73 @@ await t('Import stellt wieder her', async()=>{
 await t('Persistenz nach Reload', async()=>{ await p.reload(); await p.waitForTimeout(400);
   const n=await p.evaluate(()=>JSON.parse(localStorage.getItem('orientierungsjahr.v1')).companies[0].name);
   if(n!=='Import AG') throw new Error(n); });
+
+// ---------- Unternehmensdatenbank ----------
+await t('Datenbank zeigt alle Unternehmen', async()=>{ await p.click('[data-view="entdecken"]'); await p.waitForTimeout(300);
+  const n=await p.locator('#dbList .db-card').count(); if(n!==51) throw new Error('cards '+n); });
+await t('DB-Suche filtert', async()=>{ await p.fill('#dbSearch','compositing'); await p.waitForTimeout(200);
+  const n=await p.locator('#dbList .db-card').count(); if(n<1||n>8) throw new Error('cards '+n); await p.fill('#dbSearch',''); await p.waitForTimeout(150); });
+await t('Bereichs-Chip filtert', async()=>{ await p.click('[data-action="db-area"][data-key="vfx"]'); await p.waitForTimeout(200);
+  const n=await p.locator('#dbList .db-card').count(); if(n<15||n>25) throw new Error('vfx cards '+n);
+  await p.click('[data-action="db-area"][data-key="vfx"]'); await p.waitForTimeout(150); });
+await t('Entfernungsfilter 0–25 km', async()=>{ await p.click('[data-action="db-dist"][data-key="d25"]'); await p.waitForTimeout(200);
+  const n=await p.locator('#dbList .db-card').count();
+  const bad=await p.evaluate(()=>filteredDb().filter(c=>c.distanceKm>25).length);
+  if(bad!==0||n<8) throw new Error('n='+n+' bad='+bad);
+  await p.click('[data-action="db-dist"][data-key="d25"]'); await p.waitForTimeout(150); });
+await t('Nur mit Angebot', async()=>{ await p.click('[data-action="db-only-offer"]'); await p.waitForTimeout(200);
+  const bad=await p.evaluate(()=>filteredDb().filter(c=>c.status!=='offer').length);
+  if(bad!==0) throw new Error('bad '+bad);
+  await p.click('[data-action="db-only-offer"]'); await p.waitForTimeout(150); });
+await t('Sortierung nach Passung', async()=>{ const ok=await p.evaluate(()=>{
+    const l=filteredDb();
+    for(let i=1;i<l.length;i++){
+      if(fitStars(l[i-1])<fitStars(l[i])) return false;
+      if(fitStars(l[i-1])===fitStars(l[i]) && l[i-1].status!=='offer' && l[i].status==='offer') return false;
+    }
+    return l[0].id==='db-iav'; });
+  if(!ok) throw new Error('Reihenfolge stimmt nicht'); });
+await t('Favorit setzen + Favoritenseite', async()=>{ await p.locator('#dbList .fav-btn').first().click(); await p.waitForTimeout(250);
+  const f=await p.evaluate(()=>state.favorites.length); if(f!==1) throw new Error('favs '+f);
+  await p.click('[data-view="favoriten"]'); await p.waitForTimeout(250);
+  const n=await p.locator('.db-card').count(); if(n!==1) throw new Error('fav cards '+n); });
+await t('Detailansicht öffnet', async()=>{ await p.locator('[data-action="db-detail"]').first().click(); await p.waitForTimeout(300);
+  const txt=(await p.locator('.modal').innerText()).toLowerCase();
+  for(const k of ['warum könnte das zu dir passen','zuletzt überprüft','vergütung','voraussetzungen','ab gifhorn','berechnet aus deinem profil'])
+    if(!txt.includes(k)) throw new Error('fehlt: '+k); });
+await t('Datensatz markieren', async()=>{ await p.click('[data-action="db-mark"][data-key="check"]'); await p.waitForTimeout(250);
+  const m=await p.evaluate(()=>Object.values(state.dbMarks)[0].mark); if(m!=='check') throw new Error('mark '+m);
+  const warn=await p.locator('.modal .warn').count(); if(!warn) throw new Error('kein Warnhinweis'); });
+await t('Zu Bewerbungen übernehmen (mit ID-Verknüpfung)', async()=>{ await p.click('[data-action="db-add"]'); await p.waitForTimeout(350);
+  const a=await p.evaluate(()=>state.applications[0]);
+  if(!a.dbId) throw new Error('keine dbId'); if(a.status!=='none') throw new Error('status '+a.status);
+  const linked=await p.evaluate(()=>state.companies.some(c=>c.dbId===state.applications[0].dbId));
+  if(!linked) throw new Error('Unternehmen nicht verknüpft'); });
+await t('Doppelte Übernahme verhindert', async()=>{ await p.click('[data-view="entdecken"]'); await p.waitForTimeout(250);
+  const before=await p.evaluate(()=>state.applications.length);
+  await p.evaluate(()=>{ const id=state.applications[0].dbId; openDbDetail(id); });
+  await p.waitForTimeout(250);
+  const disabled=await p.locator('[data-action="db-add"]').isDisabled(); if(!disabled) throw new Error('Button nicht deaktiviert');
+  await p.click('[data-action="modal-close"]'); await p.waitForTimeout(200);
+  const after=await p.evaluate(()=>state.applications.length); if(after!==before) throw new Error('doppelt angelegt'); });
+await t('Vergleich mehrerer Unternehmen', async()=>{ await p.waitForTimeout(150);
+  const btns=p.locator('[data-action="db-cmp"]');
+  await btns.nth(0).click(); await p.waitForTimeout(200); await btns.nth(1).click(); await p.waitForTimeout(250);
+  if(!(await p.locator('.cmp-bar').count())) throw new Error('keine Vergleichsleiste');
+  await p.click('.cmp-bar [data-action="db-cmp-open"]'); await p.waitForTimeout(300);
+  const cols=await p.locator('.modal thead th').count(); if(cols!==3) throw new Error('Spalten '+cols);
+  const txt=await p.locator('.modal').innerText();
+  for(const k of ['Passung','Vergütung','Entfernung','Bewerbung möglich']) if(!txt.includes(k)) throw new Error('fehlt: '+k);
+  await p.click('[data-action="modal-close"]'); await p.waitForTimeout(200); });
+await t('Keine erfundenen Vergütungen', async()=>{ const bad=await p.evaluate(()=>COMPANY_DB.filter(c=>
+    !/nicht öffentlich/.test(c.salary) && !/Angabe|brutto|Essensgeld/.test(c.salary)).map(c=>c.companyName));
+  if(bad.length) throw new Error('unbelegt: '+bad.join(', ')); });
+await t('Alle Websites haben https-Links', async()=>{ const bad=await p.evaluate(()=>COMPANY_DB.filter(c=>
+    !/^https:\/\//.test(c.website)||(c.internshipUrl&&!/^https:\/\//.test(c.internshipUrl))).map(c=>c.companyName));
+  if(bad.length) throw new Error(bad.join(', ')); });
+await t('DB-Zustand übersteht Reload', async()=>{ await p.reload(); await p.waitForTimeout(400);
+  const r=await p.evaluate(()=>({f:state.favorites.length,c:state.dbCompare.length,m:Object.keys(state.dbMarks).length,a:state.applications.length}));
+  if(r.f!==1||r.c!==2||r.m!==1||r.a!==1) throw new Error(JSON.stringify(r)); });
 
 console.log(log.join('\n'));
 console.log(errs.length? '\nFEHLER:\n'+errs.join('\n') : '\nkeine JS-Fehler');

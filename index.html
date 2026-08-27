@@ -280,6 +280,70 @@ tfoot td{font-weight:700;background:var(--surface-2);font-family:var(--f-display
   padding:10px 17px;border-radius:999px;font-size:13.5px;font-weight:500;z-index:90;box-shadow:var(--shadow);
   animation:pop .18s ease}
 
+/* ---------- Unternehmensdatenbank ---------- */
+.filters{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:7px 0;border-bottom:1px dashed var(--line)}
+.filter-row:last-child{border-bottom:0}
+.filter-row > .lbl{font-family:var(--f-mono);font-size:10px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--ink-3);width:112px;flex:none}
+.chip-btn{border:1px solid var(--line);background:var(--surface-2);color:var(--ink-2);border-radius:999px;
+  padding:5px 11px;font-size:12.5px;cursor:pointer;transition:background .14s,color .14s,border-color .14s}
+.chip-btn:hover{border-color:var(--ink-3);color:var(--ink)}
+.chip-btn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.chip-btn.t[aria-pressed="true"]{background:var(--t,var(--accent));border-color:var(--t,var(--accent));color:#fff}
+:root[data-theme="dark"] .chip-btn.t[aria-pressed="true"]{color:#0d1216}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chip-btn.t[aria-pressed="true"]{color:#0d1216}}
+.filters-toggle{display:none}
+@media (max-width:900px){
+  .filters-toggle{display:inline-flex}
+  .filters{display:none}
+  .filters.show{display:block}
+}
+.db-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px;align-items:start}
+.db-card{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--t);border-radius:var(--radius);
+  padding:15px 16px 13px;display:flex;flex-direction:column;gap:9px;transition:box-shadow .16s,transform .16s}
+.db-card:hover{box-shadow:var(--shadow);transform:translateY(-1px)}
+.db-card h3{font-size:16.5px;font-weight:700;line-height:1.25}
+.db-top{display:flex;gap:10px;align-items:flex-start}
+.db-top .ic{font-size:19px;line-height:1.2}
+.db-desc{font-size:13.5px;color:var(--ink-2);line-height:1.45}
+.db-line{display:flex;gap:7px;font-size:13px;color:var(--ink-2)}
+.db-line b{color:var(--ink);font-weight:600}
+.db-line .k{color:var(--ink-3);flex:none;min-width:78px}
+.db-meta{display:flex;flex-wrap:wrap;gap:6px}
+.db-foot{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:10px;border-top:1px solid var(--line)}
+.stars-inline{display:inline-flex;gap:1px;color:#E0A63F;font-size:13px;letter-spacing:-.5px}
+.stars-inline .off{color:var(--line-strong)}
+.fav-btn{border:1px solid var(--line);background:var(--surface-2);border-radius:9px;width:32px;height:32px;
+  cursor:pointer;font-size:15px;color:var(--ink-3);display:grid;place-items:center;flex:none;transition:all .14s}
+.fav-btn:hover{border-color:#E0A63F;color:#E0A63F}
+.fav-btn[aria-pressed="true"]{background:#E0A63F1f;border-color:#E0A63F;color:#E0A63F}
+.warn{display:flex;gap:8px;align-items:flex-start;background:var(--danger-soft);color:var(--danger);
+  border-radius:9px;padding:8px 11px;font-size:12.5px;line-height:1.4}
+.info-box{background:var(--surface-2);border-radius:9px;padding:9px 11px;font-size:13px;color:var(--ink-2);
+  border-left:2px solid var(--t,var(--accent))}
+.detail-sec{margin-top:16px}
+.detail-sec h4{font-size:13px;font-family:var(--f-mono);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;margin-bottom:7px}
+.kv{display:grid;grid-template-columns:150px minmax(0,1fr);gap:6px 14px;font-size:14px}
+.kv dt{color:var(--ink-3)}
+.kv dd{margin:0;color:var(--ink)}
+.bar-mini{display:inline-block;width:56px;height:5px;border-radius:999px;background:var(--surface-3);overflow:hidden;vertical-align:middle}
+.bar-mini i{display:block;height:100%;border-radius:999px}
+.cmp-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:22px;z-index:55;display:flex;gap:10px;align-items:center;
+  background:var(--ink);color:var(--bg);padding:9px 10px 9px 16px;border-radius:999px;box-shadow:0 12px 30px -12px rgba(0,0,0,.6);
+  font-size:13.5px;animation:pop .18s ease}
+.cmp-bar button{border:0;border-radius:999px;padding:6px 13px;cursor:pointer;font-size:13px;font-weight:600;
+  background:var(--bg);color:var(--ink)}
+.cmp-bar .ghost{background:transparent;color:var(--bg);font-weight:400;opacity:.75}
+@media (max-width:900px){
+  .filter-row > .lbl{width:100%;padding-bottom:2px}
+  .db-grid{grid-template-columns:1fr}
+  .kv{grid-template-columns:1fr;gap:2px 0}
+  .kv dd{margin-bottom:8px}
+  .cmp-bar{bottom:78px;width:calc(100% - 24px);justify-content:space-between}
+}
+
 /* ---------- Mobile ---------- */
 .mobile-bar,.mobile-top{display:none}
 @media (max-width:900px){
@@ -330,13 +394,14 @@ tfoot td{font-weight:700;background:var(--surface-2);font-family:var(--f-display
     <nav class="nav" id="nav"></nav>
     <div class="side-foot">
       <button class="btn btn-sm btn-ghost" data-action="toggle-theme"><span id="themeIcon">◐</span> <span id="themeLabel">Design</span></button>
-      <button class="btn btn-sm btn-ghost" data-action="go" data-view="daten" style="margin-left:auto">⚙︎ Daten</button>
+      <button class="btn btn-sm btn-ghost" data-action="go" data-view="entdecken" style="margin-left:auto">⌕ Finden</button>
     </div>
   </aside>
   <main class="main" id="view"></main>
 </div>
 
 <nav class="mobile-bar" id="mobileNav"></nav>
+<div id="cmpRoot"></div>
 <div id="modalRoot"></div>
 <div id="toastRoot"></div>
 
@@ -376,14 +441,16 @@ const CRITERIA = [
 ];
 
 const VIEWS = [
-  { key:"dashboard",  label:"Dashboard",   icon:"◈" },
-  { key:"bewerbungen",label:"Bewerbungen", icon:"✉" },
-  { key:"unternehmen",label:"Unternehmen", icon:"⌂" },
-  { key:"checkliste", label:"Checkliste",  icon:"✓" },
-  { key:"bewertung",  label:"Bewertungen", icon:"★" },
-  { key:"vergleich",  label:"Vergleich",   icon:"⇄" },
-  { key:"timeline",   label:"Zeitplan",    icon:"◷" },
-  { key:"daten",      label:"Daten",       icon:"⚙" }
+  { key:"dashboard",  label:"Dashboard",           short:"Start",     icon:"◈", group:"Übersicht" },
+  { key:"entdecken",  label:"Unternehmen finden",  short:"Finden",    icon:"⌕", group:"Entdecken" },
+  { key:"favoriten",  label:"Favoriten",           short:"Favoriten", icon:"★", group:"Entdecken" },
+  { key:"bewerbungen",label:"Meine Bewerbungen",   short:"Bewerbung", icon:"✉", group:"Meine Planung" },
+  { key:"unternehmen",label:"Meine Unternehmen",   short:"Firmen",    icon:"⌂", group:"Meine Planung" },
+  { key:"checkliste", label:"Meine Checkliste",    short:"Checkliste",icon:"✓", group:"Meine Planung" },
+  { key:"bewertung",  label:"Bewertungen",         short:"Bewerten",  icon:"◉", group:"Auswerten" },
+  { key:"vergleich",  label:"Bereiche vergleichen",short:"Vergleich", icon:"⇄", group:"Auswerten" },
+  { key:"timeline",   label:"Zeitplan",            short:"Zeitplan",  icon:"◷", group:"Auswerten" },
+  { key:"daten",      label:"Einstellungen",       short:"Optionen",  icon:"⚙", group:"Auswerten" }
 ];
 
 /* ---------------- Startdaten ---------------- */
@@ -411,6 +478,990 @@ const SEED_CHECKS = [
   ["Nach den Praktika","other",["VFX bewerten","Wirtschaft bewerten","Technik bewerten","Mögliche Studiengänge recherchieren","Hochschulen vergleichen","Bewerbungsfristen prüfen","Studienentscheidung treffen","Für Studium bewerben"]]
 ];
 
+
+/* ============================================================
+   Unternehmensdatenbank
+   ------------------------------------------------------------
+   Recherchiert im August 2026 über die offiziellen Unternehmens-
+   und Karriereseiten sowie öffentliche Stellenausschreibungen.
+   Regeln für neue Einträge:
+   - Nur Felder füllen, die belegt sind. Sonst "Nicht angegeben".
+   - salary nur mit öffentlich genannter Angabe, sonst NA_SALARY.
+   - status: "offer"   = konkretes Praktikumsangebot gefunden
+             "unclear" = Praktika grundsätzlich möglich, nichts Konkretes belegt
+             "none"    = kein passendes Gap-Year-Praktikum gefunden
+   - lastVerified: "MM/JJJJ" der letzten Prüfung.
+   ============================================================ */
+const NA = "Nicht angegeben";
+const NA_SALARY = "Vergütung: nicht öffentlich angegeben";
+const VERIFIED = "08/2026";
+
+const COMPANY_DB = [
+/* ---------------------------- 🎬 VFX / Medien ---------------------------- */
+{
+  id:"db-noisebird", companyName:"Noisebird Media", category:"vfx",
+  subcategory:["Filmproduktion","Postproduktion","Mediengestaltung"],
+  city:"Wolfsburg", address:"Benzstraße 12, 38446 Wolfsburg", distanceKm:25,
+  description:"Filmproduktion für Unternehmenskommunikation: Imagefilme, Erklärvideos, Social-Media-Clips und Podcasts. 2017 gegründet, kleines inhabergeführtes Team mit eigener Produktionsfläche in Wolfsburg.",
+  internshipFields:["Filmproduktion","Kamera/Schnitt","Postproduktion","Mediengestaltung"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA, requirements:NA,
+  website:"https://www.noisebirdmedia.com/", internshipUrl:"",
+  contact:"Kontakt über die Website (Marc Schulz / Souhaieb El Azizi, Geschäftsführung)",
+  fit:["film","creative","desk","smallteam"],
+  suitabilityReason:"Kleines Team heißt: du bist vom Dreh bis zum Schnitt überall dabei und siehst, wie viel Postproduktion dir wirklich liegt.",
+  gap:"yellow", gapYearNote:"Guter Ort für einen ehrlichen Berufsfeld-Test im Bereich Film und Postproduktion – kein ausgeschriebenes Praktikum, also am besten initiativ mit Portfolio anfragen.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-filmburg", companyName:"FILMBURG (X-Media Factory)", category:"vfx",
+  subcategory:["Filmproduktion","Postproduktion","Livestream"],
+  city:"Wolfsburg", address:"Wolfsburg", distanceKm:25,
+  description:"Full-Service-Filmproduktion mit rund fünf Mitarbeitenden: Werbe- und Imagefilme, Dokumentationen, Musikvideos, Reportagen und Livestream-Produktionen – unter anderem die Livestream-Produktion der Klub-WM-Auslosung 2021 in Zürich.",
+  internshipFields:["Filmproduktion","Kamera/Schnitt","Postproduktion","Livestream"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA, requirements:NA,
+  website:"https://www.film-burg.de/", internshipUrl:"",
+  contact:"Kontakt über die Website (Olaf Levin, Geschäftsführung)",
+  fit:["film","creative","desk","smallteam"],
+  suitabilityReason:"Breites Spektrum von Werbefilm bis Live-Produktion – gut, um herauszufinden, welcher Teil der Medienarbeit dich packt.",
+  gap:"yellow", gapYearNote:"Sehr vielseitiger Einblick in einem kleinen Team. Praktikum nicht ausgeschrieben – initiativ anfragen.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-filmpunktton", companyName:"filmpunktton – Marcus Wendt", category:"vfx",
+  subcategory:["Filmproduktion","Luftaufnahmen","Postproduktion"],
+  city:"Wolfsburg", address:"Major-Hirst-Straße 11, Wolfsburg (ICW) / Rühen", distanceKm:25,
+  description:"Film- und Tonproduktion von Marcus Wendt, gegründet 2013 im Gründercampus der Wolfsburg AG. Schwerpunkte sind Imagefilme, Konzeption, Fotografie und Luftaufnahmen für Unternehmen und Privatkunden.",
+  internshipFields:["Filmproduktion","Kamera/Schnitt","Postproduktion"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA, requirements:NA,
+  website:"https://filmpunktton.de/", internshipUrl:"",
+  contact:"Kontakt über die Website (Marcus Wendt, Inhaber)",
+  fit:["film","creative","desk","smallteam"],
+  suitabilityReason:"Sehr nah an der Praxis: Konzept, Dreh, Drohne und Schnitt in einer Hand – du siehst den kompletten Ablauf einer Produktion.",
+  gap:"yellow", gapYearNote:"Klein, persönlich, viel Eigenverantwortung. Kein ausgeschriebenes Praktikum – Initiativbewerbung nötig.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-mediadrive", companyName:"MEDIADRIVE", category:"vfx",
+  subcategory:["Filmproduktion","3D-Animation","Postproduktion"],
+  city:"Braunschweig", address:"Karl-Marx-Straße 25, 38104 Braunschweig", distanceKm:30,
+  description:"Inhabergeführte Filmagentur, seit 2005 am Markt. Produziert Image-, Werbe- und Industriefilme, Recruiting-Videos, Eventfilme und technische 3D-Animationen für Unternehmen und Behörden.",
+  internshipFields:["Filmproduktion","Postproduktion","3D-Animation","Kamera/Schnitt"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA, requirements:NA,
+  website:"https://www.mediadrive-agentur.de/", internshipUrl:"",
+  contact:"info@mediadrive-agentur.de · 0531 2258126",
+  fit:["film","motion","vfxwork","creative","desk"],
+  suitabilityReason:"Technische 3D-Animation neben klassischem Film – genau die Mischung aus Technik und visueller Gestaltung, die dich interessiert.",
+  gap:"green", gapYearNote:"Sehr interessant für dein Gap Year: Hier siehst du Realdreh und 3D/Animation nebeneinander und kannst beides vergleichen.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-exanimo", companyName:"ex animo MEDIA", category:"vfx",
+  subcategory:["Filmproduktion","Social Media","Fotografie"],
+  city:"Braunschweig", address:"Daimlerstraße 3, 38112 Braunschweig", distanceKm:30,
+  description:"Medienagentur mit Standorten in Braunschweig und Frankfurt am Main. Produziert cineastische Unternehmensfilme, Employer-Branding- und Onboarding-Videos, dazu Businessfotografie, Webdesign und Social-Media-Betreuung.",
+  internshipFields:["Filmproduktion","Postproduktion","Mediengestaltung","Marketing"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA, requirements:NA,
+  website:"https://exanimo-media.de/", internshipUrl:"https://exanimo-media.de/kontakt/",
+  contact:"Kontaktformular auf der Website",
+  fit:["film","creative","marketing","desk","smallteam"],
+  suitabilityReason:"Film trifft Marketing: Du bekommst mit, wie Unternehmensvideos entstehen und wofür Firmen sie einsetzen.",
+  gap:"blue", gapYearNote:"Gute Alternative, wenn du Medienproduktion und Marketing gleichzeitig ausprobieren willst.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-marctropolis", companyName:"Marctropolis", category:"vfx",
+  subcategory:["2D-/3D-Animation","Filmproduktion","Design"],
+  city:"Braunschweig", address:"Besselstraße 1, 38104 Braunschweig", distanceKm:30,
+  description:"Film- und Designagentur mit 2D- und 3D-Animation, Webdesign und eigenem Filmstudio. Die Studiohalle umfasst rund 1.000 m² bei neun Metern Höhe und wird für Produktionen mit eigenem Technikteam genutzt.",
+  internshipFields:["2D-/3D-Animation","Motion Design","Filmproduktion","Postproduktion"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA, requirements:NA,
+  website:"https://mtp-filmstudio.de/", internshipUrl:"",
+  contact:"0531 2801648 · Kontakt über die Website",
+  fit:["vfxwork","motion","film","creative","desk"],
+  suitabilityReason:"2D-/3D-Animation plus eigenes Studio – das ist der Bereich, in dem Compositing und Motion Design tatsächlich stattfinden.",
+  gap:"green", gapYearNote:"Sehr interessant für dein Gap Year: Animation und Realdreh unter einem Dach, ideal zum Ausprobieren, ob VFX dein Studienfach wird.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-studiob12", companyName:"Studio B12", category:"vfx",
+  subcategory:["Animation","Erklärfilm","Digitale Effekte"],
+  city:"Braunschweig", address:"Rebenring 31, 38106 Braunschweig", distanceKm:30,
+  description:"Agentur für Animation und Film: Erklärfilme in unterschiedlichen Stilen, Konzeption, Storyboard, Animation und digitale Effekte in 2D oder 3D. Dazu Webanwendungen, Softwareentwicklung und Virtual Reality.",
+  internshipFields:["Animation","Motion Design","Digitale Effekte","Mediengestaltung"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA, requirements:NA,
+  website:"https://studio-b12.de/", internshipUrl:"https://studio-b12.de/animation-und-film.html",
+  contact:"Kontakt über die Website",
+  fit:["vfxwork","motion","creative","desk","tech"],
+  suitabilityReason:"Digitale Effekte in 2D und 3D am Rechner, dazu VR – die Schnittstelle aus Technik und Gestaltung, die zu dir passt.",
+  gap:"green", gapYearNote:"Sehr interessant für dein Gap Year: näher an Compositing/VFX kommst du in der Region kaum.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-tvn", companyName:"TVN Group", category:"vfx",
+  subcategory:["TV-Produktion","Postproduktion","Broadcast-Technik"],
+  city:"Hannover", address:"Goseriede 9, 30159 Hannover", distanceKm:75,
+  description:"Mediendienstleister seit 1984 mit über 400 Mitarbeitenden an zehn Standorten. Deckt den kompletten Produktionsweg ab: Übertragungswagen, Kamera- und Sendetechnik, Studios, Schnitt- und Redaktionsräume bis zur Postproduktion und digitalen Grafik.",
+  internshipFields:["TV-Produktion","Postproduktion","Kamera/Schnitt","Broadcast-Technik"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA,
+  requirements:"Ausbildungsplätze u. a. als Mediengestalter*in Bild & Ton ausgeschrieben; Praktikumsbedingungen nicht öffentlich angegeben",
+  website:"https://www.tvn.de/", internshipUrl:"",
+  contact:"Kontakt über die Website",
+  fit:["film","tech","creative","desk","bigco"],
+  suitabilityReason:"Große Bandbreite von Live-Technik bis Postproduktion – hier siehst du Medienproduktion im professionellen Maßstab.",
+  gap:"yellow", gapYearNote:"Interessant, aber weiter weg (ca. 75 km). Praktikum nicht ausgeschrieben – Initiativanfrage nötig.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-lukz", companyName:"Lukz.com Filmproduktion", category:"vfx",
+  subcategory:["Motion Design","Filmproduktion","Postproduktion"],
+  city:"Hannover", address:"Hannover-Linden", distanceKm:75,
+  description:"Filmproduktion mit Schwerpunkt auf Event-Dokumentationen, Industrie- und Produktfilmen sowie aufwendig animierten Werbefilmen.",
+  internshipFields:["Motion Design","Kamera/Schnitt","Postproduktion"],
+  internshipTypes:["freiwillig","gapyear"],
+  duration:NA,
+  salary:NA_SALARY,
+  availability:"Praktikumsaushang für Motion Design, Kamera und Schnitt veröffentlicht (Stand der Ausschreibung prüfen)",
+  requirements:"Laut Aushang Mitarbeit an Projekten in After Effects, Premiere, DaVinci Resolve und Cinema 4D sowie Assistenz beim Dreh",
+  website:"https://www.lukz.com/", internshipUrl:"",
+  contact:"Kontakt über die Website",
+  fit:["motion","vfxwork","film","creative","desk"],
+  suitabilityReason:"After Effects, Resolve und Cinema 4D stehen ausdrücklich in der Ausschreibung – das ist Compositing- und Motion-Design-Arbeit am Rechner.",
+  gap:"green", gapYearNote:"Sehr interessant für dein Gap Year, weil hier ein Praktikum ausdrücklich angeboten wird. Der gefundene Aushang ist älter – bitte vor der Bewerbung aktuellen Stand erfragen.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-fokuspokus", companyName:"fokuspokus media", category:"vfx",
+  subcategory:["Postproduktion","Videoschnitt","Filmproduktion"],
+  city:"Hannover", address:"Hannover", distanceKm:75,
+  description:"Agentur für Filmproduktion mit ausgewiesenem Schwerpunkt Postproduktion und Videoschnitt.",
+  internshipFields:["Postproduktion","Kamera/Schnitt"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA, requirements:NA,
+  website:"https://www.fokuspokus-media.de/", internshipUrl:"",
+  contact:"Kontakt über die Website",
+  fit:["vfxwork","film","creative","desk","smallteam"],
+  suitabilityReason:"Spezialisiert auf Postproduktion – genau der Teil der Filmarbeit, der bei dir am Rechner stattfindet.",
+  gap:"yellow", gapYearNote:"Interessant als Postproduktions-Test. Kein ausgeschriebenes Praktikum gefunden – Initiativbewerbung möglich.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-brainclash", companyName:"Brainclash", category:"vfx",
+  subcategory:["Filmproduktion","Postproduktion","Kampagnen"],
+  city:"Hannover", address:"Hannover", distanceKm:75,
+  description:"Film- und Videoproduktion, die den gesamten Weg von der Konzeption über den Dreh und die Postproduktion bis zur Vermarktung abdeckt.",
+  internshipFields:["Filmproduktion","Postproduktion","Marketing"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA, requirements:NA,
+  website:"https://brainclash.de/", internshipUrl:"",
+  contact:"Kontakt über die Website",
+  fit:["film","creative","marketing","desk"],
+  suitabilityReason:"Von der Idee bis zur Vermarktung – gut, wenn dich neben dem Handwerk auch interessiert, wofür Filme eingesetzt werden.",
+  gap:"blue", gapYearNote:"Gute Alternative in Hannover. Praktikum nicht ausgeschrieben.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-ximpix", companyName:"Ximpix", category:"vfx",
+  subcategory:["Postproduktion","Filmproduktion","Kreativagentur"],
+  city:"Hannover", address:"Hannover", distanceKm:75,
+  description:"Kreativagentur mit eigenem Bereich Filmproduktion und Postproduktion und langjährig eingespieltem Team.",
+  internshipFields:["Postproduktion","Filmproduktion","Mediengestaltung"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA, requirements:NA,
+  website:"https://www.ximpix.com/", internshipUrl:"",
+  contact:"Kontakt über die Website",
+  fit:["vfxwork","film","creative","desk"],
+  suitabilityReason:"Agenturumfeld mit eigener Postproduktion – du siehst Gestaltung und technische Umsetzung zusammen.",
+  gap:"blue", gapYearNote:"Gute Alternative. Kein konkretes Praktikumsangebot gefunden.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-picpacker", companyName:"PicPacker", category:"vfx",
+  subcategory:["Motion Design","Animation"],
+  city:"Hannover", address:"Hannover", distanceKm:75,
+  description:"Agentur mit Spezialisierung auf Motion Design und Animation.",
+  internshipFields:["Motion Design","Animation"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA, requirements:NA,
+  website:"https://www.picpacker.de/", internshipUrl:"",
+  contact:"Kontakt über die Website",
+  fit:["motion","vfxwork","creative","desk","smallteam"],
+  suitabilityReason:"Reines Motion Design – wenn dich Animation und Compositing am meisten reizen, ist das der direkteste Test.",
+  gap:"green", gapYearNote:"Sehr interessant fachlich, aber kleines Team und kein ausgeschriebenes Praktikum – initiativ mit Portfolio anfragen.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-mrss", companyName:"mrss design", category:"vfx",
+  subcategory:["Videoproduktion","Livestream","Design"],
+  city:"Gifhorn", address:"Gifhorn", distanceKm:0,
+  description:"Designbüro mit Videoproduktion für Unternehmen in Gifhorn und Umgebung: Eventfilme, Livestreams, Aftermovies sowie Content für Social Media und Recruiting.",
+  internshipFields:["Videoproduktion","Kamera/Schnitt","Mediengestaltung"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA, requirements:NA,
+  website:"https://mrss-design.de/", internshipUrl:"",
+  contact:"Kontakt über die Website",
+  fit:["film","creative","desk","smallteam"],
+  suitabilityReason:"Direkt vor der Haustür, kompletter Produktionsweg im kleinen Team – ein unkomplizierter erster Test ohne Pendeln.",
+  gap:"yellow", gapYearNote:"Interessant als Einstieg direkt in Gifhorn. Praktikum nicht ausgeschrieben – initiativ fragen.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-inpuncto", companyName:"IN PUNCTO DESIGN", category:"vfx",
+  subcategory:["Corporate Design","Werbung","Print/Web"],
+  city:"Gifhorn", address:"Region Gifhorn / Braunschweig / Wolfsburg", distanceKm:0,
+  description:"Werbeagentur mit über 30 Jahren Erfahrung. Entwickelt Corporate Designs und Werbekampagnen für Unternehmen und Kultureinrichtungen der Region.",
+  internshipFields:["Mediengestaltung","Marketing","Grafikdesign"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA, requirements:NA,
+  website:"https://www.inpunctodesign.de/", internshipUrl:"",
+  contact:"Kontakt über die Website",
+  fit:["creative","marketing","desk","smallteam"],
+  suitabilityReason:"Gestaltung am Rechner mit Marketingbezug – weniger Film, dafür ein guter Blick auf Markenarbeit.",
+  gap:"blue", gapYearNote:"Gute Alternative in Gifhorn, wenn du Design und Marketing verbinden willst.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-goerges", companyName:"Görges Werbeagentur", category:"vfx",
+  subcategory:["Werbung","Print/Web","Markenentwicklung"],
+  city:"Gifhorn", address:"Gifhorn", distanceKm:0,
+  description:"Full-Service-Werbeagentur für neue und klassische Medien: Markenentwicklung, Markenführung und Produktionsmanagement für Print und Web.",
+  internshipFields:["Mediengestaltung","Marketing","Grafikdesign"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA, requirements:NA,
+  website:"https://www.goerges-werbeagentur.de/", internshipUrl:"",
+  contact:"Kontakt über die Website",
+  fit:["creative","marketing","desk","smallteam"],
+  suitabilityReason:"Agenturalltag in Gifhorn: Konzept, Gestaltung, Produktion – Bürotätigkeit mit kreativem Schwerpunkt.",
+  gap:"blue", gapYearNote:"Gute Alternative direkt vor Ort.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-galia", companyName:"Galia Werbeagentur", category:"vfx",
+  subcategory:["Webdesign","Social Media","Foto/Video"],
+  city:"Gifhorn", address:"Gifhorn", distanceKm:0,
+  description:"Werbeagentur für Webdesign, Branding, Social Media sowie Foto- und Videoproduktion für Unternehmen aus Gifhorn und Umgebung.",
+  internshipFields:["Mediengestaltung","Social Media","Videoproduktion"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA, requirements:NA,
+  website:"https://www.galia-werbeagentur.de/", internshipUrl:"",
+  contact:"Kontakt über die Website",
+  fit:["creative","marketing","film","desk","smallteam"],
+  suitabilityReason:"Mischung aus Web, Social Media und Video – breiter Einblick, wenn du dich noch nicht festlegen willst.",
+  gap:"blue", gapYearNote:"Gute Alternative in Gifhorn.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-funke", companyName:"FUNKE Medien / Braunschweiger Zeitung", category:"vfx",
+  subcategory:["Redaktion","Journalismus","Digitale Medien"],
+  city:"Braunschweig", address:"Braunschweig, mit Lokalredaktionen u. a. in Gifhorn, Wolfsburg, Wolfenbüttel, Peine, Helmstedt und Salzgitter", distanceKm:30,
+  description:"FUNKE ist einer der großen Medienarbeitgeber Deutschlands mit rund 1.700 Journalistinnen und Journalisten. Zur Gruppe gehört die Braunschweiger Zeitung mit ihren Lokalredaktionen in der Region.",
+  internshipFields:["Redaktion","Journalismus","Digitale Medien"],
+  internshipTypes:["freiwillig","studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Redaktionspraktikum für die Braunschweiger Zeitung war zuletzt über das FUNKE-Jobportal ausgeschrieben",
+  requirements:"Laut Ausschreibung u. a. Recherche, Erstellen redaktioneller Inhalte, Teilnahme an Redaktionskonferenzen",
+  website:"https://www.braunschweiger-zeitung.de/", internshipUrl:"https://jobs.funkemedien.de/",
+  contact:"Bewerbung über das FUNKE-Jobportal",
+  fit:["creative","desk","bigco"],
+  suitabilityReason:"Medienarbeit, aber textlastig statt visuell – interessant, wenn dich Kommunikation grundsätzlich reizt.",
+  gap:"yellow", gapYearNote:"Interessant, weil ein Praktikum regelmäßig ausgeschrieben wird und Redaktionen auch in Gifhorn und Wolfsburg sitzen.",
+  status:"offer", lastVerified:VERIFIED
+},
+/* ------------------------ 📊 BWL / Wirtschaft / Management ------------------------ */
+{
+  id:"db-wuerth", companyName:"Adolf Würth GmbH & Co. KG (Niederlassung Gifhorn)", category:"bwl",
+  subcategory:["Vertrieb","Handel","Management"],
+  city:"Gifhorn", address:"Niederlassung Gifhorn; Konzernsitz: Künzelsau", distanceKm:0,
+  description:"Würth ist der weltweit größte Handelskonzern für Montage- und Befestigungsmaterial. Die Adolf Würth GmbH & Co. KG ist das Gründungs- und größte Einzelunternehmen der Gruppe mit über 86.000 Beschäftigten weltweit; in Gifhorn befindet sich eine Vertriebsniederlassung.",
+  internshipFields:["Vertrieb","Marketing","Handel","Business Development"],
+  internshipTypes:["pflicht","freiwillig","studenten"],
+  duration:"Freiwilliges Praktikum laut Karriereseite ab 4 Monaten; Pflichtpraktikum je nach Studienordnung",
+  salary:"Pflichtpraktikum 1.400 € brutto/Monat, freiwilliges Praktikum ab 4 Monaten 2.420 € brutto/Monat (Angabe der Würth-Karriereseite)",
+  availability:"Praktikumsprogramm „GO WÜRTH“ mit wechselnden Modulen je Semester",
+  requirements:"Praktika richten sich laut Karriereseite an Studierende; für die Niederlassung Gifhorn ist kein eigenes Praktikumsangebot belegt",
+  website:"https://www.wuerth.de/", internshipUrl:"https://www.wuerth.de/web/de/awkg/karriere/studenten_absolventen/praktikum_abschlussarbeit/praktikum.php",
+  contact:"Bewerbung über das Würth-Karriereportal",
+  fit:["sales","mgmt","marketing","desk","bigco","paid"],
+  suitabilityReason:"Vertrieb und Handel in einem sehr großen Unternehmen, mit öffentlich genannter und guter Praktikumsvergütung – passt zu deinem Interesse an Wirtschaft und späterer Führungsverantwortung.",
+  gap:"green", gapYearNote:"Sehr interessant, weil die Vergütung öffentlich und hoch ist. Achtung: Das Programm ist auf Studierende zugeschnitten – für ein Gap Year vor dem Studium unbedingt vorher direkt nachfragen.",
+  status:"unclear", lastVerified:VERIFIED
+},
+{
+  id:"db-vwfs", companyName:"Volkswagen Financial Services AG", category:"bwl",
+  subcategory:["Finance","Controlling","Marketing","Business Development"],
+  city:"Braunschweig", address:"Braunschweig", distanceKm:30,
+  description:"Finanzdienstleister des Volkswagen Konzerns: Leasing, Finanzierung, Versicherung und Bankgeschäft rund um Mobilität. Der Hauptsitz in Braunschweig ist einer der größten Arbeitgeber der Stadt.",
+  internshipFields:["Finance","Controlling","Marketing","Business Development","Personal","IT"],
+  internshipTypes:["pflicht","freiwillig","studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Laufend Praktikumsausschreibungen in Braunschweig, zuletzt u. a. in IT-Outsourcing-Governance und Corporate Culture",
+  requirements:"Angebote richten sich an Studierende und Absolvent:innen",
+  website:"https://www.vwfs.de/", internshipUrl:"https://www.vwfs.com/en/career/students-and-graduates.html",
+  contact:"Bewerbung über das Karriereportal",
+  fit:["finance","mgmt","marketing","desk","bigco"],
+  suitabilityReason:"Wirtschaft, Finanzen und Konzernstrukturen an einem Ort – der beste Test in der Region, ob dich Börse, Zahlen und Management wirklich tragen.",
+  gap:"green", gapYearNote:"Sehr interessant für dein Gap Year, aber die Praktika sind auf Studierende ausgerichtet. Frag gezielt nach einem Orientierungs- oder Vorpraktikum.",
+  status:"unclear", lastVerified:VERIFIED
+},
+{
+  id:"db-vw", companyName:"Volkswagen AG", category:"bwl",
+  subcategory:["Management","Marketing","Produktmanagement","Automotive"],
+  city:"Wolfsburg", address:"Berliner Ring 2, 38440 Wolfsburg", distanceKm:25,
+  description:"Größter Arbeitgeber der Region und Stammsitz des Volkswagen Konzerns. Praktika gibt es quer durch Entwicklung, Produktion, Vertrieb, Strategie, Marketing und Personal.",
+  internshipFields:["Management","Marketing","Produktmanagement","Personal","Engineering","Kommunikation"],
+  internshipTypes:["pflicht","studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Dauerhaft viele Ausschreibungen im Konzern-Jobportal, u. a. Strategie, Produktstrategie, Recruiting, Redaktion & Kommunikation",
+  requirements:"Für das klassische Praktikum ist laut Karriereseite eine Immatrikulation erforderlich (Bachelor/Master oder Zwischenphase). Für die Zeit vor dem Studium gibt es separat ein Vor-/Grundpraktikum – Bedingungen dort direkt prüfen.",
+  website:"https://www.volkswagen-karriere.de/", internshipUrl:"https://jobs.volkswagen-group.com/",
+  contact:"Bewerbung über das Konzern-Jobportal",
+  fit:["mgmt","marketing","automotive","desk","bigco"],
+  suitabilityReason:"Riesige Bandbreite zwischen Wirtschaft und Technik – ideal, um beide Richtungen im selben Konzern zu vergleichen.",
+  gap:"yellow", gapYearNote:"Wichtig: Das klassische Praktikum setzt ein laufendes Studium voraus. Für dein Gap Year kommt eher das Vor-/Grundpraktikum in Frage – dort direkt anfragen.",
+  status:"unclear", lastVerified:VERIFIED
+},
+{
+  id:"db-vwimmo", companyName:"Volkswagen Immobilien GmbH", category:"bwl",
+  subcategory:["Immobilienwirtschaft","Projektmanagement","Controlling"],
+  city:"Wolfsburg", address:"Poststraße 28, 38440 Wolfsburg", distanceKm:25,
+  description:"Immobilienunternehmen des Volkswagen Konzerns mit rund 380 Mitarbeitenden: Vermietung, Bewirtschaftung und Projektentwicklung von Wohn- und Gewerbeimmobilien, seit über 70 Jahren am Standort.",
+  internshipFields:["Immobilienwirtschaft","Projektmanagement","Controlling","Marketing"],
+  internshipTypes:["freiwillig","studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Laut Karriereseite Praktika, Studierendenjobs und Abschlussarbeiten möglich; aktuelle Stellen im Jobportal",
+  requirements:"Angebote überwiegend für Studierende (Bachelor/Master)",
+  website:"https://www.vwimmobilien.de/", internshipUrl:"https://www.vwimmobilien.de/unternehmen/karriere/stellenangebote/",
+  contact:"Bewerbung über das Jobportal",
+  fit:["mgmt","finance","projekt","desk","bigco"],
+  suitabilityReason:"Kaufmännische Arbeit mit Projektbezug in überschaubarer Unternehmensgröße, aber mit Konzern-Rahmenbedingungen.",
+  gap:"blue", gapYearNote:"Gute Alternative zu den großen Konzernbereichen – kleiner, persönlicher, gleiche Tarifwelt.",
+  status:"unclear", lastVerified:VERIFIED
+},
+{
+  id:"db-vwgs", companyName:"Volkswagen Group Services GmbH", category:"bwl",
+  subcategory:["Business Services","Projektmanagement","Einkauf"],
+  city:"Wolfsburg", address:"Wolfsburg (Hauptsitz)", distanceKm:25,
+  description:"100-prozentige Tochter der Volkswagen AG und interner Dienstleister des Konzerns. Tätig in Forschung & Entwicklung, Engineering Services, Beschaffung, Qualitätssicherung, Fertigung & Logistik, Vertrieb sowie Event und Gastronomie; über 13.000 Mitarbeitende.",
+  internshipFields:["Projektmanagement","Einkauf","Qualität","Logistik","Personal"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY, availability:NA,
+  requirements:NA,
+  website:"https://www.volkswagen-groupservices.com/", internshipUrl:"https://www.volkswagen-groupservices.com/unternehmen/ueber-uns",
+  contact:"Kontakt über die Unternehmensseite",
+  fit:["mgmt","projekt","desk","bigco"],
+  suitabilityReason:"Breites Dienstleistungsspektrum im Konzern – gut, um Organisation und Projektarbeit kennenzulernen.",
+  gap:"blue", gapYearNote:"Gute Alternative, wenn es im Stammhaus nicht klappt. Kein konkretes Praktikumsangebot belegt.",
+  status:"unclear", lastVerified:VERIFIED
+},
+{
+  id:"db-wolfsburgag", companyName:"Wolfsburg AG", category:"bwl",
+  subcategory:["Wirtschaftsförderung","Projektmanagement","Marketing"],
+  city:"Wolfsburg", address:"Major-Hirst-Straße 11, 38442 Wolfsburg", distanceKm:25,
+  description:"Gemeinschaftsunternehmen der Volkswagen Group und der Stadt Wolfsburg. Arbeitet an Wirtschaftsförderung, Gründungs- und Innovationsprojekten sowie Freizeit- und Gesundheitsangeboten für die Region.",
+  internshipFields:["Projektmanagement","Marketing","Wirtschaftsförderung","Business Development"],
+  internshipTypes:["freiwillig","studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Laut Karriereseite Einstieg u. a. als Praktikant:in oder studentische Hilfskraft möglich",
+  requirements:NA,
+  website:"https://wolfsburg-ag.com/", internshipUrl:"https://wolfsburg-ag.com/ueber-wolfsburg-ag/karriere/",
+  contact:"Bewerbung über die Karriereseite",
+  fit:["mgmt","projekt","marketing","desk"],
+  suitabilityReason:"Projektarbeit zwischen Wirtschaft, Stadt und Start-ups – viel Organisation, wenig Routine.",
+  gap:"yellow", gapYearNote:"Interessant für einen Blick auf Wirtschaftsförderung und Projektmanagement statt Konzernabteilung.",
+  status:"unclear", lastVerified:VERIFIED
+},
+{
+  id:"db-autostadt", companyName:"Autostadt GmbH", category:"bwl",
+  subcategory:["Eventmanagement","Marketing","Projektmanagement"],
+  city:"Wolfsburg", address:"StadtBrücke, 38440 Wolfsburg", distanceKm:25,
+  description:"Auslieferungs- und Erlebniswelt des Volkswagen Konzerns mit Markenpavillons, Ausstellungen und Veranstaltungen. Arbeitgeber für Tourismus, Event, Gastronomie und kaufmännische Bereiche.",
+  internshipFields:["Eventmanagement","Marketing","Projektmanagement","Compliance"],
+  internshipTypes:["pflicht","freiwillig","studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Zuletzt Fachpraktikanten-Stellen ausgeschrieben, u. a. Entwicklung Markenpavillons, Regelungsmanagement/Compliance und digitales Gebäudemanagement",
+  requirements:"Bewerbung über das Kurzbewerbungsformular der jeweiligen Anzeige",
+  website:"https://www.autostadt.de/", internshipUrl:"https://www.autostadt.de/karriere/aktuelle-stellenangebote",
+  contact:"BewerberService: +49 5361 40-1625",
+  fit:["mgmt","marketing","projekt","desk","bigco"],
+  suitabilityReason:"Projekt- und Eventarbeit mit klarem Markenbezug – gute Mischung aus Organisation und Kreativität.",
+  gap:"yellow", gapYearNote:"Interessant: Praktikumsstellen werden regelmäßig ausgeschrieben und sind gut erreichbar.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-vfl", companyName:"VfL Wolfsburg-Fußball GmbH", category:"bwl",
+  subcategory:["Marketing","Sportmanagement","Digitales Marketing"],
+  city:"Wolfsburg", address:"In den Allerwiesen 1, 38446 Wolfsburg", distanceKm:25,
+  description:"Bundesliga-Klub mit eigener Fußball GmbH. Neben dem Sport arbeiten hier Marketing, Sponsoring, Digital, Event und die VfL-FußballWelt.",
+  internshipFields:["Marketing","Digitales Marketing","Grafikdesign","Eventmanagement"],
+  internshipTypes:["pflicht","freiwillig","studenten"],
+  duration:NA,
+  salary:"900 € brutto/Monat (Angabe in Praktikums-Ausschreibungen des Vereins)",
+  availability:"Regelmäßig Praktikumsausschreibungen in Marketing, Digitalem Marketing und VfL-FußballWelt",
+  requirements:"Laut Ausschreibungen Studierende der Medienkommunikation, des Medienmanagements oder Designs bzw. vergleichbarer Fächer",
+  website:"https://www.vfl-wolfsburg.de/", internshipUrl:"https://www.vfl-wolfsburg.de/der-vfl/jobs/praktikum",
+  contact:"Bewerbung über die Karriereseite",
+  fit:["marketing","creative","mgmt","desk","paid"],
+  suitabilityReason:"Marketing mit Gestaltungsanteil und öffentlich genannter Vergütung – Wirtschaft und Kreatives gleichzeitig.",
+  gap:"yellow", gapYearNote:"Interessant, aber die Ausschreibungen setzen ein Studium voraus. Für ein Gap Year vorher nachfragen.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-brawo", companyName:"Volksbank BRAWO eG", category:"bwl",
+  subcategory:["Bank","Finance","Vertrieb"],
+  city:"Braunschweig", address:"Braunschweig, Wolfsburg, Gifhorn und weitere Standorte", distanceKm:30,
+  description:"Regionale Genossenschaftsbank mit Geschäftsstellen in Braunschweig, Wolfsburg, Gifhorn und Umgebung. Jährlich über 20 Ausbildungsplätze für Bankkaufleute und rund fünf duale Studienplätze.",
+  internshipFields:["Bank","Finance","Vertrieb","Kommunikation"],
+  internshipTypes:["schueler","freiwillig","studenten"],
+  duration:NA,
+  salary:"Essensgeldzuschuss während des Schülerpraktikums (Angabe der Bank); Vergütung im Übrigen nicht öffentlich angegeben",
+  availability:"Schülerpraktika und studentische Praktika in verschiedenen Bereichen; im Schülerpraktikum je zwei Tage Einblick in zwei weitere Abteilungen",
+  requirements:"Bewerbung ausschließlich über das Bewerberportal (nicht per E-Mail oder Papier)",
+  website:"https://www.volksbank-brawo.de/", internshipUrl:"https://www.volksbank-brawo.de/karriere.html",
+  contact:"Assistenz Leitung Personal: 0531 7005-1051",
+  fit:["finance","sales","desk","mgmt"],
+  suitabilityReason:"Bankalltag mit Beratung und Zahlen – ein direkter Test für dein Interesse an Finanzen.",
+  gap:"green", gapYearNote:"Sehr interessant: Schülerpraktika sind ausdrücklich vorgesehen, die Wege in der Region sind kurz.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-oeffentliche", companyName:"Öffentliche Versicherung Braunschweig", category:"bwl",
+  subcategory:["Versicherung","Finance","IT"],
+  city:"Braunschweig", address:"Theodor-Heuss-Straße 10, 38122 Braunschweig", distanceKm:30,
+  description:"Regionaler Versicherer mit über 1.100 Mitarbeitenden, seit 1754 in der Region verankert. Berufsfelder in Versicherung, IT, Recht, Mathematik, Betriebswirtschaft und Facility Management.",
+  internshipFields:["Versicherung","Finance","IT","Personal"],
+  internshipTypes:["schueler","freiwillig","gapyear","studenten"],
+  duration:"Praktika dauern in der Regel drei bis sechs Monate (Angabe des Karriereportals)",
+  salary:NA_SALARY,
+  availability:"Schülerpraktikum, Jahrespraktikum und Hochschulpraktikum werden angeboten",
+  requirements:"Einsatz als vollwertiges Teammitglied mit eigenen Aufgaben; genaue Voraussetzungen je Ausschreibung",
+  website:"https://www.oeffentliche.de/", internshipUrl:"https://www.oeffentliche.de/karriereportal/karrierelevel/praktikum.html",
+  contact:"praktikum@oeffentliche.de · 0531 202-1586",
+  fit:["finance","mgmt","desk","bigco"],
+  suitabilityReason:"Zahlen, Mathematik und Wirtschaft in einem Bürojob – dazu ein Jahrespraktikum, das genau in ein Gap Year passt.",
+  gap:"green", gapYearNote:"Sehr interessant für dein Gap Year: Das Jahrespraktikum ist ausdrücklich für längere Orientierungsphasen gedacht.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-newyorker", companyName:"NEW YORKER Group-Services International", category:"bwl",
+  subcategory:["Marketing","Einkauf","Finance","Logistik"],
+  city:"Braunschweig", address:"Hansestraße 48, 38112 Braunschweig", distanceKm:30,
+  description:"Zentrale des Modeunternehmens NEW YORKER mit mehr als 1.200 Filialen in 47 Ländern und über 23.000 Mitarbeitenden. In Braunschweig sitzen Marketing, Einkauf, Finance, IT, Logistik und Personal.",
+  internshipFields:["Marketing","Einkauf","Finance","IT","Logistik","Personal"],
+  internshipTypes:["schueler","freiwillig","gapyear","studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Freiwillige Praktika, Schülerpraktika und Jahrespraktika in verschiedenen Abteilungen; Betreuung durch das Ausbildungsteam und eine feste Ansprechperson",
+  requirements:NA,
+  website:"https://www.newyorker.de/", internshipUrl:"https://jobs.newyorker.de/einstieg/praktikum",
+  contact:"ausbildung@newyorker.de · +49 531 2135-9989",
+  fit:["marketing","mgmt","sales","desk","bigco"],
+  suitabilityReason:"Marken- und Markenkommunikation in einem internationalen Unternehmen – Marketing mit sichtbaren Ergebnissen.",
+  gap:"green", gapYearNote:"Sehr interessant: Schüler- und Jahrespraktika sind ausdrücklich vorgesehen und die Zentrale ist gut erreichbar.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-nordzucker", companyName:"Nordzucker AG", category:"bwl",
+  subcategory:["Supply Chain","Controlling","Personal"],
+  city:"Braunschweig", address:"Küchenstraße 9, 38100 Braunschweig", distanceKm:30,
+  description:"Einer der führenden Zuckerhersteller weltweit mit Konzernsitz in Braunschweig und über 4.000 Mitarbeitenden an 18 Produktionsstandorten in Europa und Australien.",
+  internshipFields:["Supply Chain","Controlling","Personal","Marketing"],
+  internshipTypes:["schueler","freiwillig","studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Initiativpraktikum in Braunschweig ausgeschrieben; Schülerpraktika vor allem an den Werksstandorten (z. B. Schladen, Uelzen, Clauen)",
+  requirements:NA,
+  website:"https://www.nordzucker.com/", internshipUrl:"https://jobs.nordzucker.com/",
+  contact:"Bewerbung über das Karriereportal",
+  fit:["mgmt","finance","desk","bigco"],
+  suitabilityReason:"Kaufmännische Konzernarbeit mit internationalem Bezug – solide, wenn dich Organisation und Zahlen interessieren.",
+  gap:"yellow", gapYearNote:"Interessant, weil ein Initiativpraktikum am Standort Braunschweig ausdrücklich vorgesehen ist.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-sparkasse", companyName:"Sparkasse Celle-Gifhorn-Wolfsburg", category:"bwl",
+  subcategory:["Bank","Finance","Beratung"],
+  city:"Gifhorn", address:"Geschäftsstellen in Gifhorn, Wolfsburg und Celle", distanceKm:0,
+  description:"Regionale Sparkasse mit Geschäftsstellen in Gifhorn, Wolfsburg und Celle. Bietet Ausbildung, duales Studium und Praktika im Filial- und Beratungsgeschäft.",
+  internshipFields:["Bank","Finance","Beratung"],
+  internshipTypes:["schueler"],
+  duration:"Schülerpraktikum: 2 bis 3 Wochen (Angabe der Sparkasse)",
+  salary:NA_SALARY,
+  availability:"Schülerpraktikum im Rahmen einer Schulveranstaltung; Bewerbung über das Onlineportal",
+  requirements:"Begleitung durch Mitarbeitende in der Geschäftsstelle, Einblick in ein Kompetenzzentrum",
+  website:"https://www.sparkasse-cgw.de/", internshipUrl:"https://www.sparkasse-cgw.de/de/home/ihre-sparkasse/karriere/praktikum.html",
+  contact:"Onlinebewerbung über das Karriereportal",
+  fit:["finance","sales","desk"],
+  suitabilityReason:"Direkt in Gifhorn, mit Einblick in Beratung und Finanzthemen – kurzer, unkomplizierter Test.",
+  gap:"yellow", gapYearNote:"Interessant als kurzer Einstieg (2–3 Wochen), aber zu kurz für eine ganze Gap-Year-Phase.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-nordlb", companyName:"NORD/LB / Braunschweigische Landessparkasse", category:"bwl",
+  subcategory:["Bank","Finance"],
+  city:"Braunschweig", address:"Dankwardstraße 1, 38100 Braunschweig (Hauptsitz der NORD/LB: Hannover)", distanceKm:30,
+  description:"Die NORD/LB ist eine der größten Geschäftsbanken Deutschlands, getragen von den Ländern Niedersachsen und Sachsen-Anhalt. In Braunschweig ist sie mit der Braunschweigischen Landessparkasse präsent.",
+  internshipFields:["Bank","Finance","Beratung"],
+  internshipTypes:["schueler"],
+  duration:"Praktika dauern laut Bank zwei bis drei Wochen, in der Regel in einer Filiale in Wohnortnähe",
+  salary:NA_SALARY,
+  availability:"Praktika, Ausbildung und duales Studium; aktuelle Angebote im Karriereportal",
+  requirements:NA,
+  website:"https://www.nordlb.de/", internshipUrl:"https://www.nordlb.de/die-nordlb/karriere",
+  contact:"Ausbildung Braunschweig: 0531 487-3920",
+  fit:["finance","desk","bigco"],
+  suitabilityReason:"Bankgeschäft im größeren Maßstab – interessant, wenn dich Finanzmärkte und nicht nur Filialberatung reizen.",
+  gap:"blue", gapYearNote:"Gute Alternative für einen kurzen Einblick; für eine mehrmonatige Phase eher nicht geeignet.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-vwn", companyName:"Volkswagen Nutzfahrzeuge (Standort Hannover)", category:"bwl",
+  subcategory:["Marketing","Vertrieb","Logistik","Automotive"],
+  city:"Hannover", address:"Mecklenheidestraße 74, 30419 Hannover-Stöcken", distanceKm:75,
+  description:"Stammsitz der Marke Volkswagen Nutzfahrzeuge mit rund 14.200 Beschäftigten. Neben der Produktion sitzen hier Marketing, Vertrieb, Kommunikation und Logistik der Marke.",
+  internshipFields:["Marketing","Vertrieb","Kommunikation","Logistik","Produktmanagement"],
+  internshipTypes:["pflicht","studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Laufend Praktika ausgeschrieben, u. a. Kommunikation, Vertrieb Europa, Handelsmarketing, Content & Channels, Vorserienlogistik; Praktika in Vollzeit mit bis zu 40 % mobilem Arbeiten",
+  requirements:"Wie im Konzern üblich für Studierende ausgeschrieben",
+  website:"https://www.volkswagen-karriere.de/de/volkswagen-als-arbeitgeber/Standorte/standort-hannover.html",
+  internshipUrl:"https://jobs.volkswagen-group.com/",
+  contact:"Bewerbung über das Konzern-Jobportal",
+  fit:["marketing","sales","mgmt","automotive","desk","bigco"],
+  suitabilityReason:"Marketing und Vertrieb einer eigenständigen Marke – wirtschaftliche Arbeit mit klarem Produktbezug.",
+  gap:"yellow", gapYearNote:"Interessant, aber 75 km entfernt und auf Studierende ausgerichtet.",
+  status:"unclear", lastVerified:VERIFIED
+},
+{
+  id:"db-tui", companyName:"TUI Group", category:"bwl",
+  subcategory:["Tourismus","Marketing","Personal","Kommunikation"],
+  city:"Hannover", address:"Karl-Wiechert-Allee 4, 30625 Hannover", distanceKm:75,
+  description:"Konzernzentrale des größten Touristikkonzerns Europas. In Hannover sitzen unter anderem Marketing, Kommunikation, Personal und zentrale Konzernfunktionen.",
+  internshipFields:["Marketing","Kommunikation","Personal","Business Development"],
+  internshipTypes:["schueler","pflicht","studenten"],
+  duration:"Pflichtpraktika u. a. mit 5–6 Monaten ausgeschrieben",
+  salary:NA_SALARY,
+  availability:"Schülerpraktikum in Hannover ausgeschrieben; Bewerbung möglichst sechs Monate vor gewünschtem Beginn",
+  requirements:"Bewerbung ausschließlich online",
+  website:"https://www.tuigroup.com/", internshipUrl:"https://careers.tuigroup.com/",
+  contact:"ausbildung@tui.de",
+  fit:["marketing","mgmt","desk","bigco"],
+  suitabilityReason:"Konzernmarketing und Kommunikation in einem internationalen Umfeld – gutes Gegenstück zur Automobilwelt vor der Haustür.",
+  gap:"yellow", gapYearNote:"Interessant, weil ein Schülerpraktikum ausgeschrieben ist – aber 75 km entfernt, also eher mit Pendeln oder Unterkunft.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-rossmann", companyName:"Dirk Rossmann GmbH", category:"bwl",
+  subcategory:["Handel","Marketing","IT","Vertrieb"],
+  city:"Burgwedel", address:"Isernhägener Straße 16, 30938 Burgwedel (bei Hannover)", distanceKm:60,
+  description:"Zentrale der Drogeriekette ROSSMANN mit rund 3.000 Mitarbeitenden. Hier laufen Einkauf, Marketing, Vertriebssteuerung, IT und Logistik des Unternehmens zusammen.",
+  internshipFields:["Handel","Marketing","IT","Vertrieb","Einkauf"],
+  internshipTypes:["schueler","freiwillig","studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Schülerpraktikum IT für 2027 in der Zentrale Burgwedel ausgeschrieben; außerdem Praktika für BWL-Studierende, z. B. im Bereich Verkaufsaktionen",
+  requirements:NA,
+  website:"https://www.rossmann.de/", internshipUrl:"https://jobs.rossmann.de/arbeitsbereiche/zentrale.html",
+  contact:"Bewerbung über das Karriereportal",
+  fit:["mgmt","marketing","sales","desk","bigco"],
+  suitabilityReason:"Handel und Zentralfunktionen eines großen Unternehmens – viel Organisation, klare Strukturen.",
+  gap:"yellow", gapYearNote:"Interessant, weil ein Schülerpraktikum für 2027 konkret ausgeschrieben ist. Entfernung ca. 60 km.",
+  status:"offer", lastVerified:VERIFIED
+},
+/* ------------------------- ⚙️ Technik / Engineering ------------------------- */
+{
+  id:"db-iav", companyName:"IAV GmbH", category:"tech",
+  subcategory:["Automotive","Engineering","Projektmanagement"],
+  city:"Gifhorn", address:"Nordhoffstraße 5, 38518 Gifhorn", distanceKm:0,
+  description:"Einer der großen Entwicklungsdienstleister der Automobilindustrie. In Gifhorn wird an Antrieben, Elektronik, Fahrzeugsoftware und neuen Mobilitätslösungen gearbeitet – von der Konzeptidee bis zur Erprobung.",
+  internshipFields:["Engineering","Automotive","Elektronik","Projektmanagement","Digital Media/Grafikdesign"],
+  internshipTypes:["pflicht","freiwillig","studenten"],
+  duration:"Praktikum mit 38 Wochenstunden; Werkstudium flexibel mit 10–20 Stunden pro Woche (Angabe IAV)",
+  salary:"Vergütung nach IAV-Haustarifvertrag (Höhe nicht öffentlich beziffert)",
+  availability:"Laufend Ausschreibungen am Standort Gifhorn, u. a. Elektrische Antriebstechnik und Leistungselektronik, Ladedruckregelung, Testautomatisierung sowie Digital Media und Grafikdesign",
+  requirements:"Angebote richten sich an Studierende; für die Zeit vor dem Studium direkt nachfragen",
+  website:"https://www.iav.com/", internshipUrl:"https://apply.iav.com/",
+  contact:"Bewerbung über das IAV-Karriereportal",
+  fit:["tech","automotive","projekt","desk","bigco","paid"],
+  suitabilityReason:"Technische Projektarbeit am Rechner, Programmieren ist nur einer von vielen Wegen – dazu tarifliche Vergütung. Sehr nah an deinem Profil.",
+  gap:"green", gapYearNote:"Sehr interessant für dein Gap Year: Standort direkt in Gifhorn, breite Themenpalette und sogar Ausschreibungen im Bereich Digital Media.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-edag", companyName:"EDAG Engineering GmbH", category:"tech",
+  subcategory:["Automotive","Konstruktion","Berechnung/CAE"],
+  city:"Wolfsburg", address:"Standort Wolfsburg (Konzernsitz: Wiesbaden)", distanceKm:25,
+  description:"Unabhängiger Entwicklungsdienstleister mit über 50 Jahren Erfahrung in der Fahrzeugentwicklung. Am Standort Wolfsburg geht es um Vehicle Engineering: Konstruktion, Berechnung und Absicherung von Fahrzeugkomponenten.",
+  internshipFields:["Konstruktion","Berechnung/CAE","Automotive","Engineering"],
+  internshipTypes:["pflicht","freiwillig","studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Praktika in Wolfsburg ausgeschrieben, u. a. Konstruktion passive Fahrzeugsicherheit, technische Berechnung (CAE) und Antriebsabsicherung",
+  requirements:"Ausschreibungen richten sich an Studierende",
+  website:"https://www.edag.com/", internshipUrl:"https://www.edag.com/de/karriere/jobs-bewerbung/stellenanzeigen",
+  contact:"Bewerbung über die Karriereseite",
+  fit:["tech","automotive","projekt","desk","bigco"],
+  suitabilityReason:"Konstruktion und Berechnung sind klassische Ingenieursarbeit am Bildschirm – Technik ohne Programmierschwerpunkt.",
+  gap:"green", gapYearNote:"Sehr interessant fachlich; Praktika sind aber auf Studierende zugeschnitten – vorher nach einem Orientierungspraktikum fragen.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-expleo", companyName:"Expleo Germany", category:"tech",
+  subcategory:["Engineering","Qualität/Test","Consulting"],
+  city:"Wolfsburg", address:"Standort Wolfsburg", distanceKm:25,
+  description:"Globaler Engineering-, Technologie- und Beratungspartner mit rund 15.000 Mitarbeitenden in über 30 Ländern. Arbeitet für Automotive, Luftfahrt, Industrie, Transport sowie Banken und Versicherungen.",
+  internshipFields:["Engineering","Qualität/Test","Projektmanagement","Consulting"],
+  internshipTypes:["pflicht","freiwillig","studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Expleo beschäftigt nach eigenen Angaben zahlreiche Praktikant:innen und Werkstudierende und betreut Abschlussarbeiten",
+  requirements:NA,
+  website:"https://www.expleo.com/", internshipUrl:"https://careers.expleo.com/",
+  contact:"Bewerbung über das Karriereportal",
+  fit:["tech","automotive","projekt","mgmt","desk","bigco"],
+  suitabilityReason:"Technik plus Beratung: viel Projektarbeit, Abstimmung und Analyse – gute Vorschau auf technisches Management.",
+  gap:"yellow", gapYearNote:"Interessant als Alternative zu IAV und EDAG. Kein konkretes Gap-Year-Angebot belegt.",
+  status:"unclear", lastVerified:VERIFIED
+},
+{
+  id:"db-segula", companyName:"SEGULA Technologies", category:"tech",
+  subcategory:["Engineering","Automotive","Projektmanagement"],
+  city:"Wolfsburg", address:"Standort Wolfsburg", distanceKm:25,
+  description:"Weltweit tätiger Engineering-Konzern mit über 15.000 Mitarbeitenden in 32 Ländern. Neben der Automobilindustrie in den Bereichen Energie, Schiene, Schifffahrt, Luftfahrt, Pharma sowie Öl & Gas aktiv.",
+  internshipFields:["Engineering","Automotive","Projektmanagement"],
+  internshipTypes:[], duration:NA, salary:NA_SALARY,
+  availability:"Offene Positionen am Standort Wolfsburg vor allem für Projektleitung, Ingenieurinnen und Ingenieure sowie Technikerinnen und Techniker",
+  requirements:NA,
+  website:"https://www.segulatechnologies.com/", internshipUrl:"https://careers.segulatechnologies.com/de/stellenausschreibungen/",
+  contact:"Bewerbung über das Karriereportal",
+  fit:["tech","automotive","projekt","desk","bigco"],
+  suitabilityReason:"Projektgetriebene Ingenieursarbeit in vielen Branchen – interessant, wenn du Technik breit kennenlernen willst.",
+  gap:"blue", gapYearNote:"Gute Alternative. Für ein Praktikum vor dem Studium ist eine Initiativanfrage nötig.",
+  status:"unclear", lastVerified:VERIFIED
+},
+{
+  id:"db-bertrandt", companyName:"Bertrandt Ingenieurbüro GmbH", category:"tech",
+  subcategory:["Automotive","Konstruktion","Elektronik"],
+  city:"Tappenbeck", address:"Tappenbeck bei Wolfsburg", distanceKm:20,
+  description:"Unabhängiger Entwicklungsdienstleister mit langjähriger Automotive-Erfahrung. Der Standort besteht seit 1995 und arbeitet an Karosserie, Interieur, Elektronik, Motor- und Fahrwerksentwicklung sowie an Projekt- und Qualitätsmanagement.",
+  internshipFields:["Konstruktion","Elektronik","Projektmanagement","Qualität/Test"],
+  internshipTypes:["schueler","pflicht","studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Schülerpraktika sind laut Karriereseite am Standort Tappenbeck möglich; dazu Angebote für Studierende",
+  requirements:NA,
+  website:"https://www.bertrandt.com/", internshipUrl:"https://www.bertrandt.com/en/career/career-opportunities/school-pupils/school-internship",
+  contact:"Bewerbung über die Karriereseite",
+  fit:["tech","automotive","projekt","desk","bigco"],
+  suitabilityReason:"Entwicklungsarbeit mit Projekt- und Qualitätsmanagement – Technik am Rechner, dazu Organisationsanteile.",
+  gap:"green", gapYearNote:"Sehr interessant: Schülerpraktika sind ausdrücklich vorgesehen und der Standort liegt nur ca. 20 km entfernt.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-akkodis", companyName:"Akkodis", category:"tech",
+  subcategory:["Engineering","IT","Automotive"],
+  city:"Wolfsburg", address:"Dieselstraße 40 u. a., Wolfsburg", distanceKm:25,
+  description:"Weltweit tätiges Unternehmen für Engineering und IT mit über 80 Standorten in Deutschland und Österreich. In Wolfsburg vor allem mit Automotive- und IT-Projekten vertreten.",
+  internshipFields:["Engineering","IT","Projektmanagement","Automotive"],
+  internshipTypes:["studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Werkstudierendenstellen an verschiedenen Standorten; konkrete Praktikumsangebote für Wolfsburg nicht belegt",
+  requirements:NA,
+  website:"https://www.akkodis.com/de/deutschland", internshipUrl:"https://karriere.akkodis.com/",
+  contact:"Bewerbung über das Karriereportal",
+  fit:["tech","code","projekt","desk","bigco"],
+  suitabilityReason:"Stark IT-lastig – interessant, aber Programmierung nimmt hier mehr Raum ein, als dir lieb wäre.",
+  gap:"blue", gapYearNote:"Gute Alternative, falls dich die IT-Seite der Technik doch reizt.",
+  status:"unclear", lastVerified:VERIFIED
+},
+{
+  id:"db-siemens", companyName:"Siemens Mobility", category:"tech",
+  subcategory:["Bahnautomatisierung","Elektronik","Engineering"],
+  city:"Braunschweig", address:"Ackerstraße 22, 38126 Braunschweig", distanceKm:30,
+  description:"Braunschweig ist der weltweit größte Standort für Bahnautomatisierung. Entwickelt und produziert werden Leit- und Sicherungstechnik für den Schienenverkehr; das Ausbildungszentrum liegt fußläufig zum Hauptbahnhof.",
+  internshipFields:["Elektronik","Engineering","Kaufmännische Bereiche","IT"],
+  internshipTypes:["schueler"],
+  duration:"Schülerpraktika mit festen Zeiträumen von jeweils rund drei Wochen",
+  salary:NA_SALARY,
+  availability:"Schülerpraktikum technisch/kaufmännisch in Braunschweig mit konkreten Terminen, u. a. 11.01.–29.01.2027 und 14.06.–02.07.2027",
+  requirements:"Laut Ausschreibung Interesse an einem Ausbildungsberuf oder dualen Studium, Freude an der Arbeit mit Menschen",
+  website:"https://www.mobility.siemens.com/", internshipUrl:"https://www.ausbildung.siemens.com/",
+  contact:"Bewerbung über das Siemens-Ausbildungsportal",
+  fit:["tech","projekt","desk","bigco"],
+  suitabilityReason:"Technik und kaufmännische Einblicke im selben Praktikum – gut, um beide Richtungen direkt zu vergleichen.",
+  gap:"green", gapYearNote:"Sehr interessant für dein Gap Year: konkrete Termine für 2027 sind bereits veröffentlicht, du kannst früh planen.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-continental", companyName:"Continental", category:"tech",
+  subcategory:["Automotive","Elektronik","Engineering"],
+  city:"Braunschweig", address:"Standort Braunschweig (Konzernsitz: Hannover)", distanceKm:30,
+  description:"Technologieunternehmen und Automobilzulieferer mit Standorten in Braunschweig und Hannover. Arbeitsfelder reichen von Fahrzeugelektronik und Sicherheitstechnik bis zu Materialien und Reifentechnologie.",
+  internshipFields:["Engineering","Elektronik","Automotive","Controlling","IT"],
+  internshipTypes:["pflicht","freiwillig","studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Praktika, Ferienjobs und Grundpraktika werden über die jeweiligen Standort-Personalabteilungen vergeben; zusätzlich gibt es ein Jahrespraktikum-Programm",
+  requirements:NA,
+  website:"https://www.continental.com/de/", internshipUrl:"https://www.continental.com/de/karriere-kontakt/praktikum-ferienjobs-grundpraktikum/",
+  contact:"Anfragen laut Unternehmen direkt an die Personalabteilung des Standorts",
+  fit:["tech","automotive","desk","bigco"],
+  suitabilityReason:"Großer Technikkonzern mit vielen Feldern – gute Chance, Entwicklung und kaufmännische Bereiche zu vergleichen.",
+  gap:"yellow", gapYearNote:"Interessant, weil es ein eigenes Jahrespraktikum-Programm gibt. Für den Standort Braunschweig direkt anfragen.",
+  status:"unclear", lastVerified:VERIFIED
+},
+{
+  id:"db-dlr", companyName:"DLR – Deutsches Zentrum für Luft- und Raumfahrt", category:"tech",
+  subcategory:["Forschung","Luftfahrt","Engineering"],
+  city:"Braunschweig", address:"Lilienthalplatz 7, 38108 Braunschweig (Forschungsflughafen)", distanceKm:30,
+  description:"Forschungszentrum mit mehreren Instituten am Braunschweiger Forschungsflughafen. Themen sind unter anderem Flugführung, Flugsystemtechnik, Verkehrssystemtechnik und Fahrzeugkonzepte.",
+  internshipFields:["Forschung","Luftfahrt","Engineering","Elektronik"],
+  internshipTypes:["schueler","freiwillig","studenten"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Praktika zur Berufsorientierung möglich; zusätzlich das DLR_School_Lab Braunschweig. Bewerbung sechs bis neun Monate vor dem gewünschten Zeitraum",
+  requirements:"Bewerbung per E-Mail mit Lebenslauf und Angabe von Wunschzeitraum sowie Wunschinstitut",
+  website:"https://www.dlr.de/", internshipUrl:"https://www.dlr.de/de/karriere/dein-einstieg/deine-karrierestufe/schuelerinnen-schueler",
+  contact:"DLR_School_Lab Braunschweig: schoollab-bs@dlr.de",
+  fit:["tech","projekt","desk","bigco"],
+  suitabilityReason:"Forschung an anspruchsvoller Technik, viel Mathematik und Analyse – Programmieren kann, muss aber nicht im Vordergrund stehen.",
+  gap:"green", gapYearNote:"Sehr interessant für dein Gap Year – aber lange Vorlaufzeit: sechs bis neun Monate vorher bewerben.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-aerodata", companyName:"Aerodata AG", category:"tech",
+  subcategory:["Luftfahrt","Elektronik","Systemtechnik"],
+  city:"Braunschweig", address:"Hermann-Blenk-Straße 34–36, 38108 Braunschweig", distanceKm:30,
+  description:"Weltmarktführer für Flugvermessungssysteme und führender Anbieter von Systemlösungen für flugzeuggestützte Spezialmissionen – etwa Seenotrettung, maritime Umweltüberwachung und Grenzüberwachung. Sitz am Forschungsflughafen Braunschweig.",
+  internshipFields:["Systemtechnik","Elektronik","Luftfahrt","Engineering"],
+  internshipTypes:["freiwillig","gapyear","studenten"],
+  duration:"Mindestdauer eines Praktikums: 3 Monate (Angabe des Unternehmens)",
+  salary:NA_SALARY,
+  availability:"Nach eigenen Angaben vielfältige Praktikumsaufgaben am Standort Braunschweig; außerdem Werkstudium und Abschlussarbeiten",
+  requirements:NA,
+  website:"https://www.aerodata.de/", internshipUrl:"https://www.aerodata.de/de/unternehmen/karriere-jobs.html",
+  contact:"Bewerbung über die Karriereseite",
+  fit:["tech","projekt","desk"],
+  suitabilityReason:"Spezialisierte Technik in überschaubarer Unternehmensgröße – Mindestdauer von drei Monaten passt exakt zu einer Gap-Year-Phase.",
+  gap:"green", gapYearNote:"Sehr interessant: Drei Monate Mindestdauer sind ideal für eine deiner Phasen.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-ptb", companyName:"Physikalisch-Technische Bundesanstalt (PTB)", category:"tech",
+  subcategory:["Metrologie","Forschung","Messtechnik"],
+  city:"Braunschweig", address:"Bundesallee 100, 38116 Braunschweig", distanceKm:30,
+  description:"Nationales Metrologieinstitut Deutschlands: zuständig für Maßeinheiten, Messtechnik und Normale, von der Atomuhr bis zur medizinischen Messtechnik.",
+  internshipFields:["Messtechnik","Forschung","Elektronik"],
+  internshipTypes:["schueler"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Wichtig: Die PTB gibt an, wegen der großen Zahl an Bewerbungen in der Regel keine Praktika anzubieten. Einzelne Plätze werden nach Interessengebiet und Betreuungsmöglichkeit vergeben; daneben gibt es Experimentierklassen.",
+  requirements:"Bewerbung per E-Mail an die Praktikumsstelle",
+  website:"https://www.ptb.de/", internshipUrl:"https://ptb.de/cms/de/ueber-uns-karriere/karriere/angebote-fuer-schueler.html",
+  contact:"praktikum@ptb.de · 0531 592-9128",
+  fit:["tech","desk"],
+  suitabilityReason:"Messtechnik und Mathematik pur – fachlich reizvoll, aber weit weg von Wirtschaft und Gestaltung.",
+  gap:"white", gapYearNote:"Weniger relevant für ein Gap-Year-Praktikum: Die PTB vergibt nach eigener Aussage in der Regel keine Praktikumsplätze.",
+  status:"none", lastVerified:VERIFIED
+},
+{
+  id:"db-sennheiser", companyName:"Sennheiser electronic SE & Co. KG", category:"tech",
+  subcategory:["Audiotechnik","Elektronik","Forschung & Entwicklung"],
+  city:"Wedemark", address:"Am Labor 1, 30900 Wedemark-Wennebostel (bei Hannover)", distanceKm:75,
+  description:"Hersteller von Mikrofonen, Kopfhörern und Drahtlossystemen. In der Wedemark arbeiten über 1.000 Beschäftigte in Forschung und Entwicklung, IT, Marketing, Produktion, Logistik und Einkauf; in Wennebostel entstehen Headsets sowie Mikrofon- und Lautsprecherkapseln.",
+  internshipFields:["Audiotechnik","Elektronik","Forschung & Entwicklung","Marketing"],
+  internshipTypes:["schueler","pflicht","freiwillig","studenten"],
+  duration:"Praktika in der Akustik mit 3 bis 6 Monaten ausgeschrieben; technisches Schülerpraktikum am Ausbildungszentrum",
+  salary:NA_SALARY,
+  availability:"Technisches Schülerpraktikum am Standort bei Hannover sowie längere Fachpraktika, z. B. im Bereich Akustik mit Arbeit in reflexionsarmen Räumen",
+  requirements:NA,
+  website:"https://www.sennheiser.com/", internshipUrl:"https://www.sennheiser.com/de-de/jobs-und-karriere",
+  contact:"Bewerbung über das Karriereportal",
+  fit:["tech","creative","desk","bigco"],
+  suitabilityReason:"Technik mit direktem Medienbezug: Audio ist die Brücke zwischen deinem Interesse an Technik und an Film-/Postproduktion.",
+  gap:"green", gapYearNote:"Sehr interessant, weil sowohl Schülerpraktika als auch 3–6-monatige Fachpraktika existieren. Entfernung ca. 75 km.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-man", companyName:"MAN Truck & Bus SE (Werk Salzgitter)", category:"tech",
+  subcategory:["Automotive","Maschinenbau","Produktion"],
+  city:"Salzgitter", address:"Heinrich-Büssing-Straße 1, 38239 Salzgitter", distanceKm:55,
+  description:"Produktionsstandort des Nutzfahrzeugherstellers MAN. Am Standort werden rund 140 junge Menschen ausgebildet; zusätzlich gibt es ein duales Bachelorstudium Maschinenbau im Praxisverbund mit der Ostfalia Hochschule.",
+  internshipFields:["Maschinenbau","Produktion","Logistik","Automotive"],
+  internshipTypes:["schueler"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Schülerpraktikum am Standort Salzgitter mit Begleitung durch Auszubildende und Ausbilder",
+  requirements:NA,
+  website:"https://www.man.eu/", internshipUrl:"https://www.man.eu/corporate/de/karriere/deine-karriere-bei-man/schueler/angebote/schueler.html",
+  contact:"Bewerbung über das Karriereportal",
+  fit:["tech","automotive","physical"],
+  suitabilityReason:"Sehr produktionsnah – interessant für Technikverständnis, aber mit körperlichem Anteil in der Werkstatt.",
+  gap:"blue", gapYearNote:"Gute Alternative, wenn du Produktion einmal von innen sehen willst; für überwiegende Bildschirmarbeit eher nicht.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-alstom", companyName:"Alstom (Werk Salzgitter)", category:"tech",
+  subcategory:["Schienenfahrzeuge","Produktion","Engineering"],
+  city:"Salzgitter", address:"Linke-Hofmann-Busch-Straße 1, 38239 Salzgitter", distanceKm:55,
+  description:"Traditionsstandort für den Bau von Schienenfahrzeugen. Hier entstehen Regional- und Fernverkehrszüge; das Werk gehört zum weltweit tätigen Bahntechnikkonzern Alstom.",
+  internshipFields:["Engineering","Produktion","Schienenfahrzeuge"],
+  internshipTypes:["schueler"],
+  duration:"Schülerpraktikum: 2 bis 3 Wochen",
+  salary:NA_SALARY,
+  availability:"Schülerpraktikum am Standort Salzgitter, laut Ausschreibung im Berufsbild Triebfahrzeugführer",
+  requirements:"Kurzes Anschreiben mit Wunschzeitraum und Lebenslauf über das Onlineportal",
+  website:"https://www.alstom.com/de", internshipUrl:"https://www.alstom.com/careers",
+  contact:"Bewerbung über das Onlineportal",
+  fit:["tech","physical"],
+  suitabilityReason:"Spannende Technik, aber das belegte Angebot ist sehr produktionsnah und kurz.",
+  gap:"white", gapYearNote:"Weniger relevant für eine mehrmonatige Gap-Year-Phase; eher ein kurzer Einblick.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-salzgitter", companyName:"Salzgitter AG", category:"tech",
+  subcategory:["Stahl","Produktion","Technik"],
+  city:"Salzgitter", address:"Eisenhüttenstraße 99, 38239 Salzgitter", distanceKm:55,
+  description:"Einer der größten Stahlkonzerne Europas mit Sitz in Salzgitter. Neben der Stahlerzeugung gehören Technologie- und Handelsgesellschaften zur Gruppe.",
+  internshipFields:["Produktion","Technik","Controlling"],
+  internshipTypes:["schueler","pflicht","studenten"],
+  duration:"Schülerpraktikum: 2 bis 3 Wochen in der Ausbildungswerkstatt; Fachpraktika je nach Bereich mehrere Wochen bis Monate",
+  salary:NA_SALARY,
+  availability:"Schülerpraktikum im Metall- oder Elektrobereich; für Studierende zusätzlich das Programm „PrakTisch“ mit Netzwerktreffen",
+  requirements:"Laut Ausschreibung Interesse an einem technischen oder kaufmännischen Beruf",
+  website:"https://www.salzgitter-ag.com/", internshipUrl:"https://www.salzgitter-ag.com/de/jobs-karriere/schueler/schuelerpraktikum.html",
+  contact:"Bewerbung über das Karriereportal",
+  fit:["tech","physical","bigco"],
+  suitabilityReason:"Das belegte Schülerpraktikum findet in der Ausbildungswerkstatt statt – handwerklich statt am Rechner.",
+  gap:"white", gapYearNote:"Weniger relevant für dein Profil; die kaufmännischen Bereiche wären interessanter als das Werkstatt-Praktikum.",
+  status:"offer", lastVerified:VERIFIED
+},
+{
+  id:"db-butting", companyName:"BUTTING Gruppe", category:"tech",
+  subcategory:["Rohrleitungsbau","Produktion","Werkstofftechnik"],
+  city:"Knesebeck", address:"Gifhorner Straße 59, 29379 Knesebeck (Landkreis Gifhorn)", distanceKm:30,
+  description:"Familienunternehmen und einer der größten Arbeitgeber im Landkreis Gifhorn mit über 1.700 Mitarbeitenden. Fertigt längsnahtgeschweißte Rohre aus Edelstahl und plattierten Stählen und verarbeitet sie zu einbaufertigen Komponenten.",
+  internshipFields:["Produktion","Werkstofftechnik","Technik"],
+  internshipTypes:["schueler"],
+  duration:NA, salary:NA_SALARY,
+  availability:"Nach eigenen Angaben Möglichkeiten zur Berufsorientierung für Schülerinnen und Schüler, darunter Praktika",
+  requirements:NA,
+  website:"https://www.butting.com/", internshipUrl:"https://www.butting.com/karriere/",
+  contact:"Bewerbung über die Karriereseite",
+  fit:["tech","physical"],
+  suitabilityReason:"Produktion und Werkstoffe stehen im Mittelpunkt – überwiegend körperliche und werkstattnahe Arbeit.",
+  gap:"white", gapYearNote:"Weniger relevant für dich, aber der größte Technik-Arbeitgeber direkt im Landkreis – gut zu wissen.",
+  status:"unclear", lastVerified:VERIFIED
+}
+];
+
+/* ---- Passung: transparente Berechnung aus dem Interessenprofil ---- */
+const FIT_W = {
+  vfxwork:1.6, motion:1.1, film:1.0, creative:0.5,   // VFX, Compositing, Film
+  mgmt:1.2, finance:1.0, marketing:0.8, sales:0.6,   // Wirtschaft, Management
+  tech:1.2, projekt:1.0, automotive:0.7,             // Technik ohne Programmierschwerpunkt
+  code:-2.0,                                         // Programmieren ist nicht dein Hauptinteresse
+  physical:-1.8,                                     // körperliche Arbeit vermeiden
+  desk:0.6, bigco:0.4, paid:0.3, smallteam:0.1
+};
+const FIT_LABEL = {
+  vfxwork:"VFX / Compositing", motion:"Motion Design", film:"Film & Postproduktion",
+  creative:"kreatives Arbeiten", mgmt:"Management", finance:"Finanzen & Zahlen",
+  marketing:"Marketing", sales:"Vertrieb", tech:"Technik", projekt:"Projektarbeit",
+  automotive:"Automotive", code:"Programmier-Schwerpunkt", physical:"körperliche Arbeit",
+  desk:"Arbeit am Computer", bigco:"großes Unternehmen", paid:"Vergütung bekannt",
+  smallteam:"kleines Team"
+};
+const FIT_BASE = 1.8;
+function fitRaw(c){ return (c.fit||[]).reduce((sum,t) => sum + (FIT_W[t]||0), FIT_BASE); }
+/* Schwellen so gesetzt, dass 5 Sterne die Ausnahme bleiben und die Skala unterscheidet */
+const FIT_STEPS = [[6.0,5],[5.0,4],[3.0,3],[1.8,2]];
+function fitStars(c){
+  const r = fitRaw(c);
+  for(const [min,stars] of FIT_STEPS) if(r >= min) return stars;
+  return 1;
+}
+const FIT_WORDS = { 5:"Sehr passend", 4:"Gut passend", 3:"Interessant", 2:"Weniger passend", 1:"Eher nicht passend" };
+function fitFactors(c){
+  return (c.fit||[]).filter(t => FIT_W[t]).sort((a,b) => Math.abs(FIT_W[b]) - Math.abs(FIT_W[a]))
+    .map(t => ({ tag:t, label:FIT_LABEL[t] || t, w:FIT_W[t] }));
+}
+/* 🟢 sehr interessant · 🟡 interessant · 🔵 gute Alternative · ⚪ weniger relevant */
+const GAP_LEVELS = {
+  green:{ icon:"🟢", label:"Sehr interessant", v:"--s-yes" },
+  yellow:{ icon:"🟡", label:"Interessant",     v:"--s-sent" },
+  blue:{  icon:"🔵", label:"Gute Alternative", v:"--s-plan" },
+  white:{ icon:"⚪", label:"Weniger relevant", v:"--s-none" }
+};
+function gapLevel(c){
+  if(c.gap && GAP_LEVELS[c.gap]) return c.gap;
+  const st = fitStars(c);
+  if(st >= 4) return c.status === "offer" ? "green" : "yellow";
+  if(st === 3) return "blue";
+  return "white";
+}
+const DB_STATUS = {
+  offer:{   icon:"🟢", label:"Praktikum ausgeschrieben", v:"--s-yes",
+            text:"Konkretes Praktikumsangebot oder eigene Praktikumsseite gefunden." },
+  unclear:{ icon:"🟡", label:"Praktika grundsätzlich möglich", v:"--s-sent",
+            text:"Das Unternehmen bietet laut eigener Karriereseite Praktika an – für ein Gap-Year-Praktikum ist aber nichts Konkretes belegt." },
+  none:{    icon:"⚠️", label:"Kein aktuelles Angebot gefunden", v:"--s-wait",
+            text:"Kein aktuelles Gap-Year-Praktikum gefunden – Initiativbewerbung möglich." }
+};
+
+/* ---- Filter-Vokabular ---- */
+const DB_AREAS = [
+  { key:"vfx",     label:"🎬 VFX / Medien",   tags:["VFX","Compositing","Postproduktion","Filmproduktion","Videoproduktion","Motion Design","Animation","2D-/3D-Animation","3D-Animation","Digitale Effekte","Mediengestaltung","Kamera/Schnitt","TV-Produktion","Grafikdesign","Digital Media/Grafikdesign","Livestream","Redaktion","Journalismus","Digitale Medien","Social Media","Audiotechnik"] },
+  { key:"bwl",     label:"📊 BWL / Wirtschaft", tags:["Controlling","Finance","Personal","Einkauf","Logistik","Bank","Versicherung","Handel","Supply Chain","Immobilienwirtschaft","Beratung","Tourismus","Qualität"] },
+  { key:"mgmt",    label:"🧭 Management",     tags:["Management","Business Development","Projektmanagement","Wirtschaftsförderung","Eventmanagement"] },
+  { key:"finance", label:"💹 Finance",        tags:["Finance","Bank","Versicherung","Controlling"] },
+  { key:"marketing",label:"📣 Marketing",     tags:["Marketing","Kommunikation","Digitales Marketing","Social Media","Compliance"] },
+  { key:"sales",   label:"🤝 Vertrieb",       tags:["Vertrieb","Handel","Beratung"] },
+  { key:"tech",    label:"⚙️ Technik",        tags:["Engineering","Elektronik","Maschinenbau","Automotive","Messtechnik","Systemtechnik","Werkstofftechnik","Technik","Bahnautomatisierung","Schienenfahrzeuge","Konstruktion","Berechnung/CAE","Broadcast-Technik","Audiotechnik"] },
+  { key:"eng",     label:"🔧 Engineering",    tags:["Engineering","Konstruktion","Berechnung/CAE","Systemtechnik","Forschung & Entwicklung"] },
+  { key:"auto",    label:"🚗 Automotive",     tags:["Automotive"] },
+  { key:"pm",      label:"📐 Projektmanagement", tags:["Projektmanagement","Qualität/Test","Produktmanagement"] },
+  { key:"it",      label:"💻 IT",             tags:["IT"] },
+  { key:"research",label:"🔬 Forschung",      tags:["Forschung","Luftfahrt","Messtechnik","Metrologie","Forschung & Entwicklung"] },
+  { key:"other",   label:"⭐ Sonstiges",      tags:["Produktion","Werkstofftechnik","Sportmanagement","Facility"] }
+];
+const DB_TYPES = [
+  { key:"schueler",  label:"Schülerpraktikum" },
+  { key:"freiwillig",label:"Freiwilliges Praktikum" },
+  { key:"gapyear",   label:"Gap-Year-Praktikum" },
+  { key:"pflicht",   label:"Pflichtpraktikum" },
+  { key:"studenten", label:"Für Studierende" }
+];
+const DB_DIST = [
+  { key:"d25",  label:"0–25 km",   test:d => d <= 25 },
+  { key:"d50",  label:"25–50 km",  test:d => d > 25 && d <= 50 },
+  { key:"d100", label:"50–100 km", test:d => d > 50 && d <= 100 },
+  { key:"d101", label:"100+ km",   test:d => d > 100 }
+];
+const DB_DUR = [
+  { key:"u1",   label:"< 1 Monat" },
+  { key:"1-3",  label:"1–3 Monate" },
+  { key:"3-6",  label:"3–6 Monate" },
+  { key:"6plus",label:"6+ Monate" },
+  { key:"flex", label:"flexibel / offen" }
+];
+const DB_PAY = [
+  { key:"paid",   label:"bezahlt" },
+  { key:"unknown",label:"Vergütung unbekannt" },
+  { key:"unpaid", label:"unbezahlt" }
+];
+/* Dauer-Einordnung ausschließlich anhand der belegten Textangabe */
+function durationBuckets(c){
+  const t = (c.duration || "").toLowerCase();
+  if(!t || t === "nicht angegeben") return ["flex"];
+  const out = [];
+  if(/\b(2|3|zwei|drei)\s*(bis\s*\d+\s*)?wochen/.test(t)) out.push("u1");
+  if(/1\s*monat|4 monaten|3 monate|drei monate|3 bis 6|3 monaten/.test(t)) out.push("1-3");
+  if(/3 bis 6|3–6|5–6|5 bis 6|sechs monate|6 monate/.test(t)) out.push("3-6");
+  if(/6\+|länger als sechs|jahrespraktikum/.test(t)) out.push("6plus");
+  if(/flexibel|je nach/.test(t)) out.push("flex");
+  return out.length ? out : ["flex"];
+}
+function payBucket(c){
+  const t = (c.salary || "").toLowerCase();
+  if(/unbezahlt|ohne vergütung/.test(t)) return "unpaid";
+  if(/nicht öffentlich|nicht angegeben/.test(t)) return "unknown";
+  return "paid";
+}
+function areaMatch(c, areaKey){
+  const area = DB_AREAS.find(a => a.key === areaKey);
+  if(!area) return false;
+  const own = (c.subcategory || []).concat(c.internshipFields || []);
+  return own.some(t => area.tags.includes(t));
+}
+/* "Zuletzt überprüft" – älter als 6 Monate wird angemahnt */
+function verifiedAgeMonths(c){
+  const m = /^(\d{2})\/(\d{4})$/.exec(c.lastVerified || "");
+  if(!m) return null;
+  const then = new Date(+m[2], +m[1] - 1, 1), now = new Date();
+  return (now.getFullYear() - then.getFullYear()) * 12 + (now.getMonth() - then.getMonth());
+}
+function dbEntry(id){ return COMPANY_DB.find(c => c.id === id); }
+
 let uidN = 0;
 const uid = p => (p||"id") + "_" + Date.now().toString(36) + (uidN++).toString(36) + Math.random().toString(36).slice(2,6);
 
@@ -423,7 +1474,7 @@ function seedState(){
   SEED_CHECKS.forEach(([group,track,items]) => items.forEach(text =>
     checklist.push({ id: uid("ck"), group, track, text, done:false, sample:true })));
   return {
-    version: 2,
+    version: 3,
     theme: "system",
     view: "dashboard",
     companies,
@@ -441,7 +1492,11 @@ function seedState(){
       ]
     },
     filters: { q:"", track:"", status:"", city:"", period:"", company:"" },
-    coFilters: { q:"", track:"", status:"", city:"" }
+    coFilters: { q:"", track:"", status:"", city:"" },
+    favorites: [],
+    dbCompare: [],
+    dbMarks: {},
+    dbFilters: { q:"", areas:[], cities:[], dist:"", durations:[], pay:[], types:[], onlyOffer:false, sort:"fit" }
   };
 }
 /* Abi im Sommer 2027 – das Orientierungsjahr laeuft von 2027 bis 2028. */
@@ -476,9 +1531,16 @@ function migrate(d){
   if(oldVersion < 2 && /^20\d\d-07-01$/.test(s.timeline.start || "") && s.timeline.start < GAP_YEAR_START){
     s.timeline = Object.assign({}, s.timeline, { start: GAP_YEAR_START });
   }
-  s.version = 2;
+  s.version = 3;
   s.filters      = Object.assign(base.filters, d.filters || {});
   s.coFilters    = Object.assign(base.coFilters, d.coFilters || {});
+  s.favorites    = Array.isArray(d.favorites) ? d.favorites : [];
+  s.dbCompare    = Array.isArray(d.dbCompare) ? d.dbCompare : [];
+  s.dbMarks      = (d.dbMarks && typeof d.dbMarks === "object") ? d.dbMarks : {};
+  s.dbFilters    = Object.assign(base.dbFilters, d.dbFilters || {});
+  ["areas","cities","durations","pay","types"].forEach(k => {
+    if(!Array.isArray(s.dbFilters[k])) s.dbFilters[k] = [];
+  });
   if(!VIEWS.some(v => v.key === s.view)) s.view = "dashboard";
   return s;
 }
@@ -609,18 +1671,23 @@ function compareValue(track, critKey){
 /* ---------------- Navigation ---------------- */
 function renderNav(){
   const s = stats();
-  const counts = { bewerbungen:s.total, unternehmen:state.companies.length,
-    checkliste: state.checklist.filter(c=>!c.done).length, bewertung: state.reviews.length };
-  $("#nav").innerHTML =
-    '<div class="nav-label">Übersicht</div>' +
-    VIEWS.slice(0,1).map(navBtn).join("") +
-    '<div class="nav-label">Organisieren</div>' +
-    VIEWS.slice(1,4).map(v => navBtn(v, counts[v.key])).join("") +
-    '<div class="nav-label">Auswerten</div>' +
-    VIEWS.slice(4,7).map(v => navBtn(v, counts[v.key])).join("");
+  const counts = {
+    entdecken: COMPANY_DB.length,
+    favoriten: state.favorites.length,
+    bewerbungen: s.total,
+    unternehmen: state.companies.length,
+    checkliste: state.checklist.filter(c => !c.done).length,
+    bewertung: state.reviews.length
+  };
+  let html = "", lastGroup = null;
+  VIEWS.forEach(v => {
+    if(v.group !== lastGroup){ lastGroup = v.group; html += '<div class="nav-label">' + esc(v.group) + "</div>"; }
+    html += navBtn(v, counts[v.key]);
+  });
+  $("#nav").innerHTML = html;
   $("#mobileNav").innerHTML = VIEWS.map(v =>
     '<button data-action="go" data-view="' + v.key + '"' + (state.view === v.key ? ' aria-current="page"' : "") +
-    '><span class="ic">' + v.icon + "</span>" + esc(v.label) + "</button>").join("");
+    '><span class="ic">' + v.icon + "</span>" + esc(v.short || v.label) + "</button>").join("");
   const t = timelineInfo();
   $("#sideSub").textContent = fmtMonth(t.start) + " – " + fmtMonth(t.end);
   $("#mTopSub").textContent = t.pct + "% geschafft";
@@ -628,6 +1695,7 @@ function renderNav(){
   const icon = dark === "dark" ? "☾" : dark === "light" ? "☀" : "◐";
   $("#themeIcon").textContent = icon; $("#themeIcon2").textContent = icon;
   $("#themeLabel").textContent = dark === "dark" ? "Dunkel" : dark === "light" ? "Hell" : "System";
+  renderCompareBar();
 }
 function navBtn(v, count){
   return '<button class="nav-item" data-action="go" data-view="' + v.key + '"' +
@@ -694,8 +1762,8 @@ function viewDashboard(){
     "<h1>Dein Orientierungsjahr im Blick</h1>" +
     "<p>Alles zu Bewerbungen, Unternehmen und Praktika an einem Ort – von der ersten Recherche bis zur Studienentscheidung.</p></div>" +
     '<div class="head-actions">' +
-      '<button class="btn btn-primary" data-action="app-new">＋ Bewerbung</button>' +
-      '<button class="btn" data-action="co-new">＋ Unternehmen</button></div></div>' +
+      '<button class="btn btn-primary" data-action="go" data-view="entdecken">🔎 Unternehmen für Praktikum finden</button>' +
+      '<button class="btn" data-action="app-new">＋ Bewerbung</button></div></div>' +
 
   '<section class="hero"><div class="hero-top">' +
     '<div><div class="eyebrow">Gap-Year-Fortschritt</div>' +
@@ -728,7 +1796,21 @@ function viewDashboard(){
     '<section class="card"><h3 style="margin-bottom:11px">Bereiche</h3>' + (trackRows || '<p class="muted">Keine Daten.</p>') +
       '<h3 style="margin:18px 0 6px">Bewerbungsstatus</h3>' +
       (s.total ? statusRows : '<p class="muted" style="font-size:13.5px">Noch keine Bewerbungen erfasst.</p>') +
-    "</section></div>";
+    "</section></div>" +
+  recommendationSection();
+}
+
+/* Empfehlungen aus der Unternehmensdatenbank */
+function recommendationSection(){
+  const open = COMPANY_DB.filter(c => !state.applications.some(a => a.dbId === c.id));
+  const top = open.slice().sort((a,b) =>
+    (a.status === "offer" ? 0 : 1) - (b.status === "offer" ? 0 : 1) || fitRaw(b) - fitRaw(a) ||
+    a.distanceKm - b.distanceKm).slice(0,3);
+  if(!top.length) return "";
+  return '<section class="card" style="margin-top:16px">' +
+    '<div class="check-head"><h3>Passt zu dir – aus der Unternehmensdatenbank</h3>' +
+      '<button class="btn btn-sm btn-ghost" data-action="go" data-view="entdecken">Alle ' + COMPANY_DB.length + " Unternehmen →</button></div>" +
+    '<div class="db-grid">' + top.map(dbCard).join("") + "</div></section>";
 }
 
 /* ---------------- Ansicht: Bewerbungen ---------------- */
@@ -892,6 +1974,269 @@ function viewCompanies(){
     '<span class="mono muted" id="coCount" style="margin-left:auto;font-size:12.5px"></span>' +
   "</div>" +
   '<div class="rows" id="coList"></div>';
+}
+
+/* ---------------- Ansicht: Unternehmen finden ---------------- */
+const MAIN_CITIES = ["Gifhorn","Wolfsburg","Braunschweig","Hannover"];
+const DB_SORTS = [
+  { value:"fit",  label:"Beste Passung" },
+  { value:"dist", label:"Entfernung" },
+  { value:"name", label:"Name A–Z" },
+  { value:"offer",label:"Angebot zuerst" }
+];
+function filteredDb(){
+  const f = state.dbFilters, q = f.q.trim().toLowerCase();
+  const list = COMPANY_DB.filter(c => {
+    if(f.onlyOffer && c.status !== "offer") return false;
+    if(f.areas.length && !f.areas.some(a => areaMatch(c, a))) return false;
+    if(f.cities.length && !f.cities.some(city =>
+        city === "__other" ? !MAIN_CITIES.includes(c.city) : c.city === city)) return false;
+    if(f.dist){ const d = DB_DIST.find(x => x.key === f.dist); if(d && !d.test(c.distanceKm)) return false; }
+    if(f.durations.length && !durationBuckets(c).some(b => f.durations.includes(b))) return false;
+    if(f.pay.length && !f.pay.includes(payBucket(c))) return false;
+    if(f.types.length && !(c.internshipTypes || []).some(t => f.types.includes(t))) return false;
+    if(!q) return true;
+    return [c.companyName, c.city, c.address, c.description, c.suitabilityReason, c.gapYearNote]
+      .concat(c.subcategory || [], c.internshipFields || [])
+      .some(v => String(v || "").toLowerCase().includes(q));
+  });
+  const by = {
+    fit:  (a,b) => fitStars(b) - fitStars(a) ||
+                   (a.status === "offer" ? 0 : 1) - (b.status === "offer" ? 0 : 1) ||
+                   a.distanceKm - b.distanceKm || fitRaw(b) - fitRaw(a),
+    dist: (a,b) => a.distanceKm - b.distanceKm || fitRaw(b) - fitRaw(a),
+    name: (a,b) => a.companyName.localeCompare(b.companyName, "de"),
+    offer:(a,b) => (a.status === "offer" ? 0 : 1) - (b.status === "offer" ? 0 : 1) || fitRaw(b) - fitRaw(a)
+  };
+  return list.sort(by[state.dbFilters.sort] || by.fit);
+}
+function starsHtml(n){
+  return '<span class="stars-inline" aria-label="' + n + ' von 5 Sternen">' +
+    [1,2,3,4,5].map(i => '<span' + (i > n ? ' class="off"' : "") + ">★</span>").join("") + "</span>";
+}
+function markOf(c){
+  const m = state.dbMarks[c.id];
+  if(m) return m.mark;
+  const age = verifiedAgeMonths(c);
+  return (age != null && age > 6) ? "old" : "ok";
+}
+const MARKS = {
+  ok:   { icon:"🟢", label:"aktuell" },
+  old:  { icon:"🟡", label:"möglicherweise veraltet" },
+  check:{ icon:"🔴", label:"überprüfen" }
+};
+function staleWarning(c){
+  const mark = markOf(c);
+  if(mark === "ok") return "";
+  return '<div class="warn">⚠️ <span>Informationen ' + (mark === "check" ? "sind als „überprüfen“ markiert" : "möglicherweise veraltet") +
+    " – bitte vor der Bewerbung auf der offiziellen Website prüfen.</span></div>";
+}
+function dbCard(c){
+  const tr = trackOf(c.category), st = fitStars(c), gl = GAP_LEVELS[gapLevel(c)], stat = DB_STATUS[c.status];
+  const fav = state.favorites.includes(c.id), sel = state.dbCompare.includes(c.id);
+  return '<article class="db-card ' + tr.cls + '">' +
+    '<div class="db-top"><span class="ic">' + tr.icon + "</span>" +
+      '<div style="flex:1;min-width:0"><h3>' + esc(c.companyName) + "</h3>" +
+        '<div class="muted" style="font-size:13px">📍 ' + esc(c.city) +
+        ' <span class="mono">· ca. ' + c.distanceKm + " km</span></div></div>" +
+      '<button class="fav-btn" data-action="db-fav" data-id="' + c.id + '" aria-pressed="' + fav +
+        '" title="Zu Favoriten" aria-label="Zu Favoriten hinzufügen">' + (fav ? "★" : "☆") + "</button></div>" +
+    '<div class="db-meta">' + (c.subcategory || []).slice(0,3).map(t =>
+      '<span class="chip track-chip">' + esc(t) + "</span>").join("") + "</div>" +
+    '<p class="db-desc">' + esc(c.description.length > 190 ? c.description.slice(0,188) + "…" : c.description) + "</p>" +
+    '<div class="db-line"><span class="k">Praktikum</span><span>' + esc((c.internshipFields || []).slice(0,3).join(" · ") || NA) + "</span></div>" +
+    '<div class="db-line"><span class="k">Dauer</span><span>' + esc(c.duration === NA ? "Nicht angegeben" : c.duration.split(";")[0]) + "</span></div>" +
+    '<div class="db-line"><span class="k">Vergütung</span><span>' + esc(c.salary.replace("Vergütung: ", "")) + "</span></div>" +
+    '<div class="db-line"><span class="k">Passung</span><span>' + starsHtml(st) +
+      ' <b style="font-size:12.5px">' + FIT_WORDS[st] + "</b></span></div>" +
+    '<div class="db-meta">' +
+      '<span class="chip" style="background:color-mix(in srgb,var(' + gl.v + ') 15%,transparent);color:var(' + gl.v + ')">' +
+        gl.icon + " " + gl.label + "</span>" +
+      '<span class="chip" style="background:color-mix(in srgb,var(' + stat.v + ') 14%,transparent);color:var(' + stat.v + ')">' +
+        stat.icon + " " + stat.label + "</span>" +
+    "</div>" +
+    '<div class="db-foot">' +
+      '<button class="btn btn-sm btn-primary" data-action="db-detail" data-id="' + c.id + '">Details anzeigen</button>' +
+      '<a class="btn btn-sm" href="' + esc(c.website) + '" target="_blank" rel="noopener noreferrer">Website ↗</a>' +
+      (c.internshipUrl ? '<a class="btn btn-sm" href="' + esc(c.internshipUrl) + '" target="_blank" rel="noopener noreferrer">Zur Bewerbung ↗</a>' : "") +
+      '<button class="btn btn-sm" data-action="db-cmp" data-id="' + c.id + '" aria-pressed="' + sel + '">' +
+        (sel ? "✓ im Vergleich" : "⇄ vergleichen") + "</button>" +
+    "</div></article>";
+}
+function renderDbList(){
+  const el = $("#dbList"); if(!el) return;
+  const list = filteredDb();
+  el.innerHTML = list.length ? list.map(dbCard).join("")
+    : '<div class="empty" style="grid-column:1/-1">Kein Unternehmen passt zu diesen Filtern.<br>' +
+      '<button class="btn btn-sm" style="margin-top:11px" data-action="db-reset">Filter zurücksetzen</button></div>';
+  const n = $("#dbCount"); if(n) n.textContent = list.length + " von " + COMPANY_DB.length + " Unternehmen";
+}
+function chipRow(label, items, activeList, action, extraCls){
+  return '<div class="filter-row"><span class="lbl">' + label + "</span>" +
+    items.map(it => '<button class="chip-btn' + (extraCls ? " " + extraCls : "") + '" data-action="' + action +
+      '" data-key="' + esc(it.key) + '" aria-pressed="' + activeList.includes(it.key) + '">' +
+      esc(it.label) + "</button>").join("") + "</div>";
+}
+function activeFilterCount(){
+  const f = state.dbFilters;
+  return f.areas.length + f.cities.length + f.durations.length + f.pay.length + f.types.length +
+    (f.dist ? 1 : 0) + (f.onlyOffer ? 1 : 0);
+}
+function viewDiscover(){
+  const f = state.dbFilters;
+  const cities = MAIN_CITIES.map(c => ({ key:c, label:c }))
+    .concat([{ key:"__other", label:"weitere Städte" }]);
+  return '' +
+  '<div class="page-head"><div><div class="eyebrow">Unternehmensdatenbank</div><h1>Unternehmen für Praktikum finden</h1>' +
+    "<p>" + COMPANY_DB.length + " recherchierte Unternehmen aus Gifhorn, Wolfsburg, Braunschweig und dem weiteren Umkreis – " +
+    "sortiert nach der Passung zu deinen Interessen. Alle Angaben stammen von den offiziellen Unternehmensseiten; " +
+    "was dort nicht steht, steht hier als „Nicht angegeben“.</p></div>" +
+    '<div class="head-actions">' +
+      '<button class="btn" data-action="db-reset">Filter zurücksetzen</button>' +
+      '<button class="btn btn-primary" data-action="db-cmp-open">⇄ Vergleichen (' + state.dbCompare.length + ")</button></div></div>" +
+  '<div class="toolbar">' +
+    '<label class="search"><span class="ic"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="M10.5 10.5 14 14" stroke-linecap="round"/></svg></span><span class="sr">Suche</span>' +
+      '<input type="text" id="dbSearch" placeholder="Suchen: Compositing, Marketing, Automotive, Würth …" value="' + esc(f.q) + '"></label>' +
+    '<select data-change="db-sort" aria-label="Sortierung">' + selectOptions(DB_SORTS, f.sort) + "</select>" +
+    '<button class="chip-btn" data-action="db-only-offer" aria-pressed="' + f.onlyOffer + '">🟢 nur mit Angebot</button>' +
+    '<button class="btn btn-sm filters-toggle" data-action="db-filters-toggle">⚙ Filter' +
+      (activeFilterCount() ? " (" + activeFilterCount() + ")" : "") + "</button>" +
+    '<span class="mono muted" id="dbCount" style="margin-left:auto;font-size:12.5px"></span>' +
+  "</div>" +
+  '<div class="filters" id="dbFilterPanel">' +
+    chipRow("Bereich", DB_AREAS.map(a => ({ key:a.key, label:a.label })), f.areas, "db-area") +
+    chipRow("Standort", cities, f.cities, "db-city") +
+    '<div class="filter-row"><span class="lbl">Entfernung</span>' +
+      DB_DIST.map(d => '<button class="chip-btn" data-action="db-dist" data-key="' + d.key +
+        '" aria-pressed="' + (f.dist === d.key) + '">' + d.label + "</button>").join("") +
+      '<span class="muted" style="font-size:12px;margin-left:4px">ab Gifhorn</span></div>' +
+    chipRow("Dauer", DB_DUR, f.durations, "db-dur") +
+    chipRow("Vergütung", DB_PAY, f.pay, "db-pay") +
+    chipRow("Praktikumsart", DB_TYPES, f.types, "db-type") +
+  "</div>" +
+  '<div class="db-grid" id="dbList"></div>';
+}
+function viewFavorites(){
+  const list = state.favorites.map(dbEntry).filter(Boolean);
+  return '' +
+  '<div class="page-head"><div><div class="eyebrow">Favoriten</div><h1>Deine gemerkten Unternehmen</h1>' +
+    "<p>Alles, was du beim Stöbern mit ★ markiert hast – bereit für die nächste Bewerbungsrunde.</p></div>" +
+    '<div class="head-actions"><button class="btn btn-primary" data-action="go" data-view="entdecken">⌕ Weitere Unternehmen finden</button>' +
+    (list.length > 1 ? '<button class="btn" data-action="db-cmp-all">⇄ Alle vergleichen</button>' : "") + "</div></div>" +
+  (list.length ? '<div class="db-grid">' + list.map(dbCard).join("") + "</div>"
+    : '<div class="empty">Noch keine Favoriten. Markiere Unternehmen in der Datenbank mit ★, dann sammeln sie sich hier.<br>' +
+      '<button class="btn btn-sm" style="margin-top:12px" data-action="go" data-view="entdecken">Zur Unternehmenssuche</button></div>');
+}
+
+/* ---------------- Detailansicht eines Datensatzes ---------------- */
+function openDbDetail(id){
+  const c = dbEntry(id); if(!c) return;
+  const tr = trackOf(c.category), st = fitStars(c), gl = GAP_LEVELS[gapLevel(c)], stat = DB_STATUS[c.status];
+  const inApps = state.applications.some(a => a.dbId === c.id);
+  const fav = state.favorites.includes(c.id);
+  const factors = fitFactors(c);
+  const mark = markOf(c);
+  const row = (k,v) => "<dt>" + k + "</dt><dd>" + v + "</dd>";
+  const body =
+    '<div class="' + tr.cls + '">' +
+    staleWarning(c) +
+    '<div class="db-meta" style="margin-bottom:12px">' +
+      '<span class="chip track-chip">' + tr.icon + " " + esc(tr.label) + "</span>" +
+      '<span class="chip" style="background:color-mix(in srgb,var(' + gl.v + ') 15%,transparent);color:var(' + gl.v + ')">' + gl.icon + " " + gl.label + "</span>" +
+      '<span class="chip" style="background:color-mix(in srgb,var(' + stat.v + ') 14%,transparent);color:var(' + stat.v + ')">' + stat.icon + " " + stat.label + "</span>" +
+    "</div>" +
+    '<p style="margin:0;color:var(--ink-2);line-height:1.55">' + esc(c.description) + "</p>" +
+
+    '<div class="detail-sec"><h4>Warum könnte das zu dir passen?</h4>' +
+      '<div class="info-box"><div style="display:flex;gap:10px;align-items:center;margin-bottom:6px">' +
+        starsHtml(st) + '<b>' + FIT_WORDS[st] + '</b>' +
+        '<span class="mono muted" style="font-size:11.5px">berechnet aus deinem Profil</span></div>' +
+        esc(c.suitabilityReason) + "</div>" +
+      '<div style="margin-top:9px;display:flex;flex-wrap:wrap;gap:6px">' + factors.map(fa =>
+        '<span class="chip" style="background:var(--surface-2);color:' + (fa.w > 0 ? "var(--s-yes)" : "var(--s-no)") + '">' +
+        (fa.w > 0 ? "+" : "−") + " " + esc(fa.label) + "</span>").join("") + "</div>" +
+      '<div class="info-box" style="margin-top:9px">' + gl.icon + " " +
+        (c.gapYearNote.toLowerCase().startsWith(gl.label.toLowerCase())
+          ? esc(c.gapYearNote)
+          : "<b>" + gl.label + " für dein Gap Year</b><br>" + esc(c.gapYearNote)) + "</div>" +
+    "</div>" +
+
+    '<div class="detail-sec"><h4>Daten</h4><dl class="kv">' +
+      row("Standort", esc(c.address) + '<br><span class="muted mono" style="font-size:12px">ca. ' + c.distanceKm + " km ab Gifhorn (Straßenweg, gerundet)</span>") +
+      row("Praktikumsbereiche", esc((c.internshipFields || []).join(" · ") || NA)) +
+      row("Mögliche Tätigkeiten", esc((c.subcategory || []).join(" · ") || NA)) +
+      row("Praktikumsart", (c.internshipTypes || []).length
+        ? (c.internshipTypes || []).map(t => (DB_TYPES.find(x => x.key === t) || {}).label || t).join(" · ")
+        : "Nicht angegeben") +
+      row("Dauer", esc(c.duration)) +
+      row("Vergütung", esc(c.salary)) +
+      row("Verfügbarkeit", esc(c.availability)) +
+      row("Voraussetzungen", esc(c.requirements)) +
+      row("Bewerbungsart", c.internshipUrl ? "Über die verlinkte Praktikums-/Karriereseite" : "Initiativbewerbung – keine eigene Praktikumsseite gefunden") +
+      row("Ansprechpartner", esc(c.contact || NA)) +
+      row("Website", '<a href="' + esc(c.website) + '" target="_blank" rel="noopener noreferrer" style="color:var(--t)">' +
+        esc(c.website.replace(/^https?:\/\//, "").replace(/\/$/, "")) + " ↗</a>") +
+      row("Praktikumsseite", c.internshipUrl
+        ? '<a href="' + esc(c.internshipUrl) + '" target="_blank" rel="noopener noreferrer" style="color:var(--t)">offizielle Seite öffnen ↗</a>'
+        : "Nicht angegeben") +
+      row("Zuletzt überprüft", '<span class="mono">' + esc(c.lastVerified) + "</span> " +
+        '<span class="muted" style="font-size:12.5px">· ' + MARKS[mark].icon + " " + MARKS[mark].label + "</span>") +
+    "</dl></div>" +
+
+    '<div class="detail-sec"><h4>Datensatz markieren</h4>' +
+      '<div style="display:flex;gap:7px;flex-wrap:wrap">' +
+        Object.keys(MARKS).map(k => '<button type="button" class="chip-btn" data-action="db-mark" data-id="' + c.id +
+          '" data-key="' + k + '" aria-pressed="' + (mark === k) + '">' + MARKS[k].icon + " " + MARKS[k].label + "</button>").join("") +
+      "</div>" +
+      '<p class="muted" style="font-size:12.5px;margin:8px 0 0">Angaben stammen aus der Recherche vom ' + esc(c.lastVerified) +
+      ". Prüfe vor einer Bewerbung immer die offizielle Seite – Fristen und Angebote ändern sich.</p>" +
+    "</div></div>";
+
+  const extra =
+    '<button type="button" class="btn" data-action="db-fav" data-id="' + c.id + '" style="margin-right:auto">' +
+      (fav ? "★ Favorit entfernen" : "☆ Zu Favoriten") + "</button>" +
+    '<a class="btn" href="' + esc(c.website) + '" target="_blank" rel="noopener noreferrer">Website ↗</a>' +
+    (c.internshipUrl ? '<a class="btn" href="' + esc(c.internshipUrl) + '" target="_blank" rel="noopener noreferrer">Zur Bewerbung ↗</a>' : "") +
+    '<button type="button" class="btn btn-primary" data-action="db-add" data-id="' + c.id + '"' + (inApps ? " disabled" : "") + ">" +
+      (inApps ? "✓ Schon in Bewerbungen" : "＋ Zu meinen Bewerbungen") + "</button>";
+
+  openModal({ title:c.companyName, body, extra, okLabel:"Schließen", wide:true, onSubmit(){ closeModal(); } });
+}
+
+/* ---------------- Vergleich mehrerer Unternehmen ---------------- */
+function renderCompareBar(){
+  const root = $("#cmpRoot"); if(!root) return;
+  const n = state.dbCompare.length;
+  root.innerHTML = n ? '<div class="cmp-bar"><span>' + n + " Unternehmen ausgewählt</span>" +
+    '<button data-action="db-cmp-open">Vergleichen</button>' +
+    '<button class="ghost" data-action="db-cmp-clear">Leeren</button></div>' : "";
+}
+function openDbCompare(){
+  const list = state.dbCompare.map(dbEntry).filter(Boolean);
+  if(!list.length){ toast("Wähle zuerst Unternehmen über „⇄ vergleichen“ aus."); return; }
+  const rows = [
+    ["Bereich",        c => trackOf(c.category).icon + " " + trackOf(c.category).label],
+    ["Standort",       c => c.city],
+    ["Entfernung",     c => "ca. " + c.distanceKm + " km"],
+    ["Praktikumsbereiche", c => (c.internshipFields || []).join(", ") || NA],
+    ["Dauer",          c => c.duration],
+    ["Vergütung",      c => c.salary.replace("Vergütung: ", "")],
+    ["Voraussetzungen",c => c.requirements],
+    ["Passung",        c => starsHtml(fitStars(c)) + " " + FIT_WORDS[fitStars(c)]],
+    ["Gap Year",       c => GAP_LEVELS[gapLevel(c)].icon + " " + GAP_LEVELS[gapLevel(c)].label],
+    ["Bewerbung möglich", c => DB_STATUS[c.status].icon + " " + DB_STATUS[c.status].label],
+    ["Zuletzt überprüft", c => c.lastVerified]
+  ];
+  const body = '<div class="table-wrap"><table><thead><tr><th>Kriterium</th>' +
+    list.map(c => '<th class="' + trackOf(c.category).cls + '" style="color:var(--t)">' + esc(c.companyName) + "</th>").join("") +
+    "</tr></thead><tbody>" +
+    rows.map(([label, fn]) => "<tr><td><b style='font-weight:600'>" + label + "</b></td>" +
+      list.map(c => { const v = fn(c); return "<td>" + (/^</.test(String(v)) ? v : esc(String(v))) + "</td>"; }).join("") + "</tr>").join("") +
+    "</tbody></table></div>" +
+    '<p class="muted" style="font-size:12.5px;margin:11px 0 0">„Nicht angegeben“ heißt: Die Information war auf den offiziellen Seiten nicht zu finden – frag im Zweifel direkt nach.</p>';
+  openModal({ title:"Unternehmen vergleichen", body, okLabel:"Schließen", wide:true,
+    extra:'<button type="button" class="btn" data-action="db-cmp-clear" style="margin-right:auto">Auswahl leeren</button>',
+    onSubmit(){ closeModal(); } });
 }
 
 /* ---------------- Ansicht: Checkliste ---------------- */
@@ -1363,6 +2708,81 @@ const ACTIONS = {
     });
   },
 
+  /* Unternehmensdatenbank */
+  "db-detail"(el){ openDbDetail(el.dataset.id); },
+  "db-fav"(el){
+    const id = el.dataset.id;
+    const i = state.favorites.indexOf(id);
+    if(i >= 0) state.favorites.splice(i,1); else state.favorites.push(id);
+    save();
+    if(modalCtx){ openDbDetail(id); renderNav(); }
+    else render();
+    toast(i >= 0 ? "Aus Favoriten entfernt." : "Zu Favoriten hinzugefügt.");
+  },
+  "db-cmp"(el){
+    const id = el.dataset.id, i = state.dbCompare.indexOf(id);
+    if(i >= 0) state.dbCompare.splice(i,1);
+    else {
+      if(state.dbCompare.length >= 4){ toast("Maximal vier Unternehmen gleichzeitig vergleichen."); return; }
+      state.dbCompare.push(id);
+    }
+    save(); render();
+  },
+  "db-cmp-open"(){ openDbCompare(); },
+  "db-filters-toggle"(el){
+    const panel = $("#dbFilterPanel"); if(!panel) return;
+    panel.classList.toggle("show");
+    el.setAttribute("aria-expanded", String(panel.classList.contains("show")));
+  },
+  "db-cmp-clear"(){ state.dbCompare = []; closeModal(); commit(); },
+  "db-cmp-all"(){ state.dbCompare = state.favorites.slice(0,4); save(); openDbCompare(); renderCompareBar(); },
+  "db-add"(el){
+    const c = dbEntry(el.dataset.id); if(!c) return;
+    if(state.applications.some(a => a.dbId === c.id)){ toast("Steht schon in deinen Bewerbungen."); return; }
+    let co = state.companies.find(x => x.dbId === c.id) ||
+             state.companies.find(x => (x.name||"").toLowerCase() === c.companyName.toLowerCase());
+    if(!co){
+      co = { id:uid("co"), dbId:c.id, name:c.companyName, city:c.city, track:c.category, website:c.website,
+             contact:"", contactInfo:c.contact, period:"", notes:c.gapYearNote, status:"none", sample:false };
+      state.companies.push(co);
+    } else if(!co.dbId){ co.dbId = c.id; }
+    state.applications.unshift({
+      id:uid("ap"), dbId:c.id, companyId:co.id, company:c.companyName, track:c.category, city:c.city,
+      type:(c.internshipFields || [])[0] || "", period:"", duration:(c.duration === NA ? "" : c.duration),
+      appliedDate:"", channel:"", contact:"", email:"", phone:"", status:"none",
+      notes:"Aus der Unternehmensdatenbank übernommen (Stand " + c.lastVerified + "). " + c.suitabilityReason,
+      nextStep:c.internshipUrl ? "Praktikumsseite prüfen und Unterlagen zusammenstellen" : "Initiativbewerbung vorbereiten",
+      nextStepDate:"", sample:false
+    });
+    closeModal(); state.view = "bewerbungen"; commit();
+    toast("„" + c.companyName + "“ als Bewerbung angelegt – Status: Noch nicht beworben.");
+  },
+  "db-mark"(el){
+    const id = el.dataset.id;
+    state.dbMarks[id] = { mark:el.dataset.key, date:new Date().toISOString().slice(0,10) };
+    save(); openDbDetail(id);
+  },
+  "db-area"(el){ toggleDbFilter("areas", el); },
+  "db-city"(el){ toggleDbFilter("cities", el); },
+  "db-dur"(el){ toggleDbFilter("durations", el); },
+  "db-pay"(el){ toggleDbFilter("pay", el); },
+  "db-type"(el){ toggleDbFilter("types", el); },
+  "db-dist"(el){
+    const k = el.dataset.key;
+    state.dbFilters.dist = state.dbFilters.dist === k ? "" : k;
+    $$('[data-action="db-dist"]').forEach(b => b.setAttribute("aria-pressed", String(b.dataset.key === state.dbFilters.dist)));
+    save(); renderDbList();
+  },
+  "db-only-offer"(el){
+    state.dbFilters.onlyOffer = !state.dbFilters.onlyOffer;
+    el.setAttribute("aria-pressed", String(state.dbFilters.onlyOffer));
+    save(); renderDbList();
+  },
+  "db-reset"(){
+    state.dbFilters = { q:"", areas:[], cities:[], dist:"", durations:[], pay:[], types:[], onlyOffer:false, sort:state.dbFilters.sort };
+    commit();
+  },
+
   /* Daten */
   "export-copy"(){
     const text = $("#exportBox").value;
@@ -1406,6 +2826,12 @@ const ACTIONS = {
   }
 };
 
+function toggleDbFilter(key, el){
+  const list = state.dbFilters[key], k = el.dataset.key, i = list.indexOf(k);
+  if(i >= 0) list.splice(i,1); else list.push(k);
+  el.setAttribute("aria-pressed", String(i < 0));
+  save(); renderDbList();
+}
 function normalizeApp(v){
   const o = Object.assign({}, v);
   const co = state.companies.find(c => (c.name||"").toLowerCase() === (o.company||"").toLowerCase());
@@ -1453,7 +2879,8 @@ const CHANGES = {
     const p = byId(state.timeline.phases, el.dataset.id); if(!p) return;
     p.months = Math.max(0, Math.min(24, num(el.value, 0))); commit();
   },
-  "tl-start"(el){ state.timeline.start = el.value || defaultStart(); commit(); }
+  "tl-start"(el){ state.timeline.start = el.value || defaultStart(); commit(); },
+  "db-sort"(el){ state.dbFilters.sort = el.value; save(); renderDbList(); }
 };
 
 document.addEventListener("click", ev => {
@@ -1471,6 +2898,7 @@ document.addEventListener("change", ev => {
 document.addEventListener("input", ev => {
   if(ev.target.id === "appSearch"){ state.filters.q = ev.target.value; save(); renderAppList(); }
   if(ev.target.id === "coSearch"){ state.coFilters.q = ev.target.value; save(); renderCoList(); }
+  if(ev.target.id === "dbSearch"){ state.dbFilters.q = ev.target.value; save(); renderDbList(); }
 });
 document.addEventListener("submit", ev => {
   const form = ev.target;
@@ -1500,7 +2928,8 @@ function applyTheme(){
   else document.documentElement.removeAttribute("data-theme");
 }
 const RENDERERS = {
-  dashboard: viewDashboard, bewerbungen: viewApplications, unternehmen: viewCompanies,
+  dashboard: viewDashboard, entdecken: viewDiscover, favoriten: viewFavorites,
+  bewerbungen: viewApplications, unternehmen: viewCompanies,
   checkliste: viewChecklist, bewertung: viewReviews, vergleich: viewCompare,
   timeline: viewTimeline, daten: viewData
 };
@@ -1513,6 +2942,7 @@ function render(){
     if(s && document.activeElement !== s && state.filters.q){ /* Fokus nicht stehlen */ }
   }
   if(state.view === "unternehmen") renderCoList();
+  if(state.view === "entdecken") renderDbList();
   renderNav();
 }
 applyTheme();
