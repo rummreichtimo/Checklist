@@ -1,0 +1,1510 @@
+<title>Orientierungsjahr</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#EBEDF1; --surface:#FFFFFF; --surface-2:#F4F6F8; --surface-3:#E7EAEF;
+  --line:#D8DDE4; --line-strong:#C2C9D2;
+  --ink:#12161B; --ink-2:#49515C; --ink-3:#78818D;
+  --accent:#124751; --accent-ink:#FFFFFF; --accent-soft:#DCEAEC;
+  --vfx:#B93A6E; --vfx-soft:#F7E4EE;
+  --bwl:#A8710C; --bwl-soft:#F8EDD9;
+  --tech:#1F7185; --tech-soft:#DDEDF2;
+  --other:#5F6874; --other-soft:#E6E9ED;
+  --s-none:#8B94A0; --s-plan:#2C64BE; --s-sent:#B08800; --s-wait:#C4661A;
+  --s-talk:#7645B4; --s-yes:#227048; --s-no:#B23A31; --s-off:#4A515B;
+  --danger:#B23A31; --danger-soft:#F7E2E0;
+  --ring:#1F7185;
+  --shadow:0 1px 2px rgba(16,22,30,.05), 0 8px 24px -16px rgba(16,22,30,.28);
+  --radius:14px;
+  --f-display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --f-body:"Instrument Sans",ui-sans-serif,system-ui,-apple-system,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1216; --surface:#161B21; --surface-2:#1C232A; --surface-3:#232B34;
+    --line:#28313A; --line-strong:#3A4550;
+    --ink:#E8EDF2; --ink-2:#A5AFBB; --ink-3:#79838F;
+    --accent:#63C6CE; --accent-ink:#08181B; --accent-soft:#17343A;
+    --vfx:#F075A6; --vfx-soft:#3A1A28;
+    --bwl:#E0A63F; --bwl-soft:#38290F;
+    --tech:#57B9CE; --tech-soft:#122E37;
+    --other:#9AA4B0; --other-soft:#242B33;
+    --s-none:#8A939F; --s-plan:#6D9DEA; --s-sent:#DFB63C; --s-wait:#EE8F45;
+    --s-talk:#AE8AE6; --s-yes:#4FBE84; --s-no:#EE7268; --s-off:#8791A0;
+    --danger:#EE7268; --danger-soft:#3A1E1C;
+    --ring:#63C6CE;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1216; --surface:#161B21; --surface-2:#1C232A; --surface-3:#232B34;
+  --line:#28313A; --line-strong:#3A4550;
+  --ink:#E8EDF2; --ink-2:#A5AFBB; --ink-3:#79838F;
+  --accent:#63C6CE; --accent-ink:#08181B; --accent-soft:#17343A;
+  --vfx:#F075A6; --vfx-soft:#3A1A28;
+  --bwl:#E0A63F; --bwl-soft:#38290F;
+  --tech:#57B9CE; --tech-soft:#122E37;
+  --other:#9AA4B0; --other-soft:#242B33;
+  --s-none:#8A939F; --s-plan:#6D9DEA; --s-sent:#DFB63C; --s-wait:#EE8F45;
+  --s-talk:#AE8AE6; --s-yes:#4FBE84; --s-no:#EE7268; --s-off:#8791A0;
+  --danger:#EE7268; --danger-soft:#3A1E1C;
+  --ring:#63C6CE;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -18px rgba(0,0,0,.9);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);
+  font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--f-display);margin:0;text-wrap:balance;letter-spacing:-.015em}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ring);outline-offset:2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms !important;transition-duration:.001ms !important}}
+
+/* ---------- Shell ---------- */
+.shell{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}
+.side{position:sticky;top:0;height:100vh;background:var(--surface);border-right:1px solid var(--line);
+  display:flex;flex-direction:column;padding:22px 16px 16px}
+.brand{display:flex;gap:11px;align-items:center;padding:0 8px 20px}
+.brand-mark{width:34px;height:34px;border-radius:10px;flex:none;display:grid;place-items:center;
+  background:linear-gradient(140deg,var(--vfx) 0 33%,var(--bwl) 33% 66%,var(--tech) 66% 100%);
+  color:#fff;font-family:var(--f-display);font-weight:700;font-size:14px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.brand-name{font-family:var(--f-display);font-weight:700;font-size:16px;line-height:1.15}
+.brand-sub{font-family:var(--f-mono);font-size:10.5px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase}
+.nav{display:flex;flex-direction:column;gap:2px;overflow-y:auto}
+.nav-label{font-family:var(--f-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-3);padding:14px 10px 6px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;border:0;
+  background:transparent;color:var(--ink-2);cursor:pointer;text-align:left;width:100%;
+  font-size:14.5px;transition:background .15s,color .15s}
+.nav-item:hover{background:var(--surface-2);color:var(--ink)}
+.nav-item[aria-current="page"]{background:var(--surface-3);color:var(--ink);font-weight:600}
+.nav-item .ic{width:18px;display:grid;place-items:center;font-size:14px}
+.nav-item .cnt{margin-left:auto;font-family:var(--f-mono);font-size:11px;color:var(--ink-3)}
+.side-foot{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);display:flex;gap:8px;align-items:center}
+
+.main{min-width:0;padding:26px 30px 90px;max-width:1180px}
+.page-head{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:space-between;margin-bottom:20px}
+.page-head h1{font-size:27px;font-weight:700}
+.page-head p{margin:5px 0 0;color:var(--ink-2);font-size:14px;max-width:62ch}
+.head-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+/* ---------- Bits ---------- */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.grid{display:grid;gap:14px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:9px;cursor:pointer;
+  border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);font-size:14px;font-weight:500;
+  transition:background .15s,border-color .15s,transform .1s}
+.btn:hover{background:var(--surface-2);border-color:var(--ink-3)}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn-primary:hover{background:var(--accent);border-color:var(--accent);filter:brightness(1.08)}
+.btn-ghost{border-color:transparent;background:transparent;color:var(--ink-2)}
+.btn-ghost:hover{background:var(--surface-2);color:var(--ink)}
+.btn-danger{color:var(--danger);border-color:var(--line-strong)}
+.btn-danger:hover{background:var(--danger-soft);border-color:var(--danger)}
+.btn-sm{padding:5px 9px;font-size:13px;border-radius:8px}
+.icon-btn{width:32px;height:32px;padding:0;justify-content:center;border-radius:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:12px;
+  font-weight:500;white-space:nowrap;line-height:1.6}
+.dot{width:8px;height:8px;border-radius:50%;flex:none;background:currentColor}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--ink-3)}
+.eyebrow{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.empty{padding:38px 20px;text-align:center;color:var(--ink-3);border:1px dashed var(--line-strong);
+  border-radius:var(--radius);background:var(--surface-2)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* track accents */
+.t-vfx{--t:var(--vfx);--t-soft:var(--vfx-soft)}
+.t-bwl{--t:var(--bwl);--t-soft:var(--bwl-soft)}
+.t-tech{--t:var(--tech);--t-soft:var(--tech-soft)}
+.t-other{--t:var(--other);--t-soft:var(--other-soft)}
+.track-chip{background:var(--t-soft);color:var(--t)}
+
+/* forms */
+.field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.field > label{font-size:12.5px;font-weight:600;color:var(--ink-2)}
+input[type=text],input[type=date],input[type=number],input[type=email],input[type=tel],input[type=url],select,textarea{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:9px;padding:8px 10px;width:100%;
+  transition:border-color .15s,background .15s}
+input:hover,select:hover,textarea:hover{border-color:var(--line-strong)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ring);background:var(--surface);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--ring) 18%,transparent)}
+textarea{resize:vertical;min-height:76px;line-height:1.45}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--ink-3) 50%),
+  linear-gradient(135deg,var(--ink-3) 50%,transparent 50%);
+  background-position:calc(100% - 15px) 52%,calc(100% - 10px) 52%;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:30px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.form-grid .full{grid-column:1/-1}
+
+/* toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-bottom:16px}
+.search{position:relative;flex:1 1 230px;min-width:180px}
+.search input{padding-left:33px}
+.search .ic{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--ink-3);display:flex}
+.toolbar select{width:auto;min-width:132px;flex:0 0 auto;background-color:var(--surface)}
+
+/* ---------- Dashboard ---------- */
+.hero{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px 22px 18px;
+  box-shadow:var(--shadow);margin-bottom:18px}
+.hero-top{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-start}
+.hero h2{font-size:22px;font-weight:700;margin-bottom:3px}
+.hero-num{font-family:var(--f-display);font-size:40px;font-weight:700;line-height:1;letter-spacing:-.03em}
+.hero-num small{font-size:14px;font-weight:500;color:var(--ink-3);letter-spacing:0}
+.track-bar{display:flex;height:15px;border-radius:999px;overflow:hidden;background:var(--surface-3);margin:18px 0 9px;
+  border:1px solid var(--line)}
+.track-seg{position:relative;transition:flex-grow .4s ease}
+.track-seg .fill{position:absolute;inset:0;background:var(--t);opacity:.28}
+.track-seg .fill.done{opacity:1}
+.track-legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:12.5px;color:var(--ink-2)}
+.track-legend b{color:var(--ink);font-weight:600}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 15px;
+  display:flex;flex-direction:column;gap:3px;position:relative;overflow:hidden}
+.stat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--sc,var(--line-strong))}
+.stat .v{font-family:var(--f-display);font-size:26px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat .k{font-size:12.5px;color:var(--ink-2)}
+.two-col{align-items:start;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:14px;margin-top:16px}
+
+/* ---------- Lists ---------- */
+.rows{display:flex;flex-direction:column;gap:10px}
+.row{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 15px;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:start;
+  border-left:3px solid var(--t,var(--line-strong));transition:border-color .15s,box-shadow .15s}
+.row:hover{box-shadow:var(--shadow)}
+.row-title{font-family:var(--f-display);font-size:16px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.row-meta{display:flex;flex-wrap:wrap;gap:5px 14px;color:var(--ink-2);font-size:13px;margin-top:5px}
+.row-meta span{display:inline-flex;gap:5px;align-items:center}
+.row-side{display:flex;flex-direction:column;gap:7px;align-items:flex-end}
+.row-actions{display:flex;gap:5px}
+.status-select{padding:5px 26px 5px 9px;font-size:12.5px;font-weight:600;border-radius:999px;width:auto;
+  background-color:var(--sc-soft);border-color:transparent;color:var(--sc);
+  background-position:calc(100% - 12px) 53%,calc(100% - 8px) 53%}
+.note{margin-top:9px;padding:9px 11px;background:var(--surface-2);border-radius:9px;font-size:13px;color:var(--ink-2);
+  border-left:2px solid var(--line-strong)}
+.next{margin-top:9px;font-size:13px;display:inline-flex;gap:7px;align-items:center;color:var(--ink);
+  background:var(--accent-soft);padding:5px 10px;border-radius:8px}
+.next.due{background:var(--danger-soft);color:var(--danger)}
+
+/* ---------- Checklist ---------- */
+.check-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;align-items:start}
+.check-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.check-head h3{font-size:16px;font-weight:600;flex:1}
+.mini-bar{height:5px;border-radius:999px;background:var(--surface-3);overflow:hidden;margin-bottom:12px}
+.mini-bar i{display:block;height:100%;background:var(--t,var(--accent));border-radius:999px;transition:width .35s ease}
+.check{display:flex;gap:10px;align-items:flex-start;padding:7px 6px;border-radius:8px;cursor:pointer;
+  transition:background .12s;user-select:none}
+.check:hover{background:var(--surface-2)}
+.box{width:19px;height:19px;border-radius:6px;border:1.5px solid var(--line-strong);flex:none;margin-top:1px;
+  display:grid;place-items:center;color:transparent;font-size:12px;transition:background .15s,border-color .15s,color .15s}
+.check.on .box{background:var(--t,var(--accent));border-color:var(--t,var(--accent));color:#fff}
+:root[data-theme="dark"] .check.on .box{color:var(--accent-ink)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .check.on .box{color:var(--accent-ink)}}
+.check.on .lbl{color:var(--ink-3);text-decoration:line-through}
+.check .lbl{flex:1;font-size:14px}
+.check .del{opacity:0;border:0;background:transparent;color:var(--ink-3);cursor:pointer;padding:0 4px}
+.check:hover .del{opacity:1}
+.add-line{display:flex;gap:7px;margin-top:10px}
+
+/* ---------- Ratings ---------- */
+.stars{display:flex;gap:3px}
+.star{border:0;background:transparent;cursor:pointer;padding:2px;font-size:20px;line-height:1;color:var(--line-strong);
+  transition:transform .12s,color .12s}
+.star.on{color:#E0A63F}
+.star:hover{transform:scale(1.14)}
+.rate-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;align-items:center;
+  padding:9px 0;border-bottom:1px dashed var(--line)}
+.rate-row:last-child{border-bottom:0}
+.seg{display:inline-flex;background:var(--surface-2);border:1px solid var(--line);border-radius:9px;padding:3px;gap:3px}
+.seg button{border:0;background:transparent;padding:5px 12px;border-radius:7px;cursor:pointer;font-size:13.5px;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);font-weight:600;box-shadow:var(--shadow)}
+
+/* ---------- Compare ---------- */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}
+thead th{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);
+  background:var(--surface-2)}
+tbody tr:last-child td{border-bottom:0}
+tfoot td{font-weight:700;background:var(--surface-2);font-family:var(--f-display);font-size:15px}
+.cellwrap{display:flex;align-items:center;gap:9px}
+.cellwrap input{width:72px;text-align:center;font-family:var(--f-mono);padding:5px 4px}
+.bar{flex:1;height:6px;min-width:40px;background:var(--surface-3);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--t);border-radius:999px;transition:width .35s}
+.auto-tag{font-family:var(--f-mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.05em}
+
+/* ---------- Timeline ---------- */
+.tl{display:flex;flex-direction:column;gap:0}
+.tl-node{display:grid;grid-template-columns:118px 26px minmax(0,1fr);gap:14px;align-items:center}
+.tl-date{text-align:right;font-family:var(--f-mono);font-size:12px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.tl-rail{position:relative;height:100%;display:grid;place-items:center;min-height:34px}
+.tl-rail::before{content:"";position:absolute;top:0;bottom:0;width:2px;background:var(--line)}
+.tl-node:first-child .tl-rail::before{top:50%}
+.tl-node:last-child .tl-rail::before{bottom:50%}
+.tl-mark{width:15px;height:15px;border-radius:50%;background:var(--surface);border:2.5px solid var(--t,var(--line-strong));
+  position:relative;z-index:1}
+.tl-mark.filled{background:var(--t,var(--ink-3))}
+.tl-cap{font-family:var(--f-display);font-weight:700;font-size:15px;letter-spacing:.02em}
+.tl-phase{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--t);border-radius:12px;
+  padding:12px 14px;margin:7px 0;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.tl-phase .grow{flex:1;min-width:150px}
+.tl-phase h4{font-size:15px;font-weight:600}
+.tl-prog{height:6px;background:var(--surface-3);border-radius:999px;overflow:hidden;margin-top:7px}
+.tl-prog i{display:block;height:100%;background:var(--t);border-radius:999px}
+.months-input{display:flex;align-items:center;gap:6px}
+.months-input input{width:76px;text-align:center;font-family:var(--f-mono)}
+
+/* ---------- Modal ---------- */
+.overlay{position:fixed;inset:0;background:rgba(10,14,18,.5);backdrop-filter:blur(3px);z-index:60;
+  display:flex;align-items:flex-start;justify-content:center;padding:24px 16px;overflow-y:auto;
+  animation:fade .16s ease}
+.modal{background:var(--surface);border:1px solid var(--line);border-radius:16px;width:100%;max-width:660px;
+  box-shadow:0 24px 60px -20px rgba(0,0,0,.5);animation:pop .18s ease;margin:auto}
+.modal-head{display:flex;align-items:center;gap:12px;padding:17px 20px;border-bottom:1px solid var(--line)}
+.modal-head h3{font-size:18px;font-weight:700;flex:1}
+.modal-body{padding:20px}
+.modal-foot{display:flex;gap:9px;justify-content:flex-end;padding:15px 20px;border-top:1px solid var(--line);
+  background:var(--surface-2);border-radius:0 0 16px 16px;flex-wrap:wrap}
+@keyframes fade{from{opacity:0}}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.99)}}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:var(--ink);color:var(--bg);
+  padding:10px 17px;border-radius:999px;font-size:13.5px;font-weight:500;z-index:90;box-shadow:var(--shadow);
+  animation:pop .18s ease}
+
+/* ---------- Mobile ---------- */
+.mobile-bar,.mobile-top{display:none}
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .side{display:none}
+  .mobile-top{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--surface);
+    border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+  .mobile-top .brand{padding:0;flex:1}
+  .main{padding:18px 16px 96px}
+  .mobile-bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--surface);
+    border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom));overflow-x:auto}
+  .mobile-bar button{flex:1 0 62px;border:0;background:transparent;color:var(--ink-3);cursor:pointer;
+    display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;border-radius:9px;font-size:10px}
+  .mobile-bar button[aria-current="page"]{color:var(--ink);background:var(--surface-2);font-weight:600}
+  .mobile-bar .ic{font-size:17px}
+  .two-col{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .page-head h1{font-size:23px}
+  .row{grid-template-columns:1fr}
+  .row-side{align-items:flex-start;flex-direction:row;flex-wrap:wrap;justify-content:space-between;width:100%}
+  .tl-node{grid-template-columns:76px 22px minmax(0,1fr);gap:9px}
+  .tl-date{font-size:10.5px}
+}
+</style>
+
+<div class="mobile-top">
+  <div class="brand">
+    <div class="brand-mark">GJ</div>
+    <div>
+      <div class="brand-name">Orientierungsjahr</div>
+      <div class="brand-sub" id="mTopSub">Gap Year 2026</div>
+    </div>
+  </div>
+  <button class="btn icon-btn" data-action="toggle-theme" title="Hell / Dunkel" aria-label="Farbschema wechseln"><span id="themeIcon2">◐</span></button>
+</div>
+
+<div class="shell">
+  <aside class="side">
+    <div class="brand">
+      <div class="brand-mark">GJ</div>
+      <div>
+        <div class="brand-name">Orientierungsjahr</div>
+        <div class="brand-sub" id="sideSub">Gap Year</div>
+      </div>
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="side-foot">
+      <button class="btn btn-sm btn-ghost" data-action="toggle-theme"><span id="themeIcon">◐</span> <span id="themeLabel">Design</span></button>
+      <button class="btn btn-sm btn-ghost" data-action="go" data-view="daten" style="margin-left:auto">⚙︎ Daten</button>
+    </div>
+  </aside>
+  <main class="main" id="view"></main>
+</div>
+
+<nav class="mobile-bar" id="mobileNav"></nav>
+<div id="modalRoot"></div>
+<div id="toastRoot"></div>
+
+<script>
+"use strict";
+const KEY = "orientierungsjahr.v1";
+
+/* ---------------- Stammdaten ---------------- */
+const TRACKS = {
+  vfx:   { key:"vfx",   label:"VFX / Medien",        icon:"🎬", cls:"t-vfx"   },
+  bwl:   { key:"bwl",   label:"BWL / Wirtschaft",    icon:"📊", cls:"t-bwl"   },
+  tech:  { key:"tech",  label:"Technik / Engineering",icon:"⚙️", cls:"t-tech" },
+  other: { key:"other", label:"Sonstiges",           icon:"⭐", cls:"t-other" }
+};
+const trackOf = k => TRACKS[k] || TRACKS.other;
+
+const STATUS = {
+  none:   { label:"Noch nicht beworben",   icon:"⚪", v:"--s-none" },
+  plan:   { label:"Bewerbung geplant",     icon:"🔵", v:"--s-plan" },
+  sent:   { label:"Bewerbung verschickt",  icon:"🟡", v:"--s-sent" },
+  wait:   { label:"Rückmeldung ausstehend",icon:"🟠", v:"--s-wait" },
+  talk:   { label:"Vorstellungsgespräch",  icon:"🟣", v:"--s-talk" },
+  yes:    { label:"Zusage",                icon:"🟢", v:"--s-yes"  },
+  no:     { label:"Absage",                icon:"🔴", v:"--s-no"   },
+  off:    { label:"Zurückgezogen",         icon:"⚫", v:"--s-off"  }
+};
+const ST_ORDER = ["none","plan","sent","wait","talk","yes","no","off"];
+const statusOf = k => STATUS[k] || STATUS.none;
+
+const CRITERIA = [
+  { key:"interest", label:"Wie interessant war die Arbeit?",              short:"Interesse" },
+  { key:"fun",      label:"Wie viel Spaß hat es gemacht?",                short:"Spaß" },
+  { key:"fit",      label:"Wie gut passte die Arbeit zu mir?",            short:"Passend zu mir" },
+  { key:"env",      label:"Wie interessant war das Arbeitsumfeld?",       short:"Arbeitsumfeld" },
+  { key:"wlb",      label:"Wie gut war die Work-Life-Balance?",           short:"Work-Life-Balance" },
+  { key:"career",   label:"Könnte ich mir das langfristig vorstellen?",   short:"Karriere / langfristig" }
+];
+
+const VIEWS = [
+  { key:"dashboard",  label:"Dashboard",   icon:"◈" },
+  { key:"bewerbungen",label:"Bewerbungen", icon:"✉" },
+  { key:"unternehmen",label:"Unternehmen", icon:"⌂" },
+  { key:"checkliste", label:"Checkliste",  icon:"✓" },
+  { key:"bewertung",  label:"Bewertungen", icon:"★" },
+  { key:"vergleich",  label:"Vergleich",   icon:"⇄" },
+  { key:"timeline",   label:"Zeitplan",    icon:"◷" },
+  { key:"daten",      label:"Daten",       icon:"⚙" }
+];
+
+/* ---------------- Startdaten ---------------- */
+const SEED_COMPANIES = [
+  ["Noisebird Media","Wolfsburg","vfx","https://noisebird.de","","","VFX, Film & Content – Portfolio mitschicken"],
+  ["Filmburg","Wolfsburg","vfx","","","","Filmproduktion, regionale Projekte"],
+  ["Marcus Wendt Filmproduktion","Wolfsburg","vfx","","Marcus Wendt","","Kleines Team – persönliche Ansprache lohnt sich"],
+  ["MEDIADRIVE","Braunschweig","vfx","","","","Bewegtbild & Postproduktion"],
+  ["ex animo MEDIA","Braunschweig","vfx","","","","Film, Motion Design"],
+  ["Marctropolis","Braunschweig","vfx","","","","Animation / Motion Design"],
+  ["Würth","Gifhorn","bwl","https://www.wuerth.de","","","Vertrieb & Handel – Wunschziel"],
+  ["Volkswagen Financial Services","Braunschweig","bwl","https://www.vwfs.de","","","Controlling, Marketing, Business Development"],
+  ["Volkswagen","Wolfsburg","bwl","https://www.volkswagen.de","","","Große Praktikumsprogramme – früh bewerben"],
+  ["IAV","Gifhorn","tech","https://www.iav.com","","","Engineering-Dienstleister Automotive"],
+  ["EDAG Engineering","Wolfsburg","tech","https://www.edag.com","","","Fahrzeugentwicklung"],
+  ["Expleo","Wolfsburg","tech","https://expleo.com","","","Technik & Qualität, Automotive"],
+  ["SEGULA Technologies","Wolfsburg","tech","https://www.segulatechnologies.com","","","Engineering, Projektarbeit"]
+];
+
+const SEED_CHECKS = [
+  ["Vor dem Abi","other",["Lebenslauf erstellen","Anschreiben vorbereiten","Portfolio für VFX erstellen","Zeugnisse vorbereiten","Unternehmen recherchieren","Bewerbungsfristen notieren","Erste Bewerbungen verschicken"]],
+  ["VFX / Medien","vfx",["Unternehmen auswählen","Bewerbungen verschicken","Rückmeldungen verfolgen","Praktikum absolvieren","Erfahrungen dokumentieren","Entscheidung treffen"]],
+  ["BWL / Wirtschaft","bwl",["Unternehmen auswählen","Würth kontaktieren","Weitere Unternehmen anschreiben","Bewerbungen verschicken","Praktikum absolvieren","Erfahrungen dokumentieren"]],
+  ["Technik / Engineering","tech",["IAV kontaktieren","Weitere Engineering-Unternehmen auswählen","Bewerbungen verschicken","Praktikum absolvieren","Erfahrungen dokumentieren"]],
+  ["Nach den Praktika","other",["VFX bewerten","Wirtschaft bewerten","Technik bewerten","Mögliche Studiengänge recherchieren","Hochschulen vergleichen","Bewerbungsfristen prüfen","Studienentscheidung treffen","Für Studium bewerben"]]
+];
+
+let uidN = 0;
+const uid = p => (p||"id") + "_" + Date.now().toString(36) + (uidN++).toString(36) + Math.random().toString(36).slice(2,6);
+
+function seedState(){
+  const companies = SEED_COMPANIES.map(c => ({
+    id: uid("co"), name:c[0], city:c[1], track:c[2], website:c[3],
+    contact:c[4], contactInfo:c[5], period:"", notes:c[6], status:"none", sample:true
+  }));
+  const checklist = [];
+  SEED_CHECKS.forEach(([group,track,items]) => items.forEach(text =>
+    checklist.push({ id: uid("ck"), group, track, text, done:false, sample:true })));
+  return {
+    version: 1,
+    theme: "system",
+    view: "dashboard",
+    companies,
+    applications: [],
+    checklist,
+    reviews: [],
+    compare: {},           // { track: { criterionKey: number } }  – manuelle Werte
+    timeline: {
+      start: defaultStart(),
+      phases: [
+        { id:"ph_vfx",  track:"vfx",   label:"VFX / Medien",         months:3, done:false },
+        { id:"ph_bwl",  track:"bwl",   label:"BWL / Wirtschaft",     months:3.5, done:false },
+        { id:"ph_tech", track:"tech",  label:"Technik / Engineering",months:3.5, done:false },
+        { id:"ph_dec",  track:"other", label:"Studienentscheidung",  months:2, done:false }
+      ]
+    },
+    filters: { q:"", track:"", status:"", city:"", period:"", company:"" },
+    coFilters: { q:"", track:"", status:"", city:"" }
+  };
+}
+function defaultStart(){ return new Date().getFullYear() + "-07-01"; }
+
+/* ---------------- Speicherung ---------------- */
+let state = load();
+
+function load(){
+  try{
+    const raw = localStorage.getItem(KEY);
+    if(!raw) return seedState();
+    const parsed = JSON.parse(raw);
+    return migrate(parsed);
+  }catch(e){ console.warn("Daten konnten nicht gelesen werden:", e); return seedState(); }
+}
+function migrate(d){
+  const base = seedState();
+  if(!d || typeof d !== "object") return base;
+  const s = Object.assign(base, d);
+  s.companies    = Array.isArray(d.companies) ? d.companies : base.companies;
+  s.applications = Array.isArray(d.applications) ? d.applications : [];
+  s.checklist    = Array.isArray(d.checklist) ? d.checklist : base.checklist;
+  s.reviews      = Array.isArray(d.reviews) ? d.reviews : [];
+  s.compare      = (d.compare && typeof d.compare === "object") ? d.compare : {};
+  s.timeline     = (d.timeline && Array.isArray(d.timeline.phases) && d.timeline.phases.length)
+                   ? d.timeline : base.timeline;
+  s.filters      = Object.assign(base.filters, d.filters || {});
+  s.coFilters    = Object.assign(base.coFilters, d.coFilters || {});
+  if(!VIEWS.some(v => v.key === s.view)) s.view = "dashboard";
+  return s;
+}
+let saveWarned = false;
+function save(){
+  try{ localStorage.setItem(KEY, JSON.stringify(state)); }
+  catch(e){
+    if(!saveWarned){ saveWarned = true;
+      toast("Speichern nicht möglich – Daten gelten nur für diese Sitzung."); }
+  }
+}
+function commit(){ save(); render(); }
+
+/* ---------------- Helfer ---------------- */
+const $  = (s,r) => (r||document).querySelector(s);
+const $$ = (s,r) => Array.from((r||document).querySelectorAll(s));
+const esc = v => String(v==null?"":v).replace(/[&<>"']/g, c =>
+  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const num = (v,d) => { const n = parseFloat(String(v).replace(",",".")); return isFinite(n) ? n : d; };
+
+function fmtDate(iso){
+  if(!iso) return "";
+  const d = new Date(iso + (iso.length === 10 ? "T12:00:00" : ""));
+  if(isNaN(d)) return iso;
+  return d.toLocaleDateString("de-DE", { day:"2-digit", month:"2-digit", year:"numeric" });
+}
+function fmtMonth(d){ return d.toLocaleDateString("de-DE", { month:"short", year:"numeric" }); }
+function addMonths(date, months){
+  const d = new Date(date.getTime());
+  const whole = Math.floor(months), rest = months - whole;
+  d.setMonth(d.getMonth() + whole);
+  if(rest > 0) d.setDate(d.getDate() + Math.round(rest * 30.44));
+  return d;
+}
+function today(){ const d = new Date(); d.setHours(12,0,0,0); return d; }
+function parseDate(iso){ const d = new Date((iso||"") + "T12:00:00"); return isNaN(d) ? today() : d; }
+function nfmt(n, dec){ return Number(n).toLocaleString("de-DE",
+  { minimumFractionDigits: dec||0, maximumFractionDigits: dec===undefined?1:dec }); }
+
+function toast(msg){
+  const root = $("#toastRoot");
+  root.innerHTML = '<div class="toast">' + esc(msg) + "</div>";
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => { root.innerHTML = ""; }, 2600);
+}
+function statusChip(key){
+  const st = statusOf(key);
+  return '<span class="chip" style="background:color-mix(in srgb,var(' + st.v + ') 15%,transparent);color:var(' + st.v + ')">' +
+    '<i class="dot"></i>' + esc(st.label) + "</span>";
+}
+function statusSelect(key, action, id){
+  const st = statusOf(key);
+  return '<select class="status-select" data-change="' + action + '" data-id="' + id + '" aria-label="Status ändern"' +
+    ' style="--sc:var(' + st.v + ');--sc-soft:color-mix(in srgb,var(' + st.v + ') 15%,transparent)">' +
+    ST_ORDER.map(k => '<option value="' + k + '"' + (k === key ? " selected" : "") + ">" +
+      STATUS[k].icon + " " + esc(STATUS[k].label) + "</option>").join("") + "</select>";
+}
+function trackChip(key){
+  const t = trackOf(key);
+  return '<span class="chip track-chip ' + t.cls + '">' + t.icon + " " + esc(t.label) + "</span>";
+}
+function selectOptions(list, current, placeholder){
+  return (placeholder ? '<option value="">' + esc(placeholder) + "</option>" : "") +
+    list.map(o => { const v = o.value !== undefined ? o.value : o, l = o.label !== undefined ? o.label : o;
+      return '<option value="' + esc(v) + '"' + (String(v) === String(current==null?"":current) ? " selected" : "") + ">" + esc(l) + "</option>";
+    }).join("");
+}
+function uniq(arr){ return Array.from(new Set(arr.filter(x => x && String(x).trim()))).sort((a,b)=>a.localeCompare(b,"de")); }
+
+/* ---------------- Auswertung ---------------- */
+function timelineInfo(){
+  const start = parseDate(state.timeline.start);
+  const phases = state.timeline.phases;
+  const total = phases.reduce((s,p) => s + (num(p.months,0) || 0), 0);
+  const end = addMonths(start, total);
+  const now = today();
+  const msMonth = 30.44 * 864e5;
+  const elapsed = Math.max(0, Math.min(total, (now - start) / msMonth));
+  let cursor = new Date(start.getTime());
+  const rows = phases.map(p => {
+    const m = num(p.months,0) || 0;
+    const from = new Date(cursor.getTime());
+    const to = addMonths(from, m);
+    cursor = to;
+    const done = p.done || now >= to;
+    const prog = p.done ? 1 : (m <= 0 ? 0 : Math.max(0, Math.min(1, (now - from) / (m * msMonth))));
+    const active = !p.done && now >= from && now < to;
+    return { ...p, months:m, from, to, prog, active, done };
+  });
+  return { start, end, total, elapsed, remaining: Math.max(0, total - elapsed),
+           pct: total ? Math.round((elapsed/total)*100) : 0, rows, now };
+}
+function stats(){
+  const apps = state.applications;
+  const by = k => apps.filter(a => a.status === k).length;
+  const appliedNames = new Set(apps.filter(a => a.status !== "none").map(a => (a.company||"").toLowerCase()));
+  const notApplied = state.companies.filter(c =>
+    c.status === "none" && !appliedNames.has((c.name||"").toLowerCase())).length;
+  return {
+    total: apps.length,
+    open: by("none") + by("plan"),
+    sent: by("sent"),
+    wait: by("wait"),
+    talk: by("talk"),
+    yes: by("yes"),
+    no: by("no"),
+    notApplied,
+    internships: state.reviews.length,
+    companies: state.companies.length
+  };
+}
+function ratingAvg(review){
+  const vals = CRITERIA.map(c => num(review.ratings && review.ratings[c.key], 0)).filter(v => v > 0);
+  return vals.length ? vals.reduce((a,b)=>a+b,0) / vals.length : 0;
+}
+function autoValue(track, critKey){
+  const rs = state.reviews.filter(r => r.track === track);
+  const vals = rs.map(r => num(r.ratings && r.ratings[critKey], 0)).filter(v => v > 0);
+  return vals.length ? vals.reduce((a,b)=>a+b,0) / vals.length : null;
+}
+function compareValue(track, critKey){
+  const manual = state.compare[track] && state.compare[track][critKey];
+  if(manual !== undefined && manual !== null && manual !== "") return { v:num(manual,0), manual:true };
+  const auto = autoValue(track, critKey);
+  return { v: auto, manual:false };
+}
+
+/* ---------------- Navigation ---------------- */
+function renderNav(){
+  const s = stats();
+  const counts = { bewerbungen:s.total, unternehmen:state.companies.length,
+    checkliste: state.checklist.filter(c=>!c.done).length, bewertung: state.reviews.length };
+  $("#nav").innerHTML =
+    '<div class="nav-label">Übersicht</div>' +
+    VIEWS.slice(0,1).map(navBtn).join("") +
+    '<div class="nav-label">Organisieren</div>' +
+    VIEWS.slice(1,4).map(v => navBtn(v, counts[v.key])).join("") +
+    '<div class="nav-label">Auswerten</div>' +
+    VIEWS.slice(4,7).map(v => navBtn(v, counts[v.key])).join("");
+  $("#mobileNav").innerHTML = VIEWS.map(v =>
+    '<button data-action="go" data-view="' + v.key + '"' + (state.view === v.key ? ' aria-current="page"' : "") +
+    '><span class="ic">' + v.icon + "</span>" + esc(v.label) + "</button>").join("");
+  const t = timelineInfo();
+  $("#sideSub").textContent = fmtMonth(t.start) + " – " + fmtMonth(t.end);
+  $("#mTopSub").textContent = t.pct + "% geschafft";
+  const dark = document.documentElement.getAttribute("data-theme");
+  const icon = dark === "dark" ? "☾" : dark === "light" ? "☀" : "◐";
+  $("#themeIcon").textContent = icon; $("#themeIcon2").textContent = icon;
+  $("#themeLabel").textContent = dark === "dark" ? "Dunkel" : dark === "light" ? "Hell" : "System";
+}
+function navBtn(v, count){
+  return '<button class="nav-item" data-action="go" data-view="' + v.key + '"' +
+    (state.view === v.key ? ' aria-current="page"' : "") + '>' +
+    '<span class="ic">' + v.icon + "</span>" + esc(v.label) +
+    (count ? '<span class="cnt mono">' + count + "</span>" : "") + "</button>";
+}
+
+/* ---------------- Ansicht: Dashboard ---------------- */
+function viewDashboard(){
+  const s = stats(), t = timelineInfo();
+  const segs = t.rows.map(p => {
+    const tr = trackOf(p.track);
+    return '<div class="track-seg ' + tr.cls + '" style="flex:' + (p.months||0.01) + ' 1 0" title="' +
+      esc(p.label) + ' · ' + nfmt(p.months) + ' Monate">' +
+      '<i class="fill' + (p.prog >= 1 ? " done" : "") + '" style="width:' + Math.round(p.prog*100) + '%"></i></div>';
+  }).join("");
+
+  const statCards = [
+    ["Bewerbungen gesamt", s.total, "var(--accent)"],
+    ["Offen / geplant", s.open, "var(--s-plan)"],
+    ["Verschickt", s.sent, "var(--s-sent)"],
+    ["In Bearbeitung", s.wait, "var(--s-wait)"],
+    ["Vorstellungsgespräche", s.talk, "var(--s-talk)"],
+    ["Zusagen", s.yes, "var(--s-yes)"],
+    ["Absagen", s.no, "var(--s-no)"],
+    ["Noch nicht beworben", s.notApplied, "var(--s-none)"],
+    ["Praktika absolviert", s.internships, "var(--vfx)"],
+    ["Monate verbleibend", nfmt(t.remaining), "var(--tech)"]
+  ].map(([k,v,c]) => '<div class="stat" style="--sc:' + c + '"><div class="v">' + v + '</div><div class="k">' + esc(k) + "</div></div>").join("");
+
+  const upcoming = state.applications
+    .filter(a => a.nextStep || a.nextStepDate)
+    .sort((a,b) => (a.nextStepDate||"9999").localeCompare(b.nextStepDate||"9999"))
+    .slice(0,6);
+  const todayIso = new Date().toISOString().slice(0,10);
+
+  const statusRows = ST_ORDER.map(k => {
+    const n = state.applications.filter(a => a.status === k).length;
+    const pct = s.total ? (n / s.total) * 100 : 0;
+    return '<div style="display:flex;align-items:center;gap:10px;padding:5px 0">' +
+      '<span style="width:150px;font-size:13px;color:var(--ink-2);flex:none">' + STATUS[k].icon + " " + esc(STATUS[k].label) + "</span>" +
+      '<span class="bar" style="--t:var(' + STATUS[k].v + ')"><i style="width:' + pct + '%"></i></span>' +
+      '<b class="mono" style="width:22px;text-align:right;font-size:13px">' + n + "</b></div>";
+  }).join("");
+
+  const trackRows = ["vfx","bwl","tech","other"].map(k => {
+    const tr = trackOf(k);
+    const co = state.companies.filter(c => c.track === k).length;
+    const ap = state.applications.filter(a => a.track === k).length;
+    const rv = state.reviews.filter(r => r.track === k);
+    const avg = rv.length ? rv.reduce((a,r) => a + ratingAvg(r), 0) / rv.length : 0;
+    if(!co && !ap && !rv.length) return "";
+    return '<div class="' + tr.cls + '" style="display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px dashed var(--line)">' +
+      '<span style="font-size:17px">' + tr.icon + "</span>" +
+      '<div style="flex:1;min-width:0"><div style="font-weight:600;font-size:14px">' + esc(tr.label) + "</div>" +
+      '<div class="muted" style="font-size:12.5px">' + co + " Unternehmen · " + ap + " Bewerbungen</div></div>" +
+      (avg ? '<span class="chip track-chip mono">Ø ' + nfmt(avg,1) + "</span>" : '<span class="muted mono" style="font-size:12px">noch keine Bewertung</span>') +
+      "</div>";
+  }).join("");
+
+  return '' +
+  '<div class="page-head"><div><div class="eyebrow">Dashboard</div>' +
+    "<h1>Dein Orientierungsjahr im Blick</h1>" +
+    "<p>Alles zu Bewerbungen, Unternehmen und Praktika an einem Ort – von der ersten Recherche bis zur Studienentscheidung.</p></div>" +
+    '<div class="head-actions">' +
+      '<button class="btn btn-primary" data-action="app-new">＋ Bewerbung</button>' +
+      '<button class="btn" data-action="co-new">＋ Unternehmen</button></div></div>' +
+
+  '<section class="hero"><div class="hero-top">' +
+    '<div><div class="eyebrow">Gap-Year-Fortschritt</div>' +
+      "<h2>" + fmtMonth(t.start) + " bis " + fmtMonth(t.end) + "</h2>" +
+      '<div class="muted" style="font-size:13.5px">' + nfmt(t.elapsed) + " von " + nfmt(t.total) + " Monaten vergangen · " +
+      nfmt(t.remaining) + " Monate übrig</div></div>" +
+    '<div style="text-align:right"><div class="hero-num">' + t.pct + '<small>%</small></div>' +
+      '<div class="eyebrow">abgeschlossen</div></div></div>' +
+    '<div class="track-bar">' + segs + "</div>" +
+    '<div class="track-legend">' + t.rows.map(p => '<span class="' + trackOf(p.track).cls + '">' +
+      '<b style="color:var(--t)">' + trackOf(p.track).icon + "</b> " + esc(p.label) +
+      ' <span class="mono muted">' + nfmt(p.months) + " Mon.</span></span>").join("") + "</div></section>" +
+
+  '<div class="stat-grid">' + statCards + "</div>" +
+
+  '<div class="two-col">' +
+    '<section class="card"><div class="check-head"><h3>Nächste Schritte</h3>' +
+      '<button class="btn btn-sm btn-ghost" data-action="go" data-view="bewerbungen">Alle Bewerbungen →</button></div>' +
+      (upcoming.length ? '<div class="rows">' + upcoming.map(a => {
+        const due = a.nextStepDate && a.nextStepDate <= todayIso;
+        return '<div class="' + trackOf(a.track).cls + '" style="display:flex;gap:11px;align-items:center;padding:9px 0;border-bottom:1px dashed var(--line)">' +
+          '<span style="font-size:16px">' + trackOf(a.track).icon + "</span>" +
+          '<div style="flex:1;min-width:0"><div style="font-weight:600;font-size:14px">' + esc(a.company || "Ohne Unternehmen") + "</div>" +
+          '<div class="muted" style="font-size:13px">' + esc(a.nextStep || "Kein nächster Schritt notiert") + "</div></div>" +
+          (a.nextStepDate ? '<span class="chip mono" style="background:' + (due ? "var(--danger-soft);color:var(--danger)" : "var(--surface-2);color:var(--ink-2)") + '">' +
+            fmtDate(a.nextStepDate) + "</span>" : "") + "</div>";
+      }).join("") + "</div>"
+      : '<div class="empty">Noch keine nächsten Schritte notiert.<br><button class="btn btn-sm" style="margin-top:11px" data-action="app-new">Erste Bewerbung anlegen</button></div>') +
+    "</section>" +
+    '<section class="card"><h3 style="margin-bottom:11px">Bereiche</h3>' + (trackRows || '<p class="muted">Keine Daten.</p>') +
+      '<h3 style="margin:18px 0 6px">Bewerbungsstatus</h3>' +
+      (s.total ? statusRows : '<p class="muted" style="font-size:13.5px">Noch keine Bewerbungen erfasst.</p>') +
+    "</section></div>";
+}
+
+/* ---------------- Ansicht: Bewerbungen ---------------- */
+function appCity(a){
+  if(a.city) return a.city;
+  const co = state.companies.find(c => c.id === a.companyId ||
+    (c.name||"").toLowerCase() === (a.company||"").toLowerCase());
+  return co ? co.city : "";
+}
+function filteredApps(){
+  const f = state.filters, q = f.q.trim().toLowerCase();
+  return state.applications.filter(a => {
+    if(f.track && a.track !== f.track) return false;
+    if(f.status && a.status !== f.status) return false;
+    if(f.city && appCity(a) !== f.city) return false;
+    if(f.period && a.period !== f.period) return false;
+    if(f.company && a.company !== f.company) return false;
+    if(!q) return true;
+    return [a.company,a.type,a.period,a.contact,a.email,a.notes,a.nextStep,a.channel,appCity(a)]
+      .some(v => String(v||"").toLowerCase().includes(q));
+  }).sort((a,b) => ST_ORDER.indexOf(a.status) - ST_ORDER.indexOf(b.status) ||
+      (a.company||"").localeCompare(b.company||"","de"));
+}
+function appRow(a){
+  const tr = trackOf(a.track);
+  const todayIso = new Date().toISOString().slice(0,10);
+  const due = a.nextStepDate && a.nextStepDate <= todayIso;
+  const meta = [
+    a.type && "🏷 " + esc(a.type),
+    appCity(a) && "📍 " + esc(appCity(a)),
+    a.period && "🗓 " + esc(a.period),
+    a.duration && "⏱ " + esc(a.duration),
+    a.appliedDate && "✉ beworben am " + fmtDate(a.appliedDate),
+    a.channel && "↗ " + esc(a.channel),
+    a.contact && "👤 " + esc(a.contact),
+    a.email && "✉ " + esc(a.email),
+    a.phone && "☎ " + esc(a.phone)
+  ].filter(Boolean).map(x => "<span>" + x + "</span>").join("");
+  return '<article class="row ' + tr.cls + '">' +
+    '<div><div class="row-title">' + esc(a.company || "Ohne Unternehmen") +
+      (a.sample ? ' <span class="chip" style="background:var(--surface-3);color:var(--ink-3);font-size:11px">Beispieldaten</span>' : "") +
+      "</div>" +
+      '<div class="row-meta">' + trackChip(a.track) + meta + "</div>" +
+      (a.notes ? '<div class="note">' + esc(a.notes) + "</div>" : "") +
+      (a.nextStep || a.nextStepDate ? '<div class="next' + (due ? " due" : "") + '">➜ ' +
+        esc(a.nextStep || "Nächster Schritt") + (a.nextStepDate ? ' <b class="mono">' + fmtDate(a.nextStepDate) + "</b>" : "") + "</div>" : "") +
+    "</div>" +
+    '<div class="row-side">' + statusSelect(a.status, "app-status", a.id) +
+      '<div class="row-actions">' +
+        '<button class="btn btn-sm" data-action="app-edit" data-id="' + a.id + '">Bearbeiten</button>' +
+        '<button class="btn btn-sm btn-danger icon-btn" data-action="app-del" data-id="' + a.id + '" title="Bewerbung löschen" aria-label="Bewerbung löschen">✕</button>' +
+      "</div></div></article>";
+}
+function renderAppList(){
+  const list = filteredApps();
+  const el = $("#appList");
+  if(!el) return;
+  el.innerHTML = list.length
+    ? list.map(appRow).join("")
+    : '<div class="empty">Keine Bewerbung passt zu deiner Suche.<br>' +
+      '<button class="btn btn-sm" style="margin-top:11px" data-action="filters-reset">Filter zurücksetzen</button></div>';
+  const c = $("#appCount"); if(c) c.textContent = list.length + " von " + state.applications.length;
+}
+function viewApplications(){
+  const f = state.filters;
+  const cities  = uniq(state.applications.map(appCity));
+  const periods = uniq(state.applications.map(a => a.period));
+  const comps   = uniq(state.applications.map(a => a.company));
+  return '' +
+  '<div class="page-head"><div><div class="eyebrow">Bewerbungs-Tracker</div><h1>Bewerbungen</h1>' +
+    "<p>Jede Bewerbung mit Status, Ansprechpartner und nächstem Schritt – Status jederzeit über das Dropdown ändern.</p></div>" +
+    '<div class="head-actions"><button class="btn btn-primary" data-action="app-new">＋ Neue Bewerbung</button></div></div>' +
+  '<div class="toolbar">' +
+    '<label class="search"><span class="ic"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="M10.5 10.5 14 14" stroke-linecap="round"/></svg></span><span class="sr">Suche</span>' +
+      '<input type="text" id="appSearch" placeholder="Suchen nach Unternehmen, Notiz, Kontakt …" value="' + esc(f.q) + '"></label>' +
+    '<select data-change="filter" data-key="track" aria-label="Bereich filtern">' +
+      selectOptions(Object.values(TRACKS).map(t => ({value:t.key,label:t.icon + " " + t.label})), f.track, "Alle Bereiche") + "</select>" +
+    '<select data-change="filter" data-key="status" aria-label="Status filtern">' +
+      selectOptions(ST_ORDER.map(k => ({value:k,label:STATUS[k].icon + " " + STATUS[k].label})), f.status, "Alle Status") + "</select>" +
+    '<select data-change="filter" data-key="city" aria-label="Stadt filtern">' + selectOptions(cities, f.city, "Alle Städte") + "</select>" +
+    '<select data-change="filter" data-key="period" aria-label="Zeitraum filtern">' + selectOptions(periods, f.period, "Alle Zeiträume") + "</select>" +
+    '<select data-change="filter" data-key="company" aria-label="Unternehmen filtern">' + selectOptions(comps, f.company, "Alle Unternehmen") + "</select>" +
+    '<button class="btn btn-ghost btn-sm" data-action="filters-reset">Zurücksetzen</button>' +
+    '<span class="mono muted" id="appCount" style="margin-left:auto;font-size:12.5px"></span>' +
+  "</div>" +
+  '<div class="rows" id="appList"></div>';
+}
+
+/* ---------------- Ansicht: Unternehmen ---------------- */
+function filteredCompanies(){
+  const f = state.coFilters, q = f.q.trim().toLowerCase();
+  return state.companies.filter(c => {
+    if(f.track && c.track !== f.track) return false;
+    if(f.status && c.status !== f.status) return false;
+    if(f.city && c.city !== f.city) return false;
+    if(!q) return true;
+    return [c.name,c.city,c.website,c.contact,c.contactInfo,c.notes,c.period]
+      .some(v => String(v||"").toLowerCase().includes(q));
+  }).sort((a,b) => (a.track||"").localeCompare(b.track||"") || (a.name||"").localeCompare(b.name||"","de"));
+}
+function coCard(c){
+  const tr = trackOf(c.track);
+  const site = c.website ? (/^https?:/i.test(c.website) ? c.website : "https://" + c.website) : "";
+  const meta = [
+    c.city && "📍 " + esc(c.city),
+    c.period && "🗓 " + esc(c.period),
+    c.contact && "👤 " + esc(c.contact),
+    c.contactInfo && "✆ " + esc(c.contactInfo)
+  ].filter(Boolean).map(x => "<span>" + x + "</span>").join("");
+  return '<article class="row ' + tr.cls + '">' +
+    '<div><div class="row-title">' + esc(c.name) +
+      (c.sample ? ' <span class="chip" style="background:var(--surface-3);color:var(--ink-3);font-size:11px">Beispieldaten</span>' : "") + "</div>" +
+      '<div class="row-meta">' + trackChip(c.track) + meta +
+        (site ? '<span>🔗 <a href="' + esc(site) + '" target="_blank" rel="noopener noreferrer" style="color:var(--t)">' +
+          esc(c.website.replace(/^https?:\/\//,"")) + "</a></span>" : "") + "</div>" +
+      (c.notes ? '<div class="note">' + esc(c.notes) + "</div>" : "") +
+    "</div>" +
+    '<div class="row-side">' + statusSelect(c.status, "co-status", c.id) +
+      '<div class="row-actions">' +
+        '<button class="btn btn-sm" data-action="co-apply" data-id="' + c.id + '" title="Bewerbung für dieses Unternehmen anlegen">✉ Bewerben</button>' +
+        '<button class="btn btn-sm" data-action="co-edit" data-id="' + c.id + '">Bearbeiten</button>' +
+        '<button class="btn btn-sm btn-danger icon-btn" data-action="co-del" data-id="' + c.id + '" title="Unternehmen löschen" aria-label="Unternehmen löschen">✕</button>' +
+      "</div></div></article>";
+}
+function renderCoList(){
+  const list = filteredCompanies(), el = $("#coList");
+  if(!el) return;
+  let html = "", lastTrack = null;
+  list.forEach(c => {
+    if(c.track !== lastTrack){
+      lastTrack = c.track;
+      const tr = trackOf(c.track);
+      html += '<h3 class="' + tr.cls + '" style="margin:14px 0 2px;font-size:15px;display:flex;gap:8px;align-items:center">' +
+        '<span>' + tr.icon + '</span><span style="color:var(--t)">' + esc(tr.label) + "</span>" +
+        '<span class="mono muted" style="font-size:12px;font-weight:400">' +
+        list.filter(x => x.track === c.track).length + "</span></h3>";
+    }
+    html += coCard(c);
+  });
+  el.innerHTML = list.length ? html :
+    '<div class="empty">Kein Unternehmen passt zu deiner Suche.<br>' +
+    '<button class="btn btn-sm" style="margin-top:11px" data-action="co-filters-reset">Filter zurücksetzen</button></div>';
+  const c = $("#coCount"); if(c) c.textContent = list.length + " von " + state.companies.length;
+}
+function viewCompanies(){
+  const f = state.coFilters;
+  const cities = uniq(state.companies.map(c => c.city));
+  return '' +
+  '<div class="page-head"><div><div class="eyebrow">Unternehmen</div><h1>Deine Unternehmensliste</h1>' +
+    "<p>Recherchierte Firmen nach Bereich sortiert. Aus jedem Eintrag lässt sich direkt eine Bewerbung anlegen.</p></div>" +
+    '<div class="head-actions"><button class="btn btn-primary" data-action="co-new">＋ Neues Unternehmen</button></div></div>' +
+  '<div class="toolbar">' +
+    '<label class="search"><span class="ic"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="7" cy="7" r="4.6"/><path d="M10.5 10.5 14 14" stroke-linecap="round"/></svg></span><span class="sr">Suche</span>' +
+      '<input type="text" id="coSearch" placeholder="Suchen nach Name, Stadt, Notiz …" value="' + esc(f.q) + '"></label>' +
+    '<select data-change="cofilter" data-key="track" aria-label="Bereich filtern">' +
+      selectOptions(Object.values(TRACKS).map(t => ({value:t.key,label:t.icon + " " + t.label})), f.track, "Alle Bereiche") + "</select>" +
+    '<select data-change="cofilter" data-key="status" aria-label="Status filtern">' +
+      selectOptions(ST_ORDER.map(k => ({value:k,label:STATUS[k].icon + " " + STATUS[k].label})), f.status, "Alle Status") + "</select>" +
+    '<select data-change="cofilter" data-key="city" aria-label="Stadt filtern">' + selectOptions(cities, f.city, "Alle Städte") + "</select>" +
+    '<button class="btn btn-ghost btn-sm" data-action="co-filters-reset">Zurücksetzen</button>' +
+    '<span class="mono muted" id="coCount" style="margin-left:auto;font-size:12.5px"></span>' +
+  "</div>" +
+  '<div class="rows" id="coList"></div>';
+}
+
+/* ---------------- Ansicht: Checkliste ---------------- */
+function viewChecklist(){
+  const groups = [];
+  state.checklist.forEach(item => {
+    let g = groups.find(x => x.name === item.group);
+    if(!g){ g = { name:item.group, track:item.track || "other", items:[] }; groups.push(g); }
+    g.items.push(item);
+  });
+  const doneAll = state.checklist.filter(i => i.done).length;
+  const pctAll = state.checklist.length ? Math.round(doneAll / state.checklist.length * 100) : 0;
+
+  const cards = groups.map(g => {
+    const tr = trackOf(g.track);
+    const done = g.items.filter(i => i.done).length;
+    const pct = g.items.length ? Math.round(done / g.items.length * 100) : 0;
+    return '<section class="card ' + tr.cls + '">' +
+      '<div class="check-head"><span style="font-size:17px">' + tr.icon + "</span>" +
+        "<h3>" + esc(g.name) + "</h3>" +
+        '<span class="mono muted" style="font-size:12.5px">' + done + "/" + g.items.length + "</span></div>" +
+      '<div class="mini-bar"><i style="width:' + pct + '%"></i></div>' +
+      g.items.map(i =>
+        '<label class="check' + (i.done ? " on" : "") + '">' +
+          '<input type="checkbox" class="sr" data-change="check" data-id="' + i.id + '"' + (i.done ? " checked" : "") + ">" +
+          '<span class="box" aria-hidden="true">✓</span><span class="lbl">' + esc(i.text) + "</span>" +
+          '<button class="del" data-action="check-del" data-id="' + i.id + '" title="Punkt löschen" aria-label="Punkt löschen">✕</button>' +
+        "</label>").join("") +
+      '<form class="add-line" data-submit="check-add" data-group="' + esc(g.name) + '" data-track="' + esc(g.track) + '">' +
+        '<input type="text" name="text" placeholder="Neuer Punkt …" aria-label="Neuer Punkt in ' + esc(g.name) + '">' +
+        '<button class="btn btn-sm" type="submit">＋</button></form>' +
+      "</section>";
+  }).join("");
+
+  return '' +
+  '<div class="page-head"><div><div class="eyebrow">Checkliste</div><h1>Was zu tun ist</h1>' +
+    "<p>Von den Vorbereitungen vor dem Abi bis zur Studienbewerbung. Häkchen werden automatisch gespeichert.</p></div>" +
+    '<div class="head-actions"><button class="btn" data-action="check-group-new">＋ Neue Liste</button></div></div>' +
+  '<section class="hero"><div class="hero-top"><div><div class="eyebrow">Gesamtfortschritt</div>' +
+    "<h2>" + doneAll + " von " + state.checklist.length + " Aufgaben erledigt</h2></div>" +
+    '<div class="hero-num">' + pctAll + "<small>%</small></div></div>" +
+    '<div class="mini-bar" style="height:9px;margin-top:14px"><i style="width:' + pctAll + '%;background:var(--accent)"></i></div></section>' +
+  '<div class="check-groups">' + (cards || '<div class="empty">Noch keine Punkte.</div>') + "</div>";
+}
+
+/* ---------------- Ansicht: Bewertungen ---------------- */
+function starsRow(critKey, value, editable){
+  return '<span class="stars" role="group" aria-label="Bewertung">' +
+    [1,2,3,4,5].map(n => editable
+      ? '<button type="button" class="star' + (n <= value ? " on" : "") + '" data-action="star" data-crit="' + critKey +
+        '" data-val="' + n + '" aria-label="' + n + ' von 5">★</button>'
+      : '<span class="star' + (n <= value ? " on" : "") + '">★</span>').join("") + "</span>";
+}
+function reviewCard(r){
+  const tr = trackOf(r.track);
+  const avg = ratingAvg(r);
+  const studyLabel = { ja:"Ja, das studiere ich gern", vielleicht:"Vielleicht", nein:"Nein, eher nicht" }[r.study] || "–";
+  return '<article class="row ' + tr.cls + '"><div>' +
+    '<div class="row-title">' + esc(r.company || tr.label) + '<span class="chip track-chip">' + tr.icon + " " + esc(tr.label) + "</span>" +
+      '<span class="chip mono" style="background:var(--surface-2);color:var(--ink-2)">Ø ' + nfmt(avg,1) + "</span></div>" +
+    '<div class="row-meta">' + (r.date ? "<span>🗓 " + fmtDate(r.date) + "</span>" : "") +
+      "<span>🎓 Studium: " + esc(studyLabel) + "</span></div>" +
+    '<div style="margin-top:10px;display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:2px 18px">' +
+      CRITERIA.map(c => '<div class="rate-row" style="border:0;padding:3px 0">' +
+        '<span style="font-size:13px;color:var(--ink-2)">' + esc(c.short) + "</span>" +
+        starsRow(c.key, num(r.ratings && r.ratings[c.key], 0), false) + "</div>").join("") + "</div>" +
+    (r.liked ? '<div class="note"><b>Gefallen:</b> ' + esc(r.liked) + "</div>" : "") +
+    (r.disliked ? '<div class="note"><b>Nicht gefallen:</b> ' + esc(r.disliked) + "</div>" : "") +
+    (r.learned ? '<div class="note"><b>Gelernt:</b> ' + esc(r.learned) + "</div>" : "") +
+    '</div><div class="row-side"><div class="row-actions">' +
+      '<button class="btn btn-sm" data-action="rev-edit" data-id="' + r.id + '">Bearbeiten</button>' +
+      '<button class="btn btn-sm btn-danger icon-btn" data-action="rev-del" data-id="' + r.id + '" title="Bewertung löschen" aria-label="Bewertung löschen">✕</button>' +
+    "</div></div></article>";
+}
+function viewReviews(){
+  const rs = state.reviews.slice().sort((a,b) => (b.date||"").localeCompare(a.date||""));
+  return '' +
+  '<div class="page-head"><div><div class="eyebrow">Praktikums-Bewertung</div><h1>Wie war es wirklich?</h1>' +
+    "<p>Nach jedem Praktikum ehrlich bewerten – daraus entsteht später der Vergleich der drei Bereiche.</p></div>" +
+    '<div class="head-actions"><button class="btn btn-primary" data-action="rev-new">＋ Praktikum bewerten</button></div></div>' +
+  (rs.length ? '<div class="rows">' + rs.map(reviewCard).join("") + "</div>"
+    : '<div class="empty">Noch keine Bewertung. Sobald du ein Praktikum abgeschlossen hast, halte hier deine Eindrücke fest.<br>' +
+      '<button class="btn btn-sm" style="margin-top:12px" data-action="rev-new">Erste Bewertung anlegen</button></div>');
+}
+
+/* ---------------- Ansicht: Vergleich ---------------- */
+function viewCompare(){
+  const tracks = ["vfx","bwl","tech"];
+  const head = '<tr><th>Kriterium</th>' + tracks.map(k =>
+    '<th class="' + trackOf(k).cls + '" style="color:var(--t)">' + trackOf(k).icon + " " + esc(trackOf(k).label) + "</th>").join("") + "</tr>";
+  const body = CRITERIA.map(c => "<tr><td><b style='font-weight:600'>" + esc(c.short) + "</b></td>" +
+    tracks.map(k => {
+      const { v, manual } = compareValue(k, c.key);
+      const val = v == null ? "" : nfmt(v,1);
+      return '<td class="' + trackOf(k).cls + '"><div class="cellwrap">' +
+        '<input type="number" min="0" max="5" step="0.5" value="' + (v == null ? "" : (Math.round(v*10)/10)) + '" placeholder="–" ' +
+        'data-change="compare" data-track="' + k + '" data-crit="' + c.key + '" aria-label="' + esc(c.short) + " " + esc(trackOf(k).label) + '">' +
+        '<span class="bar"><i style="width:' + ((v||0)/5*100) + '%"></i></span>' +
+        '<span class="auto-tag">' + (manual ? "eigen" : (v == null ? "" : "Ø")) + "</span></div></td>";
+    }).join("") + "</tr>").join("");
+  const foot = "<tr><td>Gesamt Ø</td>" + tracks.map(k => {
+    const vals = CRITERIA.map(c => compareValue(k, c.key).v).filter(v => v != null);
+    const avg = vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
+    return '<td class="' + trackOf(k).cls + '" style="color:var(--t)">' + (avg == null ? "–" : nfmt(avg,1) + " / 5") + "</td>";
+  }).join("") + "</tr>";
+
+  const scores = tracks.map(k => {
+    const vals = CRITERIA.map(c => compareValue(k, c.key).v).filter(v => v != null);
+    return { k, avg: vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null };
+  }).filter(x => x.avg != null).sort((a,b) => b.avg - a.avg);
+
+  return '' +
+  '<div class="page-head"><div><div class="eyebrow">Vergleich</div><h1>VFX vs. Wirtschaft vs. Technik</h1>' +
+    "<p>Die Werte kommen automatisch aus deinen Bewertungen (Ø) – du kannst jede Zahl aber selbst überschreiben.</p></div>" +
+    '<div class="head-actions"><button class="btn" data-action="compare-auto">↺ Aus Bewertungen berechnen</button></div></div>' +
+  (scores.length ? '<div class="stat-grid" style="margin-bottom:16px">' + scores.map((s,i) =>
+    '<div class="stat ' + trackOf(s.k).cls + '" style="--sc:var(--t)">' +
+      '<div class="eyebrow">' + (i === 0 ? "Aktueller Favorit" : i + 1 + ". Platz") + "</div>" +
+      '<div class="v">' + nfmt(s.avg,1) + '<small style="font-size:14px;color:var(--ink-3)"> / 5</small></div>' +
+      '<div class="k">' + trackOf(s.k).icon + " " + esc(trackOf(s.k).label) + "</div></div>").join("") + "</div>" : "") +
+  '<div class="table-wrap"><table><thead>' + head + "</thead><tbody>" + body + "</tbody><tfoot>" + foot + "</tfoot></table></div>" +
+  '<p class="muted" style="font-size:13px;margin-top:11px">Skala 0–5. Leere Felder werden im Gesamtdurchschnitt nicht mitgezählt. ' +
+  '„Ø“ = automatisch aus deinen Bewertungen, „eigen“ = von dir eingetragen.</p>';
+}
+
+/* ---------------- Ansicht: Zeitplan ---------------- */
+function viewTimeline(){
+  const t = timelineInfo();
+  const nodes = [];
+  nodes.push('<div class="tl-node"><div class="tl-date">' + fmtMonth(t.start) + "</div>" +
+    '<div class="tl-rail"><span class="tl-mark filled" style="--t:var(--ink-3)"></span></div>' +
+    '<div class="tl-cap">🎓 ABITUR · Start</div></div>');
+  t.rows.forEach(p => {
+    const tr = trackOf(p.track);
+    nodes.push('<div class="tl-node ' + tr.cls + '"><div class="tl-date">' + fmtMonth(p.from) + "<br>bis " + fmtMonth(p.to) + "</div>" +
+      '<div class="tl-rail"><span class="tl-mark' + (p.prog > 0 ? " filled" : "") + '"></span></div>' +
+      '<div class="tl-phase"><div class="grow"><h4>' + tr.icon + " " + esc(p.label) +
+        (p.active ? ' <span class="chip track-chip">läuft gerade</span>' : "") +
+        (p.done ? ' <span class="chip" style="background:var(--surface-3);color:var(--ink-3)">abgeschlossen</span>' : "") + "</h4>" +
+        '<div class="tl-prog"><i style="width:' + Math.round(p.prog*100) + '%"></i></div></div>' +
+        '<label class="months-input"><input type="number" min="0" max="24" step="0.5" value="' + p.months +
+          '" data-change="phase-months" data-id="' + p.id + '" aria-label="Dauer in Monaten"> <span class="muted">Monate</span></label>' +
+        '<button class="btn btn-sm" data-action="phase-done" data-id="' + p.id + '">' + (p.done ? "↺ offen" : "✓ fertig") + "</button>" +
+        '<button class="btn btn-sm btn-danger icon-btn" data-action="phase-del" data-id="' + p.id + '" title="Phase löschen" aria-label="Phase löschen">✕</button>' +
+      "</div></div>");
+  });
+  nodes.push('<div class="tl-node"><div class="tl-date">' + fmtMonth(t.end) + "</div>" +
+    '<div class="tl-rail"><span class="tl-mark' + (t.pct >= 100 ? " filled" : "") + '" style="--t:var(--accent)"></span></div>' +
+    '<div class="tl-cap">🚀 Studium / nächster Schritt</div></div>');
+
+  return '' +
+  '<div class="page-head"><div><div class="eyebrow">Zeitplan</div><h1>Dein Jahr von vorn bis hinten</h1>' +
+    "<p>Zeiträume anpassen, Phasen abhaken – Fortschritt und Enddatum rechnen sich automatisch mit.</p></div>" +
+    '<div class="head-actions"><button class="btn" data-action="phase-new">＋ Phase</button></div></div>' +
+  '<section class="hero"><div class="hero-top">' +
+    '<div class="field" style="max-width:210px"><label for="tlStart">Start (nach dem Abi)</label>' +
+      '<input type="date" id="tlStart" value="' + esc(state.timeline.start) + '" data-change="tl-start"></div>' +
+    '<div style="text-align:right"><div class="hero-num">' + nfmt(t.remaining) + '<small> Monate übrig</small></div>' +
+      '<div class="muted" style="font-size:13px">' + nfmt(t.elapsed) + " von " + nfmt(t.total) + " Monaten · Ende " + fmtMonth(t.end) + "</div></div></div>" +
+    '<div class="mini-bar" style="height:9px;margin-top:16px"><i style="width:' + t.pct + '%;background:var(--accent)"></i></div></section>' +
+  '<section class="card"><div class="tl">' + nodes.join("") + "</div></section>";
+}
+
+/* ---------------- Ansicht: Daten ---------------- */
+function viewData(){
+  const s = stats();
+  const samples = state.companies.filter(c => c.sample).length + state.checklist.filter(c => c.sample).length;
+  return '' +
+  '<div class="page-head"><div><div class="eyebrow">Daten</div><h1>Sichern, übertragen, neu starten</h1>' +
+    "<p>Alles liegt lokal in diesem Browser (localStorage). Für ein Backup oder den Wechsel auf ein anderes Gerät exportierst du deine Daten als Text.</p></div></div>" +
+  '<div class="stat-grid" style="margin-bottom:16px">' +
+    [["Unternehmen",state.companies.length],["Bewerbungen",s.total],
+     ["Checklisten-Punkte",state.checklist.length],["Bewertungen",state.reviews.length],
+     ["Beispieldaten",samples]].map(([k,v]) =>
+      '<div class="stat"><div class="v">' + v + '</div><div class="k">' + k + "</div></div>").join("") + "</div>" +
+  '<div class="two-col" style="margin-top:0">' +
+    '<section class="card"><h3>Export</h3>' +
+      '<p class="muted" style="font-size:13.5px;margin:6px 0 12px">Kopiere den Text und sichere ihn z.&nbsp;B. in einer Notiz oder E-Mail an dich selbst.</p>' +
+      '<textarea id="exportBox" readonly rows="7" class="mono" style="font-size:11.5px">' + esc(JSON.stringify(state)) + "</textarea>" +
+      '<div class="head-actions" style="margin-top:11px">' +
+        '<button class="btn btn-primary" data-action="export-copy">⧉ In Zwischenablage kopieren</button>' +
+        '<button class="btn" data-action="export-select">Alles markieren</button></div></section>' +
+    '<section class="card"><h3>Import</h3>' +
+      '<p class="muted" style="font-size:13.5px;margin:6px 0 12px">Exportierten Text hier einfügen. Achtung: ersetzt alle aktuellen Daten.</p>' +
+      '<textarea id="importBox" rows="7" placeholder="{ … }" class="mono" style="font-size:11.5px"></textarea>' +
+      '<div class="head-actions" style="margin-top:11px"><button class="btn" data-action="import-run">⤓ Daten importieren</button></div></section>' +
+  "</div>" +
+  '<section class="card" style="margin-top:14px;border-color:var(--danger)">' +
+    '<h3 style="color:var(--danger)">Alles zurücksetzen</h3>' +
+    '<p class="muted" style="font-size:13.5px;margin:6px 0 12px">Löscht Bewerbungen, Unternehmen, Checkliste, Bewertungen und Zeitplan und stellt die Beispieldaten wieder her.</p>' +
+    '<button class="btn btn-danger" data-action="reset-ask">⚠ Alle Daten löschen</button></section>' +
+  '<section class="card" style="margin-top:14px"><h3>Beispieldaten</h3>' +
+    '<p class="muted" style="font-size:13.5px;margin:6px 0 12px">Die vorausgefüllten Unternehmen und Checklisten-Punkte sind mit „Beispieldaten“ markiert. Du kannst sie bearbeiten, einzeln löschen – oder alle auf einmal entfernen.</p>' +
+    '<button class="btn" data-action="samples-del">Alle Beispieldaten entfernen</button></section>';
+}
+
+/* ---------------- Dialoge ---------------- */
+let modalCtx = null;
+function closeModal(){ modalCtx = null; $("#modalRoot").innerHTML = ""; }
+function openModal({ title, body, okLabel, extra, onSubmit, wide }){
+  modalCtx = { onSubmit };
+  $("#modalRoot").innerHTML =
+    '<div class="overlay" data-action="overlay"><form class="modal" id="modalForm"' +
+      (wide ? ' style="max-width:760px"' : "") + '>' +
+      '<div class="modal-head"><h3>' + esc(title) + "</h3>" +
+        '<button type="button" class="btn icon-btn btn-ghost" data-action="modal-close" aria-label="Schließen">✕</button></div>' +
+      '<div class="modal-body">' + body + "</div>" +
+      '<div class="modal-foot">' + (extra || "") +
+        '<button type="button" class="btn" data-action="modal-close">Abbrechen</button>' +
+        '<button type="submit" class="btn btn-primary">' + esc(okLabel || "Speichern") + "</button></div>" +
+    "</form></div>";
+  const first = $("#modalForm input:not([type=hidden]), #modalForm select, #modalForm textarea");
+  if(first) first.focus();
+}
+function openConfirm(title, text, okLabel, fn){
+  modalCtx = { onSubmit: () => { fn(); } };
+  $("#modalRoot").innerHTML =
+    '<div class="overlay" data-action="overlay"><form class="modal" id="modalForm" style="max-width:460px">' +
+      '<div class="modal-head"><h3>' + esc(title) + "</h3></div>" +
+      '<div class="modal-body"><p style="margin:0;color:var(--ink-2)">' + text + "</p></div>" +
+      '<div class="modal-foot"><button type="button" class="btn" data-action="modal-close">Abbrechen</button>' +
+      '<button type="submit" class="btn btn-danger">' + esc(okLabel) + "</button></div></form></div>";
+  $("#modalForm button[type=submit]").focus();
+}
+function field(name, label, opts){
+  opts = opts || {};
+  const cls = opts.full ? "field full" : "field";
+  const id = "f_" + name;
+  let input;
+  if(opts.type === "textarea"){
+    input = '<textarea id="' + id + '" name="' + name + '" rows="' + (opts.rows||3) + '" placeholder="' +
+      esc(opts.placeholder||"") + '">' + esc(opts.value||"") + "</textarea>";
+  } else if(opts.type === "select"){
+    input = '<select id="' + id + '" name="' + name + '">' +
+      selectOptions(opts.options, opts.value, opts.placeholder) + "</select>";
+  } else {
+    input = '<input id="' + id + '" type="' + (opts.type||"text") + '" name="' + name + '" value="' + esc(opts.value||"") +
+      '" placeholder="' + esc(opts.placeholder||"") + '"' + (opts.list ? ' list="' + opts.list + '"' : "") +
+      (opts.required ? " required" : "") + ">";
+  }
+  return '<div class="' + cls + '"><label for="' + id + '">' + esc(label) + "</label>" + input + "</div>";
+}
+const trackOptions = Object.values(TRACKS).map(t => ({ value:t.key, label:t.icon + " " + t.label }));
+const statusOptions = ST_ORDER.map(k => ({ value:k, label:STATUS[k].icon + " " + STATUS[k].label }));
+function companyDatalist(){
+  return '<datalist id="companyNames">' + state.companies.map(c =>
+    '<option value="' + esc(c.name) + '"></option>').join("") + "</datalist>";
+}
+function formValues(form){
+  const o = {};
+  Array.from(new FormData(form).entries()).forEach(([k,v]) => { o[k] = typeof v === "string" ? v.trim() : v; });
+  return o;
+}
+
+/* ---------------- Formulare ---------------- */
+function applicationForm(a){
+  a = a || {};
+  return companyDatalist() + '<div class="form-grid">' +
+    field("company","Unternehmen",{ value:a.company, list:"companyNames", required:true, placeholder:"z. B. Noisebird Media" }) +
+    field("track","Bereich",{ type:"select", options:trackOptions, value:a.track || "vfx" }) +
+    field("type","Praktikumsart",{ value:a.type, placeholder:"Schnupperpraktikum, Langzeitpraktikum …" }) +
+    field("city","Stadt",{ value:a.city, placeholder:"Wolfsburg" }) +
+    field("period","Gewünschter Zeitraum",{ value:a.period, placeholder:"Sept – Nov 2026" }) +
+    field("duration","Dauer",{ value:a.duration, placeholder:"3 Monate" }) +
+    field("appliedDate","Datum der Bewerbung",{ type:"date", value:a.appliedDate }) +
+    field("channel","Bewerbungsweg",{ type:"select", options:["E-Mail","Online-Formular","Post","Persönlich","Telefon","Initiativ über Kontakt","LinkedIn"], value:a.channel, placeholder:"– wählen –" }) +
+    field("contact","Ansprechpartner",{ value:a.contact }) +
+    field("email","E-Mail",{ type:"email", value:a.email }) +
+    field("phone","Telefonnummer",{ type:"tel", value:a.phone }) +
+    field("status","Status",{ type:"select", options:statusOptions, value:a.status || "plan" }) +
+    field("nextStep","Nächster Schritt",{ value:a.nextStep, placeholder:"Nachfassen per Telefon", full:true }) +
+    field("nextStepDate","Datum des nächsten Schritts",{ type:"date", value:a.nextStepDate }) +
+    field("notes","Notizen",{ type:"textarea", value:a.notes, full:true, placeholder:"Portfolio erwähnt, Rückmeldung bis KW 12 zugesagt …" }) +
+  "</div>";
+}
+function companyForm(c){
+  c = c || {};
+  return '<div class="form-grid">' +
+    field("name","Name",{ value:c.name, required:true, full:true }) +
+    field("city","Stadt",{ value:c.city, placeholder:"Wolfsburg" }) +
+    field("track","Bereich",{ type:"select", options:trackOptions, value:c.track || "vfx" }) +
+    field("website","Website",{ value:c.website, placeholder:"www.beispiel.de" }) +
+    field("contact","Ansprechpartner",{ value:c.contact }) +
+    field("contactInfo","Kontaktinformationen",{ value:c.contactInfo, placeholder:"E-Mail oder Telefon", full:true }) +
+    field("period","Gewünschter Praktikumszeitraum",{ value:c.period, placeholder:"Sept – Nov 2026" }) +
+    field("status","Bewerbungsstatus",{ type:"select", options:statusOptions, value:c.status || "none" }) +
+    field("notes","Notizen",{ type:"textarea", value:c.notes, full:true }) +
+  "</div>";
+}
+function reviewForm(r){
+  r = r || { ratings:{} };
+  const ratings = r.ratings || {};
+  return '<div class="form-grid">' +
+    field("track","Bereich",{ type:"select", options:trackOptions, value:r.track || "vfx" }) +
+    field("company","Unternehmen / Praktikum",{ value:r.company, list:"companyNames", placeholder:"z. B. IAV" }) +
+    field("date","Datum",{ type:"date", value:r.date || new Date().toISOString().slice(0,10) }) +
+    '<div class="full">' + companyDatalist() +
+      '<div class="eyebrow" style="margin:6px 0 2px">Bewertung</div>' +
+      CRITERIA.map(c => '<div class="rate-row"><span style="font-size:14px">' + esc(c.label) + "</span>" +
+        starsRow(c.key, num(ratings[c.key],0), true) +
+        '<input type="hidden" name="r_' + c.key + '" value="' + num(ratings[c.key],0) + '"></div>').join("") +
+    "</div>" +
+    field("liked","Was hat mir gefallen?",{ type:"textarea", value:r.liked, full:true }) +
+    field("disliked","Was hat mir nicht gefallen?",{ type:"textarea", value:r.disliked, full:true }) +
+    field("learned","Was habe ich gelernt?",{ type:"textarea", value:r.learned, full:true }) +
+    '<div class="field full"><label>Würde ich diesen Bereich studieren?</label>' +
+      '<div class="seg" role="group">' +
+        ["ja","vielleicht","nein"].map(v => '<button type="button" data-action="study" data-val="' + v + '" aria-pressed="' +
+          ((r.study || "vielleicht") === v) + '">' + ({ja:"Ja",vielleicht:"Vielleicht",nein:"Nein"})[v] + "</button>").join("") +
+      '</div><input type="hidden" name="study" value="' + esc(r.study || "vielleicht") + '"></div>' +
+  "</div>";
+}
+
+/* ---------------- Aktionen ---------------- */
+const byId = (arr,id) => arr.find(x => x.id === id);
+
+const ACTIONS = {
+  go(el){ state.view = el.dataset.view; commit(); window.scrollTo({ top:0, behavior:"smooth" }); },
+  "toggle-theme"(){
+    const cur = document.documentElement.getAttribute("data-theme");
+    const next = cur === "dark" ? "light" : cur === "light" ? "dark" : (prefersDark() ? "light" : "dark");
+    state.theme = next; applyTheme(); save(); renderNav();
+  },
+  "modal-close"(){ closeModal(); },
+  overlay(el, ev){ if(ev.target === el) closeModal(); },
+
+  /* Bewerbungen */
+  "app-new"(){
+    openModal({ title:"Neue Bewerbung", body:applicationForm(), okLabel:"Bewerbung anlegen",
+      onSubmit(v){
+        const a = Object.assign({ id:uid("ap") }, normalizeApp(v));
+        state.applications.unshift(a);
+        syncCompanyStatus(a);
+        state.view = "bewerbungen"; closeModal(); commit(); toast("Bewerbung angelegt.");
+      }});
+  },
+  "app-edit"(el){
+    const a = byId(state.applications, el.dataset.id); if(!a) return;
+    openModal({ title:"Bewerbung bearbeiten", body:applicationForm(a),
+      extra:'<button type="button" class="btn btn-danger" data-action="app-del" data-id="' + a.id + '" style="margin-right:auto">Löschen</button>',
+      onSubmit(v){ Object.assign(a, normalizeApp(v)); a.sample = false; syncCompanyStatus(a); closeModal(); commit(); toast("Gespeichert."); }});
+  },
+  "app-del"(el){
+    const a = byId(state.applications, el.dataset.id); if(!a) return;
+    openConfirm("Bewerbung löschen?", "„" + esc(a.company || "Ohne Unternehmen") + "“ wird dauerhaft entfernt.", "Löschen", () => {
+      state.applications = state.applications.filter(x => x.id !== a.id);
+      closeModal(); commit(); toast("Bewerbung gelöscht.");
+    });
+  },
+  "filters-reset"(){ state.filters = { q:"", track:"", status:"", city:"", period:"", company:"" }; commit(); },
+
+  /* Unternehmen */
+  "co-new"(){
+    openModal({ title:"Neues Unternehmen", body:companyForm(), okLabel:"Unternehmen anlegen",
+      onSubmit(v){
+        state.companies.push(Object.assign({ id:uid("co"), sample:false }, v));
+        state.view = "unternehmen"; closeModal(); commit(); toast("Unternehmen angelegt.");
+      }});
+  },
+  "co-edit"(el){
+    const c = byId(state.companies, el.dataset.id); if(!c) return;
+    openModal({ title:"Unternehmen bearbeiten", body:companyForm(c),
+      extra:'<button type="button" class="btn btn-danger" data-action="co-del" data-id="' + c.id + '" style="margin-right:auto">Löschen</button>',
+      onSubmit(v){ Object.assign(c, v); c.sample = false; closeModal(); commit(); toast("Gespeichert."); }});
+  },
+  "co-del"(el){
+    const c = byId(state.companies, el.dataset.id); if(!c) return;
+    openConfirm("Unternehmen löschen?", "„" + esc(c.name) + "“ wird aus deiner Liste entfernt. Bewerbungen bleiben erhalten.", "Löschen", () => {
+      state.companies = state.companies.filter(x => x.id !== c.id);
+      closeModal(); commit(); toast("Unternehmen gelöscht.");
+    });
+  },
+  "co-apply"(el){
+    const c = byId(state.companies, el.dataset.id); if(!c) return;
+    openModal({ title:"Bewerbung bei " + c.name, okLabel:"Bewerbung anlegen",
+      body:applicationForm({ company:c.name, track:c.track, city:c.city, period:c.period,
+        contact:c.contact, email:/@/.test(c.contactInfo||"") ? c.contactInfo : "", status:"plan",
+        notes:c.notes, companyId:c.id }),
+      onSubmit(v){
+        const a = Object.assign({ id:uid("ap"), companyId:c.id }, normalizeApp(v));
+        state.applications.unshift(a); syncCompanyStatus(a);
+        state.view = "bewerbungen"; closeModal(); commit(); toast("Bewerbung angelegt.");
+      }});
+  },
+  "co-filters-reset"(){ state.coFilters = { q:"", track:"", status:"", city:"" }; commit(); },
+
+  /* Checkliste */
+  "check-del"(el, ev){
+    ev.preventDefault();
+    state.checklist = state.checklist.filter(x => x.id !== el.dataset.id);
+    commit();
+  },
+  "check-group-new"(){
+    openModal({ title:"Neue Checkliste", okLabel:"Liste anlegen",
+      body:'<div class="form-grid">' + field("group","Name der Liste",{ required:true, placeholder:"z. B. Auslandsaufenthalt", full:true }) +
+        field("track","Bereich",{ type:"select", options:trackOptions, value:"other" }) +
+        field("text","Erster Punkt",{ placeholder:"z. B. Sprachkurs suchen" }) + "</div>",
+      onSubmit(v){
+        if(!v.group) return;
+        state.checklist.push({ id:uid("ck"), group:v.group, track:v.track, text:v.text || "Erster Punkt", done:false });
+        state.view = "checkliste"; closeModal(); commit();
+      }});
+  },
+
+  /* Bewertungen */
+  "rev-new"(){
+    openModal({ title:"Praktikum bewerten", body:reviewForm(), okLabel:"Bewertung speichern", wide:true,
+      onSubmit(v){
+        state.reviews.push(Object.assign({ id:uid("rv") }, normalizeReview(v)));
+        state.view = "bewertung"; closeModal(); commit(); toast("Bewertung gespeichert.");
+      }});
+  },
+  "rev-edit"(el){
+    const r = byId(state.reviews, el.dataset.id); if(!r) return;
+    openModal({ title:"Bewertung bearbeiten", body:reviewForm(r), wide:true,
+      extra:'<button type="button" class="btn btn-danger" data-action="rev-del" data-id="' + r.id + '" style="margin-right:auto">Löschen</button>',
+      onSubmit(v){ Object.assign(r, normalizeReview(v)); closeModal(); commit(); toast("Gespeichert."); }});
+  },
+  "rev-del"(el){
+    const r = byId(state.reviews, el.dataset.id); if(!r) return;
+    openConfirm("Bewertung löschen?", "Die Bewertung wird dauerhaft entfernt.", "Löschen", () => {
+      state.reviews = state.reviews.filter(x => x.id !== r.id);
+      closeModal(); commit();
+    });
+  },
+  star(el){
+    const row = el.closest(".rate-row");
+    const val = +el.dataset.val;
+    const hidden = row.querySelector("input[type=hidden]");
+    const same = +hidden.value === val;
+    const nv = same ? 0 : val;
+    hidden.value = nv;
+    $$(".star", row).forEach((s,i) => s.classList.toggle("on", i < nv));
+  },
+  study(el){
+    const wrap = el.closest(".field");
+    $$("button", wrap).forEach(b => b.setAttribute("aria-pressed", String(b === el)));
+    wrap.querySelector("input[type=hidden]").value = el.dataset.val;
+  },
+
+  /* Vergleich */
+  "compare-auto"(){
+    openConfirm("Werte neu berechnen?", "Deine manuell eingetragenen Zahlen werden durch die Durchschnitte aus deinen Bewertungen ersetzt.", "Neu berechnen", () => {
+      state.compare = {}; closeModal(); commit(); toast("Aus Bewertungen berechnet.");
+    });
+  },
+
+  /* Zeitplan */
+  "phase-new"(){
+    openModal({ title:"Neue Phase", okLabel:"Phase hinzufügen",
+      body:'<div class="form-grid">' + field("label","Bezeichnung",{ required:true, placeholder:"z. B. Reise / Sprachkurs", full:true }) +
+        field("track","Bereich",{ type:"select", options:trackOptions, value:"other" }) +
+        field("months","Dauer in Monaten",{ type:"number", value:"2" }) + "</div>",
+      onSubmit(v){
+        if(!v.label) return;
+        state.timeline.phases.push({ id:uid("ph"), label:v.label, track:v.track, months:num(v.months,1), done:false });
+        closeModal(); commit();
+      }});
+  },
+  "phase-done"(el){
+    const p = byId(state.timeline.phases, el.dataset.id); if(!p) return;
+    p.done = !p.done; commit();
+  },
+  "phase-del"(el){
+    const p = byId(state.timeline.phases, el.dataset.id); if(!p) return;
+    openConfirm("Phase löschen?", "„" + esc(p.label) + "“ wird aus dem Zeitplan entfernt.", "Löschen", () => {
+      state.timeline.phases = state.timeline.phases.filter(x => x.id !== p.id);
+      closeModal(); commit();
+    });
+  },
+
+  /* Daten */
+  "export-copy"(){
+    const text = $("#exportBox").value;
+    const done = () => toast("Daten kopiert – jetzt sicher ablegen.");
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done, () => { ACTIONS["export-select"](); toast("Bitte mit Strg/Cmd + C kopieren."); });
+    } else { ACTIONS["export-select"](); toast("Bitte mit Strg/Cmd + C kopieren."); }
+  },
+  "export-select"(){ const b = $("#exportBox"); b.focus(); b.select(); },
+  "import-run"(){
+    const raw = $("#importBox").value.trim();
+    if(!raw){ toast("Bitte zuerst den exportierten Text einfügen."); return; }
+    let data;
+    try{ data = JSON.parse(raw); }
+    catch(e){ toast("Der Text ist kein gültiger Export."); return; }
+    if(!data || typeof data !== "object" || (!Array.isArray(data.companies) && !Array.isArray(data.applications))){
+      toast("Der Text enthält keine Orientierungsjahr-Daten."); return;
+    }
+    openConfirm("Daten importieren?", "Deine aktuellen Einträge werden dabei vollständig ersetzt.", "Importieren", () => {
+      const theme = state.theme;
+      state = migrate(data); state.theme = theme; applyTheme();
+      closeModal(); commit(); toast("Daten importiert.");
+    });
+  },
+  "reset-ask"(){
+    openConfirm("Wirklich alle Daten löschen?",
+      "Alle Bewerbungen, Unternehmen, Häkchen, Bewertungen und dein Zeitplan werden gelöscht und durch die Beispieldaten ersetzt. " +
+      "<b>Das lässt sich nicht rückgängig machen.</b> Falls du die Daten noch brauchst, exportiere sie vorher.",
+      "Ja, alles löschen", () => {
+        const theme = state.theme;
+        state = seedState(); state.theme = theme; state.view = "dashboard"; applyTheme();
+        closeModal(); commit(); toast("Alle Daten wurden zurückgesetzt.");
+      });
+  },
+  "samples-del"(){
+    openConfirm("Beispieldaten entfernen?", "Alle noch unbearbeiteten Beispiel-Unternehmen und Beispiel-Checklistenpunkte werden gelöscht.", "Entfernen", () => {
+      state.companies = state.companies.filter(c => !c.sample);
+      state.checklist = state.checklist.filter(c => !c.sample);
+      closeModal(); commit(); toast("Beispieldaten entfernt.");
+    });
+  }
+};
+
+function normalizeApp(v){
+  const o = Object.assign({}, v);
+  const co = state.companies.find(c => (c.name||"").toLowerCase() === (o.company||"").toLowerCase());
+  if(co){ o.companyId = co.id; if(!o.city) o.city = co.city; }
+  o.sample = false;
+  return o;
+}
+function normalizeReview(v){
+  const ratings = {};
+  CRITERIA.forEach(c => { ratings[c.key] = num(v["r_" + c.key], 0); });
+  return { track:v.track, company:v.company, date:v.date, ratings,
+           liked:v.liked, disliked:v.disliked, learned:v.learned, study:v.study };
+}
+function syncCompanyStatus(a){
+  const co = state.companies.find(c => c.id === a.companyId ||
+    (c.name||"").toLowerCase() === (a.company||"").toLowerCase());
+  if(co) co.status = a.status;
+}
+
+/* ---------------- Änderungen an Feldern ---------------- */
+const CHANGES = {
+  filter(el){ state.filters[el.dataset.key] = el.value; save(); renderAppList(); },
+  cofilter(el){ state.coFilters[el.dataset.key] = el.value; save(); renderCoList(); },
+  "app-status"(el){
+    const a = byId(state.applications, el.dataset.id); if(!a) return;
+    a.status = el.value; syncCompanyStatus(a); commit();
+  },
+  "co-status"(el){
+    const c = byId(state.companies, el.dataset.id); if(!c) return;
+    c.status = el.value; commit();
+  },
+  check(el){
+    const i = byId(state.checklist, el.dataset.id); if(!i) return;
+    i.done = el.checked; commit();
+  },
+  compare(el){
+    const t = el.dataset.track, k = el.dataset.crit;
+    state.compare[t] = state.compare[t] || {};
+    const raw = el.value.trim();
+    if(raw === "") delete state.compare[t][k];
+    else state.compare[t][k] = Math.max(0, Math.min(5, num(raw, 0)));
+    commit();
+  },
+  "phase-months"(el){
+    const p = byId(state.timeline.phases, el.dataset.id); if(!p) return;
+    p.months = Math.max(0, Math.min(24, num(el.value, 0))); commit();
+  },
+  "tl-start"(el){ state.timeline.start = el.value || defaultStart(); commit(); }
+};
+
+document.addEventListener("click", ev => {
+  const el = ev.target.closest("[data-action]");
+  if(!el) return;
+  const fn = ACTIONS[el.dataset.action];
+  if(fn){ fn(el, ev); }
+});
+document.addEventListener("change", ev => {
+  const el = ev.target.closest("[data-change]");
+  if(!el) return;
+  const fn = CHANGES[el.dataset.change];
+  if(fn) fn(el, ev);
+});
+document.addEventListener("input", ev => {
+  if(ev.target.id === "appSearch"){ state.filters.q = ev.target.value; save(); renderAppList(); }
+  if(ev.target.id === "coSearch"){ state.coFilters.q = ev.target.value; save(); renderCoList(); }
+});
+document.addEventListener("submit", ev => {
+  const form = ev.target;
+  if(form.id === "modalForm"){
+    ev.preventDefault();
+    const ctx = modalCtx;
+    if(ctx && ctx.onSubmit) ctx.onSubmit(formValues(form), form);
+    return;
+  }
+  if(form.dataset.submit === "check-add"){
+    ev.preventDefault();
+    const input = form.querySelector("input[name=text]");
+    const text = input.value.trim();
+    if(!text) return;
+    state.checklist.push({ id:uid("ck"), group:form.dataset.group, track:form.dataset.track, text, done:false });
+    commit();
+  }
+});
+document.addEventListener("keydown", ev => {
+  if(ev.key === "Escape" && modalCtx) closeModal();
+});
+
+/* ---------------- Theme & Rendering ---------------- */
+function prefersDark(){ return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches; }
+function applyTheme(){
+  if(state.theme === "light" || state.theme === "dark") document.documentElement.setAttribute("data-theme", state.theme);
+  else document.documentElement.removeAttribute("data-theme");
+}
+const RENDERERS = {
+  dashboard: viewDashboard, bewerbungen: viewApplications, unternehmen: viewCompanies,
+  checkliste: viewChecklist, bewertung: viewReviews, vergleich: viewCompare,
+  timeline: viewTimeline, daten: viewData
+};
+function render(){
+  const fn = RENDERERS[state.view] || viewDashboard;
+  $("#view").innerHTML = fn();
+  if(state.view === "bewerbungen"){
+    renderAppList();
+    const s = $("#appSearch");
+    if(s && document.activeElement !== s && state.filters.q){ /* Fokus nicht stehlen */ }
+  }
+  if(state.view === "unternehmen") renderCoList();
+  renderNav();
+}
+applyTheme();
+render();
+if(window.matchMedia){
+  const mq = window.matchMedia("(prefers-color-scheme: dark)");
+  const onChange = () => { if(state.theme === "system") renderNav(); };
+  if(mq.addEventListener) mq.addEventListener("change", onChange);
+  else if(mq.addListener) mq.addListener(onChange);
+}
+</script>
